@@ -1,0 +1,919 @@
+{
+  "_readme": "Relationship templates for context-based relationship generation",
+  "_version": "1.0",
+  "contexts": {
+    "school": {
+      "best_friends": {
+        "conditions": {
+          "same_institution": true,
+          "year_overlap": 3,
+          "age_difference_max": 2,
+          "mutual_support_history": true
+        },
+        "base_type": "friend",
+        "probability": 0.15,
+        "affection_range": [
+          60,
+          90
+        ],
+        "trust_range": [
+          60,
+          95
+        ],
+        "attraction_range": [
+          -10,
+          60
+        ],
+        "respect_range": [
+          40,
+          80
+        ],
+        "duration_formula": "current_year - graduation_year"
+      },
+      "casual_friends": {
+        "conditions": {
+          "same_institution": true,
+          "year_overlap": 1,
+          "age_difference_max": 3
+        },
+        "base_type": "friend",
+        "probability": 0.3,
+        "affection_range": [
+          30,
+          60
+        ],
+        "trust_range": [
+          30,
+          70
+        ],
+        "attraction_range": [
+          -20,
+          40
+        ],
+        "respect_range": [
+          20,
+          60
+        ]
+      },
+      "study_group_mates": {
+        "conditions": {
+          "same_institution": true,
+          "shared_class_count_min": 2,
+          "academic_pressure": "high"
+        },
+        "base_type": "colleague",
+        "probability": 0.22,
+        "affection_range": [
+          15,
+          55
+        ],
+        "trust_range": [
+          25,
+          75
+        ],
+        "attraction_range": [
+          -20,
+          35
+        ],
+        "respect_range": [
+          30,
+          80
+        ]
+      },
+      "senior_junior_mentorship": {
+        "conditions": {
+          "same_institution": true,
+          "age_difference_min": 2,
+          "age_difference_max": 8,
+          "senior_role": true
+        },
+        "base_type": "mentor",
+        "probability": 0.12,
+        "affection_range": [
+          35,
+          80
+        ],
+        "trust_range": [
+          40,
+          90
+        ],
+        "attraction_range": [
+          -40,
+          20
+        ],
+        "respect_range": [
+          60,
+          100
+        ]
+      },
+      "school_rivals": {
+        "conditions": {
+          "same_institution": true,
+          "year_overlap": 2,
+          "both_high_ambition": true
+        },
+        "base_type": "rival",
+        "probability": 0.1,
+        "affection_range": [
+          -60,
+          -10
+        ],
+        "trust_range": [
+          -40,
+          30
+        ],
+        "attraction_range": [
+          -30,
+          20
+        ],
+        "respect_range": [
+          40,
+          80
+        ]
+      },
+      "bullies_or_targets": {
+        "conditions": {
+          "same_institution": true,
+          "power_imbalance": true,
+          "social_status_gap_min": 30
+        },
+        "base_type": "enemy",
+        "probability": 0.06,
+        "affection_range": [
+          -80,
+          -20
+        ],
+        "trust_range": [
+          -80,
+          -20
+        ],
+        "attraction_range": [
+          -60,
+          10
+        ],
+        "respect_range": [
+          -40,
+          40
+        ]
+      }
+    },
+    "work": {
+      "work_best_friends": {
+        "conditions": {
+          "same_organization": true,
+          "same_position_level": true,
+          "tenure_overlap_years": 2,
+          "shared_stress_events": true
+        },
+        "base_type": "friend",
+        "probability": 0.2,
+        "affection_range": [
+          50,
+          85
+        ],
+        "trust_range": [
+          50,
+          90
+        ],
+        "attraction_range": [
+          -10,
+          50
+        ],
+        "respect_range": [
+          40,
+          80
+        ]
+      },
+      "colleagues": {
+        "conditions": {
+          "same_organization": true,
+          "tenure_overlap_years": 1
+        },
+        "base_type": "colleague",
+        "probability": 0.4,
+        "affection_range": [
+          10,
+          60
+        ],
+        "trust_range": [
+          20,
+          70
+        ],
+        "attraction_range": [
+          -20,
+          40
+        ],
+        "respect_range": [
+          30,
+          70
+        ]
+      },
+      "manager_subordinate": {
+        "conditions": {
+          "same_organization": true,
+          "position_hierarchy_difference": 1
+        },
+        "base_type": "authority",
+        "probability": 0.25,
+        "affection_range": [
+          0,
+          55
+        ],
+        "trust_range": [
+          -10,
+          70
+        ],
+        "attraction_range": [
+          -30,
+          25
+        ],
+        "respect_range": [
+          40,
+          95
+        ]
+      },
+      "mentor_apprentice": {
+        "conditions": {
+          "same_organization": true,
+          "age_difference_min": 7,
+          "skill_gap_min": 25
+        },
+        "base_type": "mentor",
+        "probability": 0.14,
+        "affection_range": [
+          30,
+          85
+        ],
+        "trust_range": [
+          40,
+          90
+        ],
+        "attraction_range": [
+          -30,
+          20
+        ],
+        "respect_range": [
+          60,
+          100
+        ]
+      },
+      "work_rivals": {
+        "conditions": {
+          "same_organization": true,
+          "promotion_competition": true,
+          "overlapping_responsibilities": true
+        },
+        "base_type": "rival",
+        "probability": 0.12,
+        "affection_range": [
+          -55,
+          -5
+        ],
+        "trust_range": [
+          -45,
+          25
+        ],
+        "attraction_range": [
+          -20,
+          25
+        ],
+        "respect_range": [
+          30,
+          85
+        ]
+      },
+      "office_gossip_target": {
+        "conditions": {
+          "same_organization": true,
+          "reputation_sensitivity": true,
+          "workplace_cliques": true
+        },
+        "base_type": "enemy",
+        "probability": 0.08,
+        "affection_range": [
+          -50,
+          5
+        ],
+        "trust_range": [
+          -70,
+          15
+        ],
+        "attraction_range": [
+          -40,
+          15
+        ],
+        "respect_range": [
+          -20,
+          60
+        ]
+      }
+    },
+    "neighborhood": {
+      "neighbors": {
+        "conditions": {
+          "same_street": true,
+          "distance_meters_max": 150
+        },
+        "base_type": "acquaintance",
+        "probability": 0.3,
+        "affection_range": [
+          5,
+          40
+        ],
+        "trust_range": [
+          5,
+          45
+        ],
+        "attraction_range": [
+          -15,
+          20
+        ],
+        "respect_range": [
+          10,
+          50
+        ]
+      },
+      "close_neighbors": {
+        "conditions": {
+          "same_building_or_compound": true,
+          "shared_utility_issues": true
+        },
+        "base_type": "friend",
+        "probability": 0.18,
+        "affection_range": [
+          30,
+          75
+        ],
+        "trust_range": [
+          30,
+          80
+        ],
+        "attraction_range": [
+          -20,
+          40
+        ],
+        "respect_range": [
+          25,
+          70
+        ]
+      },
+      "landlord_tenant": {
+        "conditions": {
+          "same_building_or_compound": true,
+          "housing_relationship": "landlord_tenant"
+        },
+        "base_type": "authority",
+        "probability": 0.22,
+        "affection_range": [
+          -10,
+          50
+        ],
+        "trust_range": [
+          -20,
+          60
+        ],
+        "attraction_range": [
+          -60,
+          10
+        ],
+        "respect_range": [
+          10,
+          80
+        ]
+      },
+      "tenant_disputes": {
+        "conditions": {
+          "same_building_or_compound": true,
+          "conflict_trigger": [
+            "noise",
+            "generator_fuel",
+            "water_access",
+            "rent_dispute",
+            "boundary_issue"
+          ]
+        },
+        "base_type": "enemy",
+        "probability": 0.12,
+        "affection_range": [
+          -70,
+          -10
+        ],
+        "trust_range": [
+          -80,
+          -20
+        ],
+        "attraction_range": [
+          -50,
+          10
+        ],
+        "respect_range": [
+          -30,
+          50
+        ]
+      },
+      "market_regulars": {
+        "conditions": {
+          "shared_market": true,
+          "visit_frequency_per_week_min": 2
+        },
+        "base_type": "acquaintance",
+        "probability": 0.16,
+        "affection_range": [
+          10,
+          55
+        ],
+        "trust_range": [
+          10,
+          60
+        ],
+        "attraction_range": [
+          -20,
+          25
+        ],
+        "respect_range": [
+          15,
+          65
+        ]
+      },
+      "area_boys_protection_or_extortion": {
+        "conditions": {
+          "same_district": true,
+          "informal_power_structure": true,
+          "street_level_enforcement": true
+        },
+        "base_type": "threat",
+        "probability": 0.09,
+        "affection_range": [
+          -80,
+          10
+        ],
+        "trust_range": [
+          -90,
+          15
+        ],
+        "attraction_range": [
+          -80,
+          10
+        ],
+        "respect_range": [
+          -30,
+          70
+        ]
+      }
+    },
+    "romantic": {
+      "dating": {
+        "conditions": {
+          "age_min": 16,
+          "mutual_attraction_min": 45,
+          "availability": "single_or_open"
+        },
+        "base_type": "romantic",
+        "probability": 0.2,
+        "affection_range": [
+          60,
+          100
+        ],
+        "trust_range": [
+          35,
+          80
+        ],
+        "attraction_range": [
+          60,
+          100
+        ],
+        "respect_range": [
+          30,
+          80
+        ]
+      },
+      "crushes": {
+        "conditions": {
+          "age_min": 13,
+          "unreciprocated_attraction": true
+        },
+        "base_type": "friend",
+        "probability": 0.2,
+        "affection_range": [
+          20,
+          70
+        ],
+        "trust_range": [
+          20,
+          70
+        ],
+        "attraction_range": [
+          40,
+          90
+        ],
+        "respect_range": [
+          30,
+          80
+        ]
+      },
+      "situationship": {
+        "conditions": {
+          "age_min": 18,
+          "mutual_attraction_min": 55,
+          "commitment_avoidance": true
+        },
+        "base_type": "romantic",
+        "probability": 0.12,
+        "affection_range": [
+          20,
+          75
+        ],
+        "trust_range": [
+          -10,
+          60
+        ],
+        "attraction_range": [
+          50,
+          95
+        ],
+        "respect_range": [
+          -10,
+          70
+        ]
+      },
+      "exes_good_terms": {
+        "conditions": {
+          "past_relationship": true,
+          "breakup_type": "mutual"
+        },
+        "base_type": "ex",
+        "probability": 0.1,
+        "affection_range": [
+          0,
+          50
+        ],
+        "trust_range": [
+          0,
+          55
+        ],
+        "attraction_range": [
+          -10,
+          40
+        ],
+        "respect_range": [
+          20,
+          80
+        ]
+      },
+      "exes_bad_breakup": {
+        "conditions": {
+          "past_relationship": true,
+          "breakup_type": [
+            "betrayal",
+            "financial_conflict",
+            "family_pressure",
+            "abuse",
+            "public_humiliation"
+          ]
+        },
+        "base_type": "enemy",
+        "probability": 0.12,
+        "affection_range": [
+          -90,
+          -20
+        ],
+        "trust_range": [
+          -100,
+          -30
+        ],
+        "attraction_range": [
+          -40,
+          40
+        ],
+        "respect_range": [
+          -60,
+          40
+        ]
+      },
+      "secret_affair": {
+        "conditions": {
+          "age_min": 21,
+          "one_partner_committed": true,
+          "secrecy_needed": true
+        },
+        "base_type": "romantic",
+        "probability": 0.05,
+        "affection_range": [
+          20,
+          80
+        ],
+        "trust_range": [
+          -40,
+          50
+        ],
+        "attraction_range": [
+          60,
+          100
+        ],
+        "respect_range": [
+          -40,
+          60
+        ]
+      }
+    },
+    "religious": {
+      "church_or_mosque_friends": {
+        "conditions": {
+          "same_religious_org": true,
+          "attendance_overlap_years": 2
+        },
+        "base_type": "friend",
+        "probability": 0.25,
+        "affection_range": [
+          40,
+          85
+        ],
+        "trust_range": [
+          45,
+          90
+        ],
+        "attraction_range": [
+          -10,
+          50
+        ],
+        "respect_range": [
+          40,
+          85
+        ]
+      },
+      "religious_mentor": {
+        "conditions": {
+          "same_religious_org": true,
+          "age_difference_min": 10,
+          "position_hierarchy_difference": 2
+        },
+        "base_type": "mentor",
+        "probability": 0.15,
+        "affection_range": [
+          45,
+          90
+        ],
+        "trust_range": [
+          55,
+          95
+        ],
+        "attraction_range": [
+          -30,
+          25
+        ],
+        "respect_range": [
+          70,
+          100
+        ]
+      },
+      "ministry_or_society_team_mates": {
+        "conditions": {
+          "same_religious_org": true,
+          "shared_service_role": true,
+          "team_overlap_months_min": 6
+        },
+        "base_type": "colleague",
+        "probability": 0.18,
+        "affection_range": [
+          20,
+          70
+        ],
+        "trust_range": [
+          25,
+          80
+        ],
+        "attraction_range": [
+          -20,
+          40
+        ],
+        "respect_range": [
+          35,
+          85
+        ]
+      },
+      "religious_authority_pressure": {
+        "conditions": {
+          "same_religious_org": true,
+          "authority_abuse_risk": true,
+          "financial_or_social_pressure": true
+        },
+        "base_type": "authority",
+        "probability": 0.08,
+        "affection_range": [
+          -40,
+          30
+        ],
+        "trust_range": [
+          -70,
+          35
+        ],
+        "attraction_range": [
+          -60,
+          15
+        ],
+        "respect_range": [
+          10,
+          90
+        ]
+      },
+      "doctrinal_rivals": {
+        "conditions": {
+          "same_religious_org": true,
+          "competing_influence": true,
+          "leadership_aspiration": true
+        },
+        "base_type": "rival",
+        "probability": 0.1,
+        "affection_range": [
+          -50,
+          5
+        ],
+        "trust_range": [
+          -60,
+          25
+        ],
+        "attraction_range": [
+          -40,
+          20
+        ],
+        "respect_range": [
+          20,
+          85
+        ]
+      },
+      "interfaith_neighbors_tolerant": {
+        "conditions": {
+          "same_district": true,
+          "different_religion": true,
+          "tolerance_level_min": 50
+        },
+        "base_type": "acquaintance",
+        "probability": 0.06,
+        "affection_range": [
+          10,
+          55
+        ],
+        "trust_range": [
+          10,
+          60
+        ],
+        "attraction_range": [
+          -20,
+          25
+        ],
+        "respect_range": [
+          20,
+          70
+        ]
+      }
+    },
+    "family": {
+      "parent_child": {
+        "conditions": {
+          "family_relation": "parent_child"
+        },
+        "base_type": "family",
+        "probability": 1.0,
+        "affection_range": [
+          65,
+          100
+        ],
+        "trust_range": [
+          70,
+          100
+        ],
+        "attraction_range": [
+          -100,
+          -50
+        ],
+        "respect_range": [
+          50,
+          100
+        ]
+      },
+      "siblings": {
+        "conditions": {
+          "family_relation": "sibling",
+          "age_difference_max": 12
+        },
+        "base_type": "family",
+        "probability": 0.9,
+        "affection_range": [
+          10,
+          90
+        ],
+        "trust_range": [
+          20,
+          95
+        ],
+        "attraction_range": [
+          -70,
+          0
+        ],
+        "respect_range": [
+          10,
+          80
+        ]
+      },
+      "spouses": {
+        "conditions": {
+          "family_relation": "spouse",
+          "marriage": true
+        },
+        "base_type": "family",
+        "probability": 0.75,
+        "affection_range": [
+          20,
+          100
+        ],
+        "trust_range": [
+          30,
+          100
+        ],
+        "attraction_range": [
+          10,
+          100
+        ],
+        "respect_range": [
+          20,
+          95
+        ]
+      },
+      "cousins": {
+        "conditions": {
+          "family_relation": "cousin",
+          "age_difference_max": 15
+        },
+        "base_type": "family",
+        "probability": 0.5,
+        "affection_range": [
+          20,
+          80
+        ],
+        "trust_range": [
+          30,
+          80
+        ],
+        "attraction_range": [
+          -40,
+          20
+        ],
+        "respect_range": [
+          20,
+          70
+        ]
+      },
+      "in_laws": {
+        "conditions": {
+          "family_relation": "in_law",
+          "marriage_link": true
+        },
+        "base_type": "family",
+        "probability": 0.55,
+        "affection_range": [
+          -20,
+          70
+        ],
+        "trust_range": [
+          -10,
+          75
+        ],
+        "attraction_range": [
+          -80,
+          -10
+        ],
+        "respect_range": [
+          10,
+          90
+        ]
+      },
+      "distant_relatives_same_tribe": {
+        "conditions": {
+          "same_tribe": true,
+          "family_connection_degree": [
+            3,
+            5
+          ]
+        },
+        "base_type": "acquaintance",
+        "probability": 0.2,
+        "affection_range": [
+          5,
+          50
+        ],
+        "trust_range": [
+          10,
+          60
+        ],
+        "attraction_range": [
+          -30,
+          20
+        ],
+        "respect_range": [
+          10,
+          55
+        ]
+      }
+    }
+  }
+}

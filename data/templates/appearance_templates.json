@@ -1,0 +1,206 @@
+{
+  "_readme": "Appearance templates defining physical traits, distributions, and inheritance rules for NPC generation in a Lagos-like Nigerian city.",
+  "_version": "1.0",
+  "base_traits": {
+    "gender": [
+      "male",
+      "female"
+    ],
+    "age_ranges": {
+      "child": [
+        0,
+        12
+      ],
+      "teen": [
+        13,
+        19
+      ],
+      "young_adult": [
+        20,
+        35
+      ],
+      "adult": [
+        36,
+        59
+      ],
+      "elder": [
+        60,
+        100
+      ]
+    }
+  },
+  "height": {
+    "male_cm": {
+      "min": 155,
+      "max": 200,
+      "distribution": {
+        "mean": 172,
+        "std_dev": 7
+      }
+    },
+    "female_cm": {
+      "min": 145,
+      "max": 190,
+      "distribution": {
+        "mean": 162,
+        "std_dev": 6
+      }
+    },
+    "inheritance": {
+      "formula": "(father_height + mother_height) / 2 + random(-5, 5)"
+    }
+  },
+  "body_build": {
+    "types": {
+      "slim": {
+        "probability": 0.25
+      },
+      "average": {
+        "probability": 0.4
+      },
+      "athletic": {
+        "probability": 0.2
+      },
+      "heavy": {
+        "probability": 0.15
+      }
+    },
+    "age_modifiers": {
+      "child": "slim_bias",
+      "teen": "athletic_bias",
+      "adult": "average_bias",
+      "elder": "heavy_bias"
+    }
+  },
+  "skin_tone": {
+    "categories": {
+      "very_dark": {
+        "hex": "#2C1B12",
+        "probability": 0.2
+      },
+      "dark": {
+        "hex": "#3A2416",
+        "probability": 0.3
+      },
+      "medium": {
+        "hex": "#5C3A1E",
+        "probability": 0.3
+      },
+      "light_brown": {
+        "hex": "#7A4A2A",
+        "probability": 0.15
+      },
+      "light": {
+        "hex": "#9C6B4A",
+        "probability": 0.05
+      }
+    },
+    "inheritance": {
+      "rule": "child_tone_between_parents",
+      "variance": "±1 category"
+    }
+  },
+  "facial_features": {
+    "nose": [
+      "narrow",
+      "average",
+      "broad"
+    ],
+    "eyes": [
+      "small",
+      "average",
+      "large"
+    ],
+    "lips": [
+      "thin",
+      "medium",
+      "full"
+    ],
+    "face_shape": [
+      "oval",
+      "round",
+      "square",
+      "heart"
+    ],
+    "inheritance_probability": 0.6
+  },
+  "hair": {
+    "textures": {
+      "coily": 0.45,
+      "curly": 0.3,
+      "wavy": 0.15,
+      "straight": 0.1
+    },
+    "styles": {
+      "male": [
+        "low_cut",
+        "afro",
+        "waves",
+        "dreadlocks",
+        "braids",
+        "fade"
+      ],
+      "female": [
+        "afro",
+        "braids",
+        "weave",
+        "cornrows",
+        "twists",
+        "natural_short"
+      ]
+    },
+    "age_restrictions": {
+      "child": [
+        "afro",
+        "low_cut"
+      ],
+      "elder": [
+        "low_cut",
+        "short_afro"
+      ]
+    }
+  },
+  "facial_hair": {
+    "styles": [
+      "none",
+      "beard",
+      "mustache",
+      "goatee"
+    ],
+    "probability_by_age": {
+      "teen": 0.15,
+      "young_adult": 0.45,
+      "adult": 0.55,
+      "elder": 0.4
+    }
+  },
+  "eyesight": {
+    "normal": 0.75,
+    "short_sighted": 0.15,
+    "long_sighted": 0.07,
+    "color_blind": 0.03
+  },
+  "distinguishing_marks": {
+    "types": [
+      "scar",
+      "birthmark",
+      "tribal_mark",
+      "tattoo",
+      "burn_mark"
+    ],
+    "overall_probability": 0.35,
+    "tribal_mark_rules": {
+      "age_max": 50,
+      "tribes_more_likely": [
+        "yoruba",
+        "edo"
+      ],
+      "declining_practice": true
+    }
+  },
+  "aging_effects": {
+    "hair_graying_start_age": 40,
+    "wrinkles_start_age": 45,
+    "posture_change_age": 60
+  }
+}

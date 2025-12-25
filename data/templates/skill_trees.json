@@ -1,0 +1,3128 @@
+{
+  "_readme": "Skill trees and occupation-based skill distributions for a fictional Nigerian city inspired by Lagos. Skill scales are 0-10 and occupations map to typical primary/secondary skill ranges plus typical annual income bands in Naira.",
+  "_version": "1.0",
+  "_last_updated": "2025-12-23",
+  "skill_categories": {
+    "tech_skills": {
+      "display_name": "Technology",
+      "specific_skills": {
+        "programming": {
+          "display_name": "Programming",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Software Engineer",
+            "Developer",
+            "CTO",
+            "Tech Entrepreneur",
+            "Data Engineer"
+          ]
+        },
+        "hardware": {
+          "display_name": "Hardware & Repair",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Computer Technician",
+            "Phone Repairer",
+            "IT Support"
+          ]
+        },
+        "networking": {
+          "display_name": "Networking",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Network Engineer",
+            "Systems Admin",
+            "IT Manager"
+          ]
+        },
+        "cybersecurity": {
+          "display_name": "Cybersecurity",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Security Analyst",
+            "Systems Admin",
+            "Bank IT"
+          ]
+        },
+        "data_analysis": {
+          "display_name": "Data Analysis",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Data Analyst",
+            "Researcher",
+            "Marketing Analyst"
+          ]
+        },
+        "product_building": {
+          "display_name": "Product Building",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Product Manager",
+            "Founder",
+            "CTO"
+          ]
+        }
+      }
+    },
+    "business_skills": {
+      "display_name": "Business & Finance",
+      "specific_skills": {
+        "accounting": {
+          "display_name": "Accounting",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Accountant",
+            "Auditor",
+            "Bookkeeper",
+            "CFO"
+          ]
+        },
+        "sales": {
+          "display_name": "Sales & Marketing",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Sales Rep",
+            "Marketer",
+            "Trader",
+            "Business Owner"
+          ]
+        },
+        "negotiation": {
+          "display_name": "Negotiation",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Trader",
+            "Lawyer",
+            "Procurement Officer",
+            "Union Leader"
+          ]
+        },
+        "operations": {
+          "display_name": "Operations Management",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Operations Manager",
+            "Restaurant Manager",
+            "Logistics Coordinator"
+          ]
+        },
+        "entrepreneurship": {
+          "display_name": "Entrepreneurship",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Business Owner",
+            "Startup Founder",
+            "Market Leader"
+          ]
+        },
+        "financial_planning": {
+          "display_name": "Financial Planning",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Financial Advisor",
+            "CFO",
+            "Investment Analyst"
+          ]
+        }
+      }
+    },
+    "communication_skills": {
+      "display_name": "Communication & Influence",
+      "specific_skills": {
+        "public_speaking": {
+          "display_name": "Public Speaking",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Pastor",
+            "Politician",
+            "Teacher",
+            "MC"
+          ]
+        },
+        "persuasion": {
+          "display_name": "Persuasion",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Sales Rep",
+            "Lawyer",
+            "Pastor",
+            "Politician"
+          ]
+        },
+        "writing": {
+          "display_name": "Writing",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Journalist",
+            "Copywriter",
+            "Teacher",
+            "Lawyer"
+          ]
+        },
+        "conflict_resolution": {
+          "display_name": "Conflict Resolution",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Mediator",
+            "Community Leader",
+            "HR"
+          ]
+        },
+        "customer_service": {
+          "display_name": "Customer Service",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Bank Teller",
+            "Retail Staff",
+            "Waiter",
+            "Call Center Agent"
+          ]
+        },
+        "social_networking": {
+          "display_name": "Social Networking",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Event Promoter",
+            "Business Owner",
+            "Politician"
+          ]
+        }
+      }
+    },
+    "physical_skills": {
+      "display_name": "Physical & Practical",
+      "specific_skills": {
+        "driving": {
+          "display_name": "Driving",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Danfo Driver",
+            "Okada Rider",
+            "Dispatch Rider",
+            "Taxi Driver"
+          ]
+        },
+        "street_navigation": {
+          "display_name": "Street Navigation",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Danfo Driver",
+            "Okada Rider",
+            "Area Boy",
+            "Courier"
+          ]
+        },
+        "mechanical": {
+          "display_name": "Mechanical Repair",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Mechanic",
+            "Generator Technician",
+            "Driver"
+          ]
+        },
+        "construction": {
+          "display_name": "Construction",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Builder",
+            "Carpenter",
+            "Plumber",
+            "Electrician"
+          ]
+        },
+        "combat": {
+          "display_name": "Combat",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Security Guard",
+            "Area Boy",
+            "Bouncer"
+          ]
+        },
+        "endurance": {
+          "display_name": "Endurance",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Laborer",
+            "Athlete",
+            "Dispatch Rider"
+          ]
+        }
+      }
+    },
+    "creative_skills": {
+      "display_name": "Creative Arts",
+      "specific_skills": {
+        "graphic_design": {
+          "display_name": "Graphic Design",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Graphic Designer",
+            "UI/UX Designer"
+          ]
+        },
+        "music": {
+          "display_name": "Music",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Musician",
+            "Choir Director",
+            "DJ"
+          ]
+        },
+        "acting": {
+          "display_name": "Acting",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Actor",
+            "Content Creator",
+            "MC"
+          ]
+        },
+        "photography": {
+          "display_name": "Photography",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Photographer",
+            "Journalist",
+            "Content Creator"
+          ]
+        },
+        "video_editing": {
+          "display_name": "Video Editing",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Videographer",
+            "Content Creator",
+            "Editor"
+          ]
+        },
+        "craftsmanship": {
+          "display_name": "Craftsmanship",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Tailor",
+            "Hair Stylist",
+            "Makeup Artist"
+          ]
+        }
+      }
+    },
+    "domestic_skills": {
+      "display_name": "Domestic & Care",
+      "specific_skills": {
+        "cooking": {
+          "display_name": "Cooking",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Chef",
+            "Caterer",
+            "Bukateria Owner"
+          ]
+        },
+        "cleaning": {
+          "display_name": "Cleaning",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Cleaner",
+            "Housekeeper"
+          ]
+        },
+        "childcare": {
+          "display_name": "Childcare",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Nanny",
+            "Teacher",
+            "Parent"
+          ]
+        },
+        "caregiving": {
+          "display_name": "Caregiving",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Nurse",
+            "Caregiver",
+            "Health Assistant"
+          ]
+        },
+        "home_management": {
+          "display_name": "Home Management",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Housekeeper",
+            "Personal Assistant"
+          ]
+        },
+        "patience": {
+          "display_name": "Patience",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Teacher",
+            "Nurse",
+            "Caregiver",
+            "Customer Service"
+          ]
+        }
+      }
+    },
+    "medical_skills": {
+      "display_name": "Health & Medicine",
+      "specific_skills": {
+        "first_aid": {
+          "display_name": "First Aid",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Nurse",
+            "Paramedic",
+            "Security"
+          ]
+        },
+        "clinical_care": {
+          "display_name": "Clinical Care",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Doctor",
+            "Nurse",
+            "Midwife"
+          ]
+        },
+        "pharmacy": {
+          "display_name": "Pharmacy",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Pharmacist",
+            "Pharmacy Tech"
+          ]
+        },
+        "counseling": {
+          "display_name": "Counseling",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Counselor",
+            "Pastor",
+            "Social Worker"
+          ]
+        },
+        "diagnostics": {
+          "display_name": "Diagnostics",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Doctor",
+            "Lab Scientist"
+          ]
+        },
+        "public_health": {
+          "display_name": "Public Health",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Public Health Officer",
+            "NGO Worker"
+          ]
+        }
+      }
+    },
+    "academic_skills": {
+      "display_name": "Academic & Professional",
+      "specific_skills": {
+        "teaching": {
+          "display_name": "Teaching",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Teacher",
+            "Lecturer",
+            "Tutor",
+            "Pastor"
+          ]
+        },
+        "research": {
+          "display_name": "Research",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Researcher",
+            "Lecturer",
+            "Journalist"
+          ]
+        },
+        "law": {
+          "display_name": "Law & Procedure",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Lawyer",
+            "Judge",
+            "Police Officer"
+          ]
+        },
+        "analysis": {
+          "display_name": "Analytical Reasoning",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Analyst",
+            "Engineer",
+            "Auditor"
+          ]
+        },
+        "languages": {
+          "display_name": "Languages",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Translator",
+            "Teacher",
+            "Journalist"
+          ]
+        },
+        "administration": {
+          "display_name": "Administration",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Civil Servant",
+            "Secretary",
+            "Office Manager"
+          ]
+        }
+      }
+    },
+    "civic_skills": {
+      "display_name": "Civic & Community",
+      "specific_skills": {
+        "leadership": {
+          "display_name": "Leadership",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Manager",
+            "Politician",
+            "Pastor",
+            "Community Leader"
+          ]
+        },
+        "organizing": {
+          "display_name": "Organizing",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Event Planner",
+            "Union Leader",
+            "Community Leader"
+          ]
+        },
+        "compliance": {
+          "display_name": "Compliance",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Civil Servant",
+            "Bank Officer",
+            "Auditor"
+          ]
+        },
+        "investigation": {
+          "display_name": "Investigation",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Police Officer",
+            "Journalist",
+            "Security"
+          ]
+        },
+        "resource_allocation": {
+          "display_name": "Resource Allocation",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "NGO Manager",
+            "Civil Servant",
+            "Operations Manager"
+          ]
+        },
+        "mentoring": {
+          "display_name": "Mentoring",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Teacher",
+            "Coach",
+            "Senior Staff",
+            "Pastor"
+          ]
+        }
+      }
+    },
+    "street_skills": {
+      "display_name": "Street & Survival",
+      "specific_skills": {
+        "hustle": {
+          "display_name": "Hustle",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Trader",
+            "Danfo Driver",
+            "Area Boy",
+            "Street Vendor"
+          ]
+        },
+        "intimidation": {
+          "display_name": "Intimidation",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Area Boy",
+            "Bouncer",
+            "Gang Enforcer"
+          ]
+        },
+        "street_savvy": {
+          "display_name": "Street Savvy",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Area Boy",
+            "Trader",
+            "Okada Rider"
+          ]
+        },
+        "survival": {
+          "display_name": "Survival",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Laborer",
+            "Street Vendor",
+            "Area Boy"
+          ]
+        },
+        "scamming": {
+          "display_name": "Scamming & Deception",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Fraudster",
+            "Con Artist"
+          ]
+        },
+        "smuggling": {
+          "display_name": "Smuggling",
+          "scale": [
+            0,
+            10
+          ],
+          "related_occupations": [
+            "Smuggler",
+            "Black Market Trader"
+          ]
+        }
+      }
+    }
+  },
+  "occupations": {
+    "software_engineer": {
+      "display_name": "Software Engineer",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "programming": [
+          7,
+          10
+        ],
+        "analysis": [
+          6,
+          10
+        ],
+        "data_analysis": [
+          5,
+          9
+        ],
+        "product_building": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          4,
+          8
+        ],
+        "networking": [
+          3,
+          7
+        ],
+        "operations": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        3000000,
+        15000000
+      ]
+    },
+    "frontend_developer": {
+      "display_name": "Frontend Developer",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "programming": [
+          6,
+          10
+        ],
+        "graphic_design": [
+          4,
+          8
+        ],
+        "product_building": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          3,
+          7
+        ],
+        "customer_service": [
+          2,
+          6
+        ],
+        "analysis": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        1500000,
+        9000000
+      ]
+    },
+    "data_analyst": {
+      "display_name": "Data Analyst",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "data_analysis": [
+          7,
+          10
+        ],
+        "analysis": [
+          7,
+          10
+        ],
+        "writing": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "financial_planning": [
+          3,
+          7
+        ],
+        "research": [
+          4,
+          8
+        ],
+        "programming": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        1500000,
+        8000000
+      ]
+    },
+    "product_manager": {
+      "display_name": "Product Manager",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "product_building": [
+          7,
+          10
+        ],
+        "operations": [
+          6,
+          10
+        ],
+        "negotiation": [
+          5,
+          9
+        ],
+        "persuasion": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          5,
+          9
+        ],
+        "analysis": [
+          5,
+          9
+        ],
+        "leadership": [
+          5,
+          9
+        ],
+        "social_networking": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        2500000,
+        12000000
+      ]
+    },
+    "graphic_designer": {
+      "display_name": "Graphic Designer",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "graphic_design": [
+          6,
+          10
+        ],
+        "photography": [
+          3,
+          7
+        ],
+        "video_editing": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          3,
+          7
+        ],
+        "sales": [
+          3,
+          7
+        ],
+        "writing": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        800000,
+        4000000
+      ]
+    },
+    "cybersecurity_analyst": {
+      "display_name": "Cybersecurity Analyst",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "cybersecurity": [
+          7,
+          10
+        ],
+        "networking": [
+          6,
+          10
+        ],
+        "analysis": [
+          6,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          4,
+          8
+        ],
+        "compliance": [
+          4,
+          8
+        ],
+        "investigation": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        2500000,
+        13000000
+      ]
+    },
+    "accountant": {
+      "display_name": "Accountant",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "accounting": [
+          7,
+          10
+        ],
+        "analysis": [
+          6,
+          10
+        ],
+        "compliance": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          3,
+          7
+        ],
+        "financial_planning": [
+          4,
+          8
+        ],
+        "administration": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        1200000,
+        7000000
+      ]
+    },
+    "bank_teller": {
+      "display_name": "Bank Teller",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "customer_service": [
+          6,
+          10
+        ],
+        "administration": [
+          5,
+          9
+        ],
+        "compliance": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "accounting": [
+          3,
+          7
+        ],
+        "sales": [
+          3,
+          7
+        ],
+        "negotiation": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        700000,
+        2500000
+      ]
+    },
+    "sales_representative": {
+      "display_name": "Sales Representative",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "sales": [
+          7,
+          10
+        ],
+        "persuasion": [
+          6,
+          10
+        ],
+        "negotiation": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "social_networking": [
+          5,
+          9
+        ],
+        "writing": [
+          3,
+          7
+        ],
+        "customer_service": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        800000,
+        6000000
+      ]
+    },
+    "hr_officer": {
+      "display_name": "HR Officer",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "administration": [
+          6,
+          10
+        ],
+        "conflict_resolution": [
+          6,
+          10
+        ],
+        "compliance": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          4,
+          8
+        ],
+        "leadership": [
+          3,
+          7
+        ],
+        "mentoring": [
+          3,
+          7
+        ],
+        "counseling": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        1200000,
+        6000000
+      ]
+    },
+    "civil_servant": {
+      "display_name": "Civil Servant",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "administration": [
+          6,
+          10
+        ],
+        "compliance": [
+          6,
+          10
+        ],
+        "writing": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "resource_allocation": [
+          4,
+          8
+        ],
+        "conflict_resolution": [
+          3,
+          7
+        ],
+        "leadership": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        800000,
+        5000000
+      ]
+    },
+    "journalist": {
+      "display_name": "Journalist",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "writing": [
+          7,
+          10
+        ],
+        "investigation": [
+          5,
+          9
+        ],
+        "social_networking": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "photography": [
+          3,
+          7
+        ],
+        "languages": [
+          3,
+          7
+        ],
+        "public_speaking": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        900000,
+        5000000
+      ]
+    },
+    "teacher": {
+      "display_name": "Teacher",
+      "required_education": [
+        "undergraduate",
+        "secondary"
+      ],
+      "primary_skills": {
+        "teaching": [
+          7,
+          10
+        ],
+        "patience": [
+          6,
+          10
+        ],
+        "mentoring": [
+          6,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "administration": [
+          3,
+          7
+        ],
+        "writing": [
+          4,
+          8
+        ],
+        "counseling": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        800000,
+        4000000
+      ]
+    },
+    "lecturer": {
+      "display_name": "Lecturer",
+      "required_education": [
+        "postgraduate",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "teaching": [
+          7,
+          10
+        ],
+        "research": [
+          6,
+          10
+        ],
+        "writing": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "administration": [
+          3,
+          7
+        ],
+        "mentoring": [
+          5,
+          9
+        ],
+        "public_speaking": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        2000000,
+        9000000
+      ]
+    },
+    "lawyer": {
+      "display_name": "Lawyer",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "law": [
+          7,
+          10
+        ],
+        "negotiation": [
+          6,
+          10
+        ],
+        "persuasion": [
+          6,
+          10
+        ],
+        "writing": [
+          6,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "conflict_resolution": [
+          5,
+          9
+        ],
+        "analysis": [
+          5,
+          9
+        ],
+        "compliance": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        2000000,
+        12000000
+      ]
+    },
+    "doctor": {
+      "display_name": "Doctor",
+      "required_education": [
+        "undergraduate",
+        "postgraduate"
+      ],
+      "primary_skills": {
+        "clinical_care": [
+          8,
+          10
+        ],
+        "diagnostics": [
+          7,
+          10
+        ],
+        "patience": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "counseling": [
+          4,
+          8
+        ],
+        "public_health": [
+          3,
+          7
+        ],
+        "research": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        4000000,
+        20000000
+      ]
+    },
+    "nurse": {
+      "display_name": "Nurse",
+      "required_education": [
+        "undergraduate",
+        "secondary"
+      ],
+      "primary_skills": {
+        "clinical_care": [
+          6,
+          10
+        ],
+        "first_aid": [
+          6,
+          10
+        ],
+        "caregiving": [
+          7,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "administration": [
+          3,
+          7
+        ],
+        "patience": [
+          6,
+          10
+        ],
+        "customer_service": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        1200000,
+        6000000
+      ]
+    },
+    "pharmacist": {
+      "display_name": "Pharmacist",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "pharmacy": [
+          7,
+          10
+        ],
+        "compliance": [
+          5,
+          9
+        ],
+        "customer_service": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "accounting": [
+          3,
+          7
+        ],
+        "writing": [
+          3,
+          7
+        ],
+        "administration": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        2000000,
+        10000000
+      ]
+    },
+    "lab_scientist": {
+      "display_name": "Lab Scientist",
+      "required_education": [
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "diagnostics": [
+          7,
+          10
+        ],
+        "analysis": [
+          6,
+          10
+        ],
+        "research": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          3,
+          7
+        ],
+        "public_health": [
+          3,
+          7
+        ],
+        "data_analysis": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        1500000,
+        7000000
+      ]
+    },
+    "public_health_officer": {
+      "display_name": "Public Health Officer",
+      "required_education": [
+        "undergraduate",
+        "postgraduate"
+      ],
+      "primary_skills": {
+        "public_health": [
+          7,
+          10
+        ],
+        "resource_allocation": [
+          5,
+          9
+        ],
+        "writing": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "research": [
+          4,
+          8
+        ],
+        "leadership": [
+          4,
+          8
+        ],
+        "social_networking": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        1500000,
+        9000000
+      ]
+    },
+    "market_trader": {
+      "display_name": "Market Trader",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "sales": [
+          6,
+          10
+        ],
+        "negotiation": [
+          6,
+          10
+        ],
+        "hustle": [
+          7,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "street_savvy": [
+          5,
+          9
+        ],
+        "accounting": [
+          2,
+          6
+        ],
+        "customer_service": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        300000,
+        4000000
+      ]
+    },
+    "street_vendor": {
+      "display_name": "Street Vendor",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "sales": [
+          5,
+          9
+        ],
+        "hustle": [
+          7,
+          10
+        ],
+        "street_savvy": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          4,
+          8
+        ],
+        "negotiation": [
+          3,
+          7
+        ],
+        "endurance": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        150000,
+        1500000
+      ]
+    },
+    "bukateria_owner": {
+      "display_name": "Bukateria Owner",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "cooking": [
+          6,
+          10
+        ],
+        "operations": [
+          5,
+          9
+        ],
+        "sales": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "accounting": [
+          2,
+          6
+        ],
+        "customer_service": [
+          5,
+          9
+        ],
+        "cleaning": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        400000,
+        6000000
+      ]
+    },
+    "chef": {
+      "display_name": "Chef",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "cooking": [
+          7,
+          10
+        ],
+        "cleaning": [
+          4,
+          8
+        ],
+        "operations": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          3,
+          7
+        ],
+        "endurance": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        500000,
+        3500000
+      ]
+    },
+    "restaurant_manager": {
+      "display_name": "Restaurant Manager",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "operations": [
+          7,
+          10
+        ],
+        "customer_service": [
+          6,
+          10
+        ],
+        "leadership": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "accounting": [
+          3,
+          7
+        ],
+        "conflict_resolution": [
+          4,
+          8
+        ],
+        "negotiation": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        900000,
+        5000000
+      ]
+    },
+    "small_business_owner": {
+      "display_name": "Small Business Owner",
+      "required_education": [
+        "secondary",
+        "undergraduate",
+        "primary"
+      ],
+      "primary_skills": {
+        "entrepreneurship": [
+          6,
+          10
+        ],
+        "operations": [
+          5,
+          9
+        ],
+        "negotiation": [
+          5,
+          9
+        ],
+        "sales": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "accounting": [
+          3,
+          7
+        ],
+        "leadership": [
+          3,
+          7
+        ],
+        "social_networking": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        600000,
+        12000000
+      ]
+    },
+    "fashion_designer": {
+      "display_name": "Fashion Designer",
+      "required_education": [
+        "primary",
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "craftsmanship": [
+          6,
+          10
+        ],
+        "sales": [
+          4,
+          8
+        ],
+        "entrepreneurship": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "negotiation": [
+          3,
+          7
+        ],
+        "graphic_design": [
+          2,
+          6
+        ],
+        "social_networking": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        400000,
+        6000000
+      ]
+    },
+    "tailor": {
+      "display_name": "Tailor",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "craftsmanship": [
+          6,
+          10
+        ],
+        "patience": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "sales": [
+          3,
+          7
+        ],
+        "customer_service": [
+          3,
+          7
+        ],
+        "negotiation": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        250000,
+        2500000
+      ]
+    },
+    "hair_stylist": {
+      "display_name": "Hair Stylist",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "craftsmanship": [
+          6,
+          10
+        ],
+        "customer_service": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "sales": [
+          3,
+          7
+        ],
+        "social_networking": [
+          3,
+          7
+        ],
+        "patience": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        250000,
+        3000000
+      ]
+    },
+    "makeup_artist": {
+      "display_name": "Makeup Artist",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "craftsmanship": [
+          6,
+          10
+        ],
+        "customer_service": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "photography": [
+          2,
+          6
+        ],
+        "sales": [
+          3,
+          7
+        ],
+        "social_networking": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        250000,
+        3500000
+      ]
+    },
+    "event_planner": {
+      "display_name": "Event Planner",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "organizing": [
+          7,
+          10
+        ],
+        "social_networking": [
+          6,
+          10
+        ],
+        "operations": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "negotiation": [
+          4,
+          8
+        ],
+        "writing": [
+          3,
+          7
+        ],
+        "leadership": [
+          4,
+          8
+        ],
+        "public_speaking": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        800000,
+        7000000
+      ]
+    },
+    "logistics_coordinator": {
+      "display_name": "Logistics Coordinator",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "operations": [
+          7,
+          10
+        ],
+        "street_navigation": [
+          5,
+          9
+        ],
+        "resource_allocation": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "negotiation": [
+          4,
+          8
+        ],
+        "administration": [
+          4,
+          8
+        ],
+        "analysis": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        900000,
+        6000000
+      ]
+    },
+    "danfo_driver": {
+      "display_name": "Danfo Driver",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "driving": [
+          7,
+          10
+        ],
+        "street_navigation": [
+          8,
+          10
+        ],
+        "hustle": [
+          6,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "mechanical": [
+          3,
+          7
+        ],
+        "negotiation": [
+          5,
+          8
+        ],
+        "endurance": [
+          5,
+          9
+        ]
+      },
+      "typical_salary_range": [
+        300000,
+        1500000
+      ]
+    },
+    "okada_rider": {
+      "display_name": "Okada Rider",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "driving": [
+          7,
+          10
+        ],
+        "street_navigation": [
+          7,
+          10
+        ],
+        "endurance": [
+          6,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "hustle": [
+          5,
+          9
+        ],
+        "mechanical": [
+          2,
+          6
+        ],
+        "street_savvy": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        250000,
+        1200000
+      ]
+    },
+    "dispatch_rider": {
+      "display_name": "Dispatch Rider",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "driving": [
+          7,
+          10
+        ],
+        "street_navigation": [
+          7,
+          10
+        ],
+        "customer_service": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "endurance": [
+          6,
+          10
+        ],
+        "administration": [
+          2,
+          6
+        ],
+        "operations": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        400000,
+        2000000
+      ]
+    },
+    "taxi_driver": {
+      "display_name": "Taxi Driver",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "driving": [
+          7,
+          10
+        ],
+        "customer_service": [
+          5,
+          9
+        ],
+        "street_navigation": [
+          6,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "hustle": [
+          4,
+          8
+        ],
+        "mechanical": [
+          2,
+          6
+        ],
+        "negotiation": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        400000,
+        2500000
+      ]
+    },
+    "mechanic": {
+      "display_name": "Mechanic",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "mechanical": [
+          7,
+          10
+        ],
+        "hardware": [
+          3,
+          7
+        ],
+        "diagnostics": [
+          2,
+          6
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          3,
+          7
+        ],
+        "negotiation": [
+          3,
+          7
+        ],
+        "compliance": [
+          1,
+          4
+        ]
+      },
+      "typical_salary_range": [
+        400000,
+        3000000
+      ]
+    },
+    "electrician": {
+      "display_name": "Electrician",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "construction": [
+          6,
+          10
+        ],
+        "mechanical": [
+          4,
+          8
+        ],
+        "analysis": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          3,
+          7
+        ],
+        "compliance": [
+          2,
+          6
+        ],
+        "endurance": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        500000,
+        4000000
+      ]
+    },
+    "plumber": {
+      "display_name": "Plumber",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "construction": [
+          6,
+          10
+        ],
+        "mechanical": [
+          4,
+          8
+        ],
+        "endurance": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          3,
+          7
+        ],
+        "negotiation": [
+          3,
+          7
+        ],
+        "hustle": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        450000,
+        3500000
+      ]
+    },
+    "carpenter": {
+      "display_name": "Carpenter",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "construction": [
+          6,
+          10
+        ],
+        "craftsmanship": [
+          5,
+          9
+        ],
+        "endurance": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          3,
+          7
+        ],
+        "sales": [
+          2,
+          6
+        ],
+        "negotiation": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        450000,
+        3500000
+      ]
+    },
+    "builder": {
+      "display_name": "Builder",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "construction": [
+          7,
+          10
+        ],
+        "endurance": [
+          6,
+          10
+        ],
+        "leadership": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "negotiation": [
+          3,
+          7
+        ],
+        "compliance": [
+          2,
+          6
+        ],
+        "resource_allocation": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        500000,
+        5000000
+      ]
+    },
+    "police_officer": {
+      "display_name": "Police Officer",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "investigation": [
+          6,
+          10
+        ],
+        "law": [
+          5,
+          9
+        ],
+        "combat": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "conflict_resolution": [
+          4,
+          8
+        ],
+        "street_navigation": [
+          4,
+          8
+        ],
+        "compliance": [
+          5,
+          9
+        ],
+        "leadership": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        800000,
+        4000000
+      ]
+    },
+    "security_guard": {
+      "display_name": "Security Guard",
+      "required_education": [
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "combat": [
+          5,
+          9
+        ],
+        "endurance": [
+          5,
+          9
+        ],
+        "investigation": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          2,
+          6
+        ],
+        "street_savvy": [
+          3,
+          7
+        ],
+        "intimidation": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        300000,
+        1800000
+      ]
+    },
+    "bouncer": {
+      "display_name": "Bouncer",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "combat": [
+          6,
+          10
+        ],
+        "intimidation": [
+          6,
+          10
+        ],
+        "conflict_resolution": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "endurance": [
+          5,
+          9
+        ],
+        "street_savvy": [
+          4,
+          8
+        ],
+        "customer_service": [
+          1,
+          4
+        ]
+      },
+      "typical_salary_range": [
+        300000,
+        2500000
+      ]
+    },
+    "pastor": {
+      "display_name": "Pastor",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "public_speaking": [
+          7,
+          10
+        ],
+        "leadership": [
+          7,
+          10
+        ],
+        "counseling": [
+          6,
+          10
+        ],
+        "persuasion": [
+          7,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "teaching": [
+          5,
+          9
+        ],
+        "mentoring": [
+          5,
+          9
+        ],
+        "writing": [
+          4,
+          8
+        ],
+        "conflict_resolution": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        500000,
+        5000000
+      ]
+    },
+    "imam": {
+      "display_name": "Imam",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "public_speaking": [
+          6,
+          10
+        ],
+        "leadership": [
+          6,
+          10
+        ],
+        "counseling": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "teaching": [
+          5,
+          9
+        ],
+        "writing": [
+          4,
+          8
+        ],
+        "conflict_resolution": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        500000,
+        4500000
+      ]
+    },
+    "community_leader": {
+      "display_name": "Community Leader",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "leadership": [
+          6,
+          10
+        ],
+        "conflict_resolution": [
+          6,
+          10
+        ],
+        "social_networking": [
+          6,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "resource_allocation": [
+          4,
+          8
+        ],
+        "public_speaking": [
+          4,
+          8
+        ],
+        "investigation": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        300000,
+        6000000
+      ]
+    },
+    "musician": {
+      "display_name": "Musician",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "music": [
+          6,
+          10
+        ],
+        "social_networking": [
+          4,
+          8
+        ],
+        "hustle": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "public_speaking": [
+          2,
+          6
+        ],
+        "sales": [
+          2,
+          6
+        ],
+        "video_editing": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        200000,
+        6000000
+      ]
+    },
+    "dj": {
+      "display_name": "DJ",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "music": [
+          6,
+          10
+        ],
+        "social_networking": [
+          5,
+          9
+        ],
+        "customer_service": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "sales": [
+          3,
+          7
+        ],
+        "hustle": [
+          3,
+          7
+        ],
+        "public_speaking": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        250000,
+        5000000
+      ]
+    },
+    "content_creator": {
+      "display_name": "Content Creator",
+      "required_education": [
+        "secondary",
+        "undergraduate",
+        "primary"
+      ],
+      "primary_skills": {
+        "video_editing": [
+          6,
+          10
+        ],
+        "photography": [
+          4,
+          8
+        ],
+        "writing": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "acting": [
+          3,
+          7
+        ],
+        "social_networking": [
+          5,
+          9
+        ],
+        "sales": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        200000,
+        8000000
+      ]
+    },
+    "photographer": {
+      "display_name": "Photographer",
+      "required_education": [
+        "secondary",
+        "primary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "photography": [
+          7,
+          10
+        ],
+        "customer_service": [
+          4,
+          8
+        ],
+        "sales": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "video_editing": [
+          3,
+          7
+        ],
+        "social_networking": [
+          3,
+          7
+        ],
+        "craftsmanship": [
+          1,
+          4
+        ]
+      },
+      "typical_salary_range": [
+        250000,
+        4000000
+      ]
+    },
+    "actor": {
+      "display_name": "Actor",
+      "required_education": [
+        "secondary",
+        "undergraduate",
+        "none"
+      ],
+      "primary_skills": {
+        "acting": [
+          7,
+          10
+        ],
+        "public_speaking": [
+          4,
+          8
+        ],
+        "social_networking": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "writing": [
+          2,
+          6
+        ],
+        "hustle": [
+          3,
+          7
+        ],
+        "video_editing": [
+          1,
+          4
+        ]
+      },
+      "typical_salary_range": [
+        200000,
+        7000000
+      ]
+    },
+    "area_boy": {
+      "display_name": "Area Boy",
+      "required_education": [
+        "none",
+        "primary"
+      ],
+      "primary_skills": {
+        "intimidation": [
+          6,
+          10
+        ],
+        "combat": [
+          6,
+          10
+        ],
+        "street_navigation": [
+          7,
+          10
+        ],
+        "hustle": [
+          7,
+          10
+        ]
+      },
+      "secondary_skills": {
+        "survival": [
+          7,
+          10
+        ],
+        "social_networking": [
+          5,
+          8
+        ],
+        "street_savvy": [
+          6,
+          10
+        ]
+      },
+      "typical_salary_range": [
+        100000,
+        800000
+      ]
+    },
+    "fraudster": {
+      "display_name": "Fraudster",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "scamming": [
+          7,
+          10
+        ],
+        "writing": [
+          4,
+          8
+        ],
+        "social_networking": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "negotiation": [
+          4,
+          8
+        ],
+        "hustle": [
+          5,
+          9
+        ],
+        "street_savvy": [
+          4,
+          8
+        ]
+      },
+      "typical_salary_range": [
+        200000,
+        20000000
+      ]
+    },
+    "smuggler": {
+      "display_name": "Smuggler",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "smuggling": [
+          6,
+          10
+        ],
+        "street_savvy": [
+          6,
+          10
+        ],
+        "street_navigation": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "negotiation": [
+          4,
+          8
+        ],
+        "survival": [
+          4,
+          8
+        ],
+        "intimidation": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        300000,
+        15000000
+      ]
+    },
+    "cleaner": {
+      "display_name": "Cleaner",
+      "required_education": [
+        "none",
+        "primary"
+      ],
+      "primary_skills": {
+        "cleaning": [
+          7,
+          10
+        ],
+        "endurance": [
+          5,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          2,
+          6
+        ],
+        "home_management": [
+          3,
+          7
+        ],
+        "patience": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        150000,
+        800000
+      ]
+    },
+    "housekeeper": {
+      "display_name": "Housekeeper",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "home_management": [
+          6,
+          10
+        ],
+        "cleaning": [
+          7,
+          10
+        ],
+        "cooking": [
+          3,
+          7
+        ]
+      },
+      "secondary_skills": {
+        "childcare": [
+          3,
+          7
+        ],
+        "patience": [
+          4,
+          8
+        ],
+        "caregiving": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        200000,
+        1200000
+      ]
+    },
+    "nanny": {
+      "display_name": "Nanny",
+      "required_education": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "primary_skills": {
+        "childcare": [
+          7,
+          10
+        ],
+        "patience": [
+          6,
+          10
+        ],
+        "caregiving": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "home_management": [
+          4,
+          8
+        ],
+        "cooking": [
+          2,
+          6
+        ],
+        "cleaning": [
+          2,
+          6
+        ]
+      },
+      "typical_salary_range": [
+        200000,
+        1500000
+      ]
+    },
+    "personal_assistant": {
+      "display_name": "Personal Assistant",
+      "required_education": [
+        "secondary",
+        "undergraduate"
+      ],
+      "primary_skills": {
+        "administration": [
+          7,
+          10
+        ],
+        "organizing": [
+          6,
+          10
+        ],
+        "writing": [
+          4,
+          8
+        ]
+      },
+      "secondary_skills": {
+        "customer_service": [
+          4,
+          8
+        ],
+        "operations": [
+          3,
+          7
+        ],
+        "social_networking": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        800000,
+        5000000
+      ]
+    }
+  }
+}

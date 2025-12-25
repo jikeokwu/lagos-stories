@@ -1,0 +1,261 @@
+{
+	"_readme": "District archetypes for Lagos Stories. Defines the types of districts that can be generated.",
+	"archetypes": {
+		"central_business": {
+			"id": "central_business",
+			"display_name": "Central Business District",
+			"description": "The economic heart of the city, filled with skyscrapers, banks, and corporate headquarters.",
+			"ratios": {
+				"residential": 0.20,
+				"commercial": 0.60,
+				"public": 0.20
+			},
+			"stats": {
+				"prosperity_range": [
+					70,
+					95
+				],
+				"safety_range": [
+					60,
+					85
+				],
+				"infrastructure_range": [
+					80,
+					95
+				]
+			},
+			"demographics": {
+				"wealth_preference": [
+					"rich",
+					"luxury"
+				],
+				"pop_density": "high"
+			},
+			"tags": [
+				"corporate",
+				"busy",
+				"expensive"
+			],
+			"mandatory": true,
+			"max_count": 1
+		},
+		"luxury_residential": {
+			"id": "luxury_residential",
+			"display_name": "Luxury Residential Area",
+			"description": "Exclusive gated communities, waterfront properties, and high-end estates.",
+			"ratios": {
+				"residential": 0.80,
+				"commercial": 0.15,
+				"public": 0.05
+			},
+			"stats": {
+				"prosperity_range": [
+					80,
+					100
+				],
+				"safety_range": [
+					80,
+					100
+				],
+				"infrastructure_range": [
+					85,
+					100
+				]
+			},
+			"demographics": {
+				"wealth_preference": [
+					"luxury",
+					"rich"
+				],
+				"pop_density": "low"
+			},
+			"tags": [
+				"quiet",
+				"secure",
+				"exclusive"
+			],
+			"weight": 10
+		},
+		"market_district": {
+			"id": "market_district",
+			"display_name": "Market District",
+			"description": "Bustling commercial hubs with sprawling markets, transport terminals, and high foot traffic.",
+			"ratios": {
+				"residential": 0.30,
+				"commercial": 0.65,
+				"public": 0.05
+			},
+			"stats": {
+				"prosperity_range": [
+					40,
+					70
+				],
+				"safety_range": [
+					30,
+					60
+				],
+				"infrastructure_range": [
+					40,
+					60
+				]
+			},
+			"demographics": {
+				"wealth_preference": [
+					"poor",
+					"middle_class"
+				],
+				"pop_density": "very_high"
+			},
+			"tags": [
+				"chaotic",
+				"loud",
+				"trade"
+			],
+			"weight": 15
+		},
+		"high_density_residential": {
+			"id": "high_density_residential",
+			"display_name": "High Density Residential",
+			"description": "Crowded neighborhoods with apartment blocks, tenements, and shared housing.",
+			"ratios": {
+				"residential": 0.70,
+				"commercial": 0.20,
+				"public": 0.10
+			},
+			"stats": {
+				"prosperity_range": [
+					30,
+					50
+				],
+				"safety_range": [
+					40,
+					60
+				],
+				"infrastructure_range": [
+					30,
+					50
+				]
+			},
+			"demographics": {
+				"wealth_preference": [
+					"poor",
+					"middle_class"
+				],
+				"pop_density": "high"
+			},
+			"tags": [
+				"crowded",
+				"vibrant",
+				"community"
+			],
+			"weight": 20
+		},
+		"middle_class_suburb": {
+			"id": "middle_class_suburb",
+			"display_name": "Middle Class Suburb",
+			"description": "Planned residential areas with a mix of bungalows and flats.",
+			"ratios": {
+				"residential": 0.60,
+				"commercial": 0.30,
+				"public": 0.10
+			},
+			"stats": {
+				"prosperity_range": [
+					50,
+					70
+				],
+				"safety_range": [
+					60,
+					80
+				],
+				"infrastructure_range": [
+					60,
+					80
+				]
+			},
+			"demographics": {
+				"wealth_preference": [
+					"middle_class"
+				],
+				"pop_density": "medium"
+			},
+			"tags": [
+				"balanced",
+				"family_friendly"
+			],
+			"weight": 20
+		},
+		"university_town": {
+			"id": "university_town",
+			"display_name": "University Town",
+			"description": "Area dominated by educational institutions and student housing.",
+			"ratios": {
+				"residential": 0.40,
+				"commercial": 0.30,
+				"public": 0.30
+			},
+			"stats": {
+				"prosperity_range": [
+					50,
+					65
+				],
+				"safety_range": [
+					60,
+					75
+				],
+				"infrastructure_range": [
+					60,
+					75
+				]
+			},
+			"demographics": {
+				"wealth_preference": [
+					"middle_class",
+					"poor"
+				],
+				"pop_density": "medium"
+			},
+			"tags": [
+				"academic",
+				"youthful"
+			],
+			"weight": 5
+		},
+		"industrial_zone": {
+			"id": "industrial_zone",
+			"display_name": "Industrial Zone",
+			"description": "Factories, warehouses, and logistics hubs.",
+			"ratios": {
+				"residential": 0.10,
+				"commercial": 0.20,
+				"industrial": 0.70
+			},
+			"stats": {
+				"prosperity_range": [
+					40,
+					60
+				],
+				"safety_range": [
+					40,
+					60
+				],
+				"infrastructure_range": [
+					50,
+					70
+				]
+			},
+			"demographics": {
+				"wealth_preference": [
+					"poor"
+				],
+				"pop_density": "low"
+			},
+			"tags": [
+				"polluted",
+				"busy",
+				"production"
+			],
+			"weight": 5
+		}
+	}
+}

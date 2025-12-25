@@ -1,0 +1,2075 @@
+{
+  "_readme": "Event templates for world history generation, used to synthesize memories and social consequences in a Lagos-like Nigerian city.",
+  "_version": "1.0",
+  "event_categories": {
+    "personal_life": {
+      "birth": {
+        "display_name": "Birth",
+        "type": "life_milestone",
+        "required_participants": [
+          "parent"
+        ],
+        "optional_participants": [
+          "parent2",
+          "midwife",
+          "doctor",
+          "family"
+        ],
+        "typical_age": 0,
+        "impact": {
+          "severity": 40,
+          "public_knowledge": 55,
+          "emotional_weight": 90
+        },
+        "memory_templates": {
+          "parent": "I became a parent to {child_name} at {location}. I felt {emotion}.",
+          "parent2": "{child_name} was born at {location}. I felt {emotion}.",
+          "midwife": "I helped deliver {child_name} at {location}. It was {emotion}.",
+          "doctor": "Assisted with the birth of {child_name} at {location}. {emotion}.",
+          "family": "{child_name} was born in our family. I felt {emotion}."
+        },
+        "emotions": [
+          "overjoyed",
+          "relieved",
+          "anxious but happy",
+          "proud",
+          "exhausted"
+        ],
+        "common_locations": [
+          "private clinic",
+          "public hospital",
+          "home",
+          "maternity center"
+        ]
+      },
+      "naming_ceremony": {
+        "display_name": "Naming Ceremony",
+        "type": "ceremony",
+        "required_participants": [
+          "child",
+          "parent"
+        ],
+        "optional_participants": [
+          "parent2",
+          "elder",
+          "religious_leader",
+          "family",
+          "friends"
+        ],
+        "typical_age": 0,
+        "impact": {
+          "severity": 20,
+          "public_knowledge": 65,
+          "emotional_weight": 70
+        },
+        "memory_templates": {
+          "parent": "We held {child_name}'s naming ceremony at {location}. I felt {emotion}.",
+          "elder": "I witnessed and blessed {child_name}'s naming at {location}. {emotion}.",
+          "religious_leader": "I officiated {child_name}'s naming ceremony. {emotion}.",
+          "family": "Our family celebrated {child_name}'s naming. I felt {emotion}.",
+          "friends": "I attended {child_name}'s naming ceremony at {location}. {emotion}."
+        },
+        "emotions": [
+          "joyful",
+          "proud",
+          "blessed",
+          "celebratory",
+          "hopeful"
+        ],
+        "common_locations": [
+          "family compound",
+          "church",
+          "mosque",
+          "event hall",
+          "home"
+        ]
+      },
+      "illness": {
+        "display_name": "Serious Illness",
+        "type": "health",
+        "required_participants": [
+          "patient"
+        ],
+        "optional_participants": [
+          "doctor",
+          "family",
+          "friend",
+          "caregiver"
+        ],
+        "impact": {
+          "severity": 70,
+          "public_knowledge": 40,
+          "emotional_weight": 85
+        },
+        "memory_templates": {
+          "patient": "I fell seriously ill and went to {location}. I felt {emotion}.",
+          "doctor": "I treated {patient_name} for a serious illness. It was {emotion}.",
+          "family": "{patient_name} was ill. I felt {emotion} and tried to help.",
+          "friend": "I heard {patient_name} was ill and visited at {location}. {emotion}.",
+          "caregiver": "I cared for {patient_name} during illness. I felt {emotion}."
+        },
+        "emotions": [
+          "scared",
+          "weak",
+          "worried",
+          "helpless",
+          "determined"
+        ],
+        "common_locations": [
+          "public hospital",
+          "private clinic",
+          "pharmacy",
+          "home"
+        ]
+      },
+      "accident": {
+        "display_name": "Accident",
+        "type": "incident",
+        "required_participants": [
+          "injured_person"
+        ],
+        "optional_participants": [
+          "driver",
+          "witness",
+          "family",
+          "doctor",
+          "police"
+        ],
+        "impact": {
+          "severity": 65,
+          "public_knowledge": 55,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "injured_person": "I had an accident at {location}. I felt {emotion} and got hurt.",
+          "witness": "I saw an accident at {location}. {emotion}.",
+          "family": "{person} had an accident. I felt {emotion}.",
+          "doctor": "I treated injuries from an accident involving {person}. {emotion}.",
+          "police": "Responded to an accident report at {location}. {emotion}."
+        },
+        "emotions": [
+          "shocked",
+          "terrified",
+          "in pain",
+          "confused",
+          "grateful to be alive"
+        ],
+        "common_locations": [
+          "major road",
+          "bus stop",
+          "market road",
+          "junction",
+          "home"
+        ]
+      },
+      "death": {
+        "display_name": "Death",
+        "type": "loss",
+        "required_participants": [
+          "deceased"
+        ],
+        "optional_participants": [
+          "family",
+          "friend",
+          "religious_leader",
+          "community"
+        ],
+        "impact": {
+          "severity": 95,
+          "public_knowledge": 70,
+          "emotional_weight": 95
+        },
+        "memory_templates": {
+          "family": "{deceased_name} died. I felt {emotion}. We gathered at {location}.",
+          "friend": "I lost {deceased_name}. I felt {emotion}.",
+          "religious_leader": "I led prayers for {deceased_name}. The atmosphere was {emotion}.",
+          "community": "We heard {deceased_name} passed away. People felt {emotion}."
+        },
+        "emotions": [
+          "devastated",
+          "numb",
+          "heartbroken",
+          "angry",
+          "accepting after tears"
+        ],
+        "common_locations": [
+          "home",
+          "church",
+          "mosque",
+          "mortuary",
+          "community hall"
+        ]
+      },
+      "funeral": {
+        "display_name": "Funeral",
+        "type": "ceremony",
+        "required_participants": [
+          "family"
+        ],
+        "optional_participants": [
+          "religious_leader",
+          "friends",
+          "community",
+          "undertaker"
+        ],
+        "impact": {
+          "severity": 60,
+          "public_knowledge": 85,
+          "emotional_weight": 90
+        },
+        "memory_templates": {
+          "family": "We buried {deceased_name} at {location}. I felt {emotion}.",
+          "religious_leader": "I officiated {deceased_name}'s funeral. It felt {emotion}.",
+          "friends": "I attended {deceased_name}'s funeral at {location}. {emotion}.",
+          "community": "Many people came for {deceased_name}'s burial. The mood was {emotion}."
+        },
+        "emotions": [
+          "somber",
+          "tearful",
+          "reflective",
+          "supportive",
+          "heavy-hearted"
+        ],
+        "common_locations": [
+          "church",
+          "mosque",
+          "cemetery",
+          "family compound",
+          "event hall"
+        ]
+      },
+      "moving_house": {
+        "display_name": "Moving House",
+        "type": "life_change",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "family",
+          "neighbors",
+          "landlord",
+          "friend"
+        ],
+        "impact": {
+          "severity": 35,
+          "public_knowledge": 50,
+          "emotional_weight": 55
+        },
+        "memory_templates": {
+          "person": "I moved to a new place in {location}. I felt {emotion}.",
+          "family": "We moved house to {location}. I felt {emotion}.",
+          "neighbors": "{person} moved away. I felt {emotion}.",
+          "landlord": "{person} changed residence. I felt {emotion} about it."
+        },
+        "emotions": [
+          "hopeful",
+          "stressed",
+          "relieved",
+          "sad to leave",
+          "excited"
+        ],
+        "common_locations": [
+          "new apartment",
+          "family compound",
+          "estate",
+          "street"
+        ]
+      },
+      "health_recovery": {
+        "display_name": "Recovery",
+        "type": "health",
+        "required_participants": [
+          "patient"
+        ],
+        "optional_participants": [
+          "family",
+          "doctor",
+          "friend",
+          "religious_leader"
+        ],
+        "impact": {
+          "severity": 25,
+          "public_knowledge": 40,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "patient": "I recovered from illness. I felt {emotion}.",
+          "family": "{patient_name} recovered. I felt {emotion}.",
+          "doctor": "{patient_name} improved significantly. I felt {emotion}.",
+          "religious_leader": "We prayed and {patient_name} recovered. People felt {emotion}."
+        },
+        "emotions": [
+          "grateful",
+          "relieved",
+          "renewed",
+          "thankful",
+          "strong again"
+        ],
+        "common_locations": [
+          "home",
+          "hospital",
+          "church",
+          "mosque"
+        ]
+      }
+    },
+    "relationship": {
+      "friendship_formed": {
+        "display_name": "New Friendship",
+        "type": "relationship_change",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "friend",
+          "group"
+        ],
+        "impact": {
+          "severity": 15,
+          "public_knowledge": 25,
+          "emotional_weight": 45
+        },
+        "memory_templates": {
+          "person": "I became friends with {other_name}. I felt {emotion}.",
+          "friend": "I met {person_name} and we became close. {emotion}.",
+          "group": "{person_name} joined our circle. The vibe was {emotion}."
+        },
+        "emotions": [
+          "happy",
+          "comfortable",
+          "excited",
+          "curious",
+          "welcomed"
+        ],
+        "common_locations": [
+          "school",
+          "workplace",
+          "church",
+          "market",
+          "street"
+        ]
+      },
+      "major_argument": {
+        "display_name": "Major Argument",
+        "type": "conflict",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "other_person",
+          "witness",
+          "mediator"
+        ],
+        "impact": {
+          "severity": 45,
+          "public_knowledge": 40,
+          "emotional_weight": 70
+        },
+        "memory_templates": {
+          "person": "I had a major argument with {other_name} at {location}. I felt {emotion}.",
+          "other_person": "I argued with {person_name}. I felt {emotion}.",
+          "witness": "I witnessed an argument between {person_name} and {other_name}. {emotion}.",
+          "mediator": "I tried to settle the dispute between them. {emotion}."
+        },
+        "emotions": [
+          "angry",
+          "hurt",
+          "embarrassed",
+          "betrayed",
+          "frustrated"
+        ],
+        "common_locations": [
+          "home",
+          "street",
+          "workplace",
+          "market",
+          "religious center"
+        ]
+      },
+      "reconciliation": {
+        "display_name": "Reconciliation",
+        "type": "resolution",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "other_person",
+          "mediator",
+          "elder",
+          "religious_leader"
+        ],
+        "impact": {
+          "severity": 20,
+          "public_knowledge": 30,
+          "emotional_weight": 65
+        },
+        "memory_templates": {
+          "person": "I reconciled with {other_name}. I felt {emotion}.",
+          "other_person": "{person_name} and I made peace. I felt {emotion}.",
+          "elder": "I helped them reconcile. I felt {emotion}.",
+          "religious_leader": "I counseled them and they made peace. {emotion}."
+        },
+        "emotions": [
+          "relieved",
+          "hopeful",
+          "lighter",
+          "grateful",
+          "still cautious"
+        ],
+        "common_locations": [
+          "home",
+          "church",
+          "mosque",
+          "elder's house",
+          "community center"
+        ]
+      },
+      "relationship_started": {
+        "display_name": "Relationship Started",
+        "type": "romance",
+        "required_participants": [
+          "partner1"
+        ],
+        "optional_participants": [
+          "partner2",
+          "friend",
+          "family"
+        ],
+        "impact": {
+          "severity": 25,
+          "public_knowledge": 35,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "partner1": "I started dating {partner2_name}. I felt {emotion}.",
+          "partner2": "I started dating {partner1_name}. I felt {emotion}.",
+          "friend": "I heard {partner1_name} is dating {partner2_name}. {emotion}.",
+          "family": "We learned about {person}'s new relationship. {emotion}."
+        },
+        "emotions": [
+          "excited",
+          "nervous",
+          "happy",
+          "hopeful",
+          "secretive"
+        ],
+        "common_locations": [
+          "restaurant",
+          "cinema",
+          "beach",
+          "church",
+          "street"
+        ]
+      },
+      "breakup": {
+        "display_name": "Breakup",
+        "type": "romance",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "ex_partner",
+          "friend",
+          "family"
+        ],
+        "impact": {
+          "severity": 55,
+          "public_knowledge": 45,
+          "emotional_weight": 85
+        },
+        "memory_templates": {
+          "person": "I broke up with {ex_name}. I felt {emotion}.",
+          "ex_partner": "My relationship with {person_name} ended. I felt {emotion}.",
+          "friend": "{person_name} broke up with {ex_name}. I felt {emotion}.",
+          "family": "We heard about the breakup. I felt {emotion}."
+        },
+        "emotions": [
+          "heartbroken",
+          "angry",
+          "relieved",
+          "ashamed",
+          "free but sad"
+        ],
+        "common_locations": [
+          "home",
+          "street",
+          "phone_call",
+          "restaurant",
+          "workplace"
+        ]
+      },
+      "engagement": {
+        "display_name": "Engagement",
+        "type": "ceremony",
+        "required_participants": [
+          "partner1"
+        ],
+        "optional_participants": [
+          "partner2",
+          "family",
+          "friends",
+          "religious_leader"
+        ],
+        "impact": {
+          "severity": 35,
+          "public_knowledge": 80,
+          "emotional_weight": 85
+        },
+        "memory_templates": {
+          "partner1": "I got engaged to {partner2_name}. I felt {emotion}.",
+          "partner2": "I got engaged to {partner1_name}. I felt {emotion}.",
+          "family": "We celebrated the engagement. I felt {emotion}.",
+          "friends": "I attended the engagement celebration at {location}. {emotion}."
+        },
+        "emotions": [
+          "overjoyed",
+          "proud",
+          "excited",
+          "blessed",
+          "emotional"
+        ],
+        "common_locations": [
+          "family compound",
+          "event hall",
+          "restaurant",
+          "church",
+          "home"
+        ]
+      },
+      "marriage": {
+        "display_name": "Marriage",
+        "type": "ceremony",
+        "required_participants": [
+          "partner1"
+        ],
+        "optional_participants": [
+          "partner2",
+          "family",
+          "friends",
+          "religious_leader",
+          "community"
+        ],
+        "impact": {
+          "severity": 45,
+          "public_knowledge": 90,
+          "emotional_weight": 90
+        },
+        "memory_templates": {
+          "partner1": "I married {partner2_name} at {location}. I felt {emotion}.",
+          "partner2": "I married {partner1_name} at {location}. I felt {emotion}.",
+          "family": "We celebrated the wedding. I felt {emotion}.",
+          "friends": "I attended the wedding at {location}. {emotion}.",
+          "religious_leader": "I officiated the wedding at {location}. {emotion}."
+        },
+        "emotions": [
+          "blessed",
+          "joyful",
+          "proud",
+          "emotional",
+          "hopeful"
+        ],
+        "common_locations": [
+          "church",
+          "mosque",
+          "event hall",
+          "registry",
+          "family compound"
+        ]
+      },
+      "infidelity_discovered": {
+        "display_name": "Infidelity Discovered",
+        "type": "scandal",
+        "required_participants": [
+          "partner"
+        ],
+        "optional_participants": [
+          "other_partner",
+          "witness",
+          "family",
+          "friend"
+        ],
+        "impact": {
+          "severity": 80,
+          "public_knowledge": 60,
+          "emotional_weight": 90
+        },
+        "memory_templates": {
+          "partner": "I discovered {other_partner_name}'s infidelity. I felt {emotion}.",
+          "other_partner": "My infidelity was discovered. I felt {emotion}.",
+          "witness": "I found out about the cheating. {emotion}.",
+          "family": "We heard about the relationship scandal. {emotion}."
+        },
+        "emotions": [
+          "betrayed",
+          "furious",
+          "humiliated",
+          "numb",
+          "vengeful"
+        ],
+        "common_locations": [
+          "home",
+          "phone_messages",
+          "workplace",
+          "street",
+          "hotel"
+        ]
+      }
+    },
+    "work_career": {
+      "hired": {
+        "display_name": "Hired",
+        "type": "career",
+        "required_participants": [
+          "employee"
+        ],
+        "optional_participants": [
+          "employer",
+          "referrer",
+          "family"
+        ],
+        "impact": {
+          "severity": 30,
+          "public_knowledge": 40,
+          "emotional_weight": 70
+        },
+        "memory_templates": {
+          "employee": "I got hired at {organization}. I felt {emotion}.",
+          "employer": "We hired {employee_name}. I felt {emotion} about the decision.",
+          "referrer": "I helped {employee_name} get hired. I felt {emotion}.",
+          "family": "{employee_name} got a new job at {organization}. I felt {emotion}."
+        },
+        "emotions": [
+          "proud",
+          "relieved",
+          "hopeful",
+          "excited",
+          "grateful"
+        ],
+        "common_locations": [
+          "office",
+          "shop",
+          "market",
+          "factory",
+          "government office"
+        ]
+      },
+      "fired": {
+        "display_name": "Fired",
+        "type": "career",
+        "required_participants": [
+          "employee"
+        ],
+        "optional_participants": [
+          "employer",
+          "coworker",
+          "family"
+        ],
+        "impact": {
+          "severity": 75,
+          "public_knowledge": 55,
+          "emotional_weight": 85
+        },
+        "memory_templates": {
+          "employee": "I was fired from {organization}. I felt {emotion}.",
+          "employer": "We dismissed {employee_name}. I felt {emotion}.",
+          "coworker": "{employee_name} was fired. I felt {emotion}.",
+          "family": "We heard {employee_name} lost their job. I felt {emotion}."
+        },
+        "emotions": [
+          "shocked",
+          "ashamed",
+          "angry",
+          "scared",
+          "bitter"
+        ],
+        "common_locations": [
+          "office",
+          "shop",
+          "factory",
+          "government office"
+        ]
+      },
+      "promotion": {
+        "display_name": "Promotion",
+        "type": "career",
+        "required_participants": [
+          "employee"
+        ],
+        "optional_participants": [
+          "manager",
+          "coworkers",
+          "family"
+        ],
+        "impact": {
+          "severity": 25,
+          "public_knowledge": 55,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "employee": "I got promoted at {organization}. I felt {emotion}.",
+          "manager": "I promoted {employee_name}. I felt {emotion}.",
+          "coworkers": "{employee_name} was promoted. I felt {emotion}.",
+          "family": "{employee_name} got a promotion. I felt {emotion}."
+        },
+        "emotions": [
+          "proud",
+          "validated",
+          "motivated",
+          "excited",
+          "grateful"
+        ],
+        "common_locations": [
+          "office",
+          "government office",
+          "shop",
+          "factory"
+        ]
+      },
+      "business_opened": {
+        "display_name": "Business Opened",
+        "type": "enterprise",
+        "required_participants": [
+          "owner"
+        ],
+        "optional_participants": [
+          "partner",
+          "family",
+          "customers",
+          "supplier"
+        ],
+        "impact": {
+          "severity": 35,
+          "public_knowledge": 70,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "owner": "I opened my business, {business_name}, in {location}. I felt {emotion}.",
+          "partner": "We opened {business_name}. I felt {emotion}.",
+          "customers": "A new business, {business_name}, opened nearby. I felt {emotion}.",
+          "supplier": "I started supplying {business_name}. I felt {emotion}."
+        },
+        "emotions": [
+          "hopeful",
+          "nervous",
+          "proud",
+          "ambitious",
+          "stressed but excited"
+        ],
+        "common_locations": [
+          "market",
+          "commercial street",
+          "mall",
+          "roadside",
+          "industrial area"
+        ]
+      },
+      "business_failed": {
+        "display_name": "Business Failed",
+        "type": "enterprise",
+        "required_participants": [
+          "owner"
+        ],
+        "optional_participants": [
+          "partner",
+          "family",
+          "creditor",
+          "employees"
+        ],
+        "impact": {
+          "severity": 80,
+          "public_knowledge": 50,
+          "emotional_weight": 90
+        },
+        "memory_templates": {
+          "owner": "My business {business_name} failed. I felt {emotion}.",
+          "partner": "Our business collapsed. I felt {emotion}.",
+          "creditor": "{owner_name} could not pay debts. I felt {emotion}.",
+          "employees": "We lost our jobs when {business_name} closed. I felt {emotion}."
+        },
+        "emotions": [
+          "devastated",
+          "ashamed",
+          "angry",
+          "hopeless",
+          "determined to restart"
+        ],
+        "common_locations": [
+          "market",
+          "shop",
+          "office",
+          "home"
+        ]
+      },
+      "salary_delay": {
+        "display_name": "Salary Delay",
+        "type": "economic_stress",
+        "required_participants": [
+          "employee"
+        ],
+        "optional_participants": [
+          "employer",
+          "coworkers",
+          "family"
+        ],
+        "impact": {
+          "severity": 55,
+          "public_knowledge": 35,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "employee": "My salary was delayed at {organization}. I felt {emotion}.",
+          "coworkers": "We didn't get paid on time. I felt {emotion}.",
+          "family": "{employee_name}'s salary delay affected us. I felt {emotion}.",
+          "employer": "We delayed salaries due to cashflow. I felt {emotion}."
+        },
+        "emotions": [
+          "stressed",
+          "angry",
+          "worried",
+          "humiliated",
+          "frustrated"
+        ],
+        "common_locations": [
+          "office",
+          "factory",
+          "home"
+        ]
+      },
+      "workplace_harassment": {
+        "display_name": "Workplace Harassment",
+        "type": "abuse",
+        "required_participants": [
+          "target"
+        ],
+        "optional_participants": [
+          "harasser",
+          "witness",
+          "manager",
+          "friend"
+        ],
+        "impact": {
+          "severity": 85,
+          "public_knowledge": 25,
+          "emotional_weight": 90
+        },
+        "memory_templates": {
+          "target": "I experienced harassment at work. I felt {emotion}.",
+          "witness": "I saw harassment happen at {organization}. I felt {emotion}.",
+          "manager": "A harassment issue was reported. I felt {emotion}.",
+          "friend": "{target_name} told me about harassment. I felt {emotion}."
+        },
+        "emotions": [
+          "violated",
+          "angry",
+          "scared",
+          "ashamed",
+          "furious"
+        ],
+        "common_locations": [
+          "office",
+          "shop",
+          "factory",
+          "backroom"
+        ]
+      },
+      "major_deal": {
+        "display_name": "Major Deal",
+        "type": "career",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "client",
+          "boss",
+          "team"
+        ],
+        "impact": {
+          "severity": 30,
+          "public_knowledge": 45,
+          "emotional_weight": 70
+        },
+        "memory_templates": {
+          "person": "I closed a major deal with {client_name}. I felt {emotion}.",
+          "boss": "{person_name} delivered a major deal. I felt {emotion}.",
+          "team": "Our team landed a big contract. We felt {emotion}."
+        },
+        "emotions": [
+          "proud",
+          "energized",
+          "validated",
+          "hungry for more",
+          "relieved"
+        ],
+        "common_locations": [
+          "office",
+          "meeting room",
+          "restaurant",
+          "client site"
+        ]
+      }
+    },
+    "community": {
+      "festival": {
+        "display_name": "Community Festival",
+        "type": "community_event",
+        "required_participants": [
+          "attendee"
+        ],
+        "optional_participants": [
+          "organizer",
+          "vendor",
+          "performer",
+          "security"
+        ],
+        "impact": {
+          "severity": 20,
+          "public_knowledge": 80,
+          "emotional_weight": 65
+        },
+        "memory_templates": {
+          "attendee": "I attended a festival in {location}. I felt {emotion}.",
+          "organizer": "I helped organize the festival in {location}. I felt {emotion}.",
+          "vendor": "I sold goods during the festival. I felt {emotion}.",
+          "performer": "I performed at the festival. The crowd was {emotion}."
+        },
+        "emotions": [
+          "joyful",
+          "excited",
+          "proud",
+          "connected",
+          "alive"
+        ],
+        "common_locations": [
+          "community square",
+          "street",
+          "beachfront",
+          "stadium",
+          "event hall"
+        ]
+      },
+      "power_outage_crisis": {
+        "display_name": "Power Outage Crisis",
+        "type": "infrastructure",
+        "required_participants": [
+          "resident"
+        ],
+        "optional_participants": [
+          "neighbors",
+          "landlord",
+          "technician"
+        ],
+        "impact": {
+          "severity": 45,
+          "public_knowledge": 70,
+          "emotional_weight": 60
+        },
+        "memory_templates": {
+          "resident": "We had a long power outage in {location}. I felt {emotion}.",
+          "neighbors": "The blackout affected everyone. I felt {emotion}.",
+          "landlord": "Tenants complained about power issues. I felt {emotion}.",
+          "technician": "I worked on restoring electricity. I felt {emotion}."
+        },
+        "emotions": [
+          "frustrated",
+          "angry",
+          "tired",
+          "resigned",
+          "relieved when it returned"
+        ],
+        "common_locations": [
+          "residential street",
+          "compound",
+          "estate",
+          "market"
+        ]
+      },
+      "water_shortage": {
+        "display_name": "Water Shortage",
+        "type": "infrastructure",
+        "required_participants": [
+          "resident"
+        ],
+        "optional_participants": [
+          "neighbors",
+          "vendor",
+          "landlord"
+        ],
+        "impact": {
+          "severity": 50,
+          "public_knowledge": 65,
+          "emotional_weight": 65
+        },
+        "memory_templates": {
+          "resident": "We struggled to get water in {location}. I felt {emotion}.",
+          "neighbors": "We queued for water. I felt {emotion}.",
+          "vendor": "I sold water during shortages. I felt {emotion}.",
+          "landlord": "Residents blamed me for water issues. I felt {emotion}."
+        },
+        "emotions": [
+          "stressed",
+          "angry",
+          "exhausted",
+          "worried",
+          "determined"
+        ],
+        "common_locations": [
+          "compound",
+          "street tap",
+          "water vendor stand",
+          "market"
+        ]
+      },
+      "community_dispute": {
+        "display_name": "Community Dispute",
+        "type": "conflict",
+        "required_participants": [
+          "resident"
+        ],
+        "optional_participants": [
+          "neighbor",
+          "elder",
+          "community_leader",
+          "police"
+        ],
+        "impact": {
+          "severity": 55,
+          "public_knowledge": 70,
+          "emotional_weight": 70
+        },
+        "memory_templates": {
+          "resident": "There was a dispute in our area about {reason}. I felt {emotion}.",
+          "elder": "I mediated a community dispute. I felt {emotion}.",
+          "community_leader": "I tried to keep peace during the dispute. I felt {emotion}.",
+          "police": "We responded to a community disturbance. {emotion}."
+        },
+        "reasons": [
+          "land boundary",
+          "noise",
+          "rent issues",
+          "youth clashes",
+          "market space"
+        ],
+        "emotions": [
+          "tense",
+          "angry",
+          "worried",
+          "protective",
+          "ready for conflict"
+        ],
+        "common_locations": [
+          "street",
+          "community hall",
+          "market",
+          "compound"
+        ]
+      },
+      "religious_crusade_or_program": {
+        "display_name": "Religious Program",
+        "type": "community_event",
+        "required_participants": [
+          "attendee"
+        ],
+        "optional_participants": [
+          "religious_leader",
+          "usher",
+          "choir",
+          "security"
+        ],
+        "impact": {
+          "severity": 25,
+          "public_knowledge": 75,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "attendee": "I attended a big religious program at {location}. I felt {emotion}.",
+          "religious_leader": "I led a program and people responded strongly. I felt {emotion}.",
+          "choir": "We ministered at the program. I felt {emotion}.",
+          "security": "Crowd control at the program was intense. I felt {emotion}."
+        },
+        "emotions": [
+          "inspired",
+          "convicted",
+          "uplifted",
+          "energized",
+          "emotional"
+        ],
+        "common_locations": [
+          "church",
+          "mosque",
+          "open ground",
+          "stadium",
+          "event hall"
+        ]
+      },
+      "political_rally": {
+        "display_name": "Political Rally",
+        "type": "public_event",
+        "required_participants": [
+          "attendee"
+        ],
+        "optional_participants": [
+          "politician",
+          "organizer",
+          "security",
+          "journalist"
+        ],
+        "impact": {
+          "severity": 35,
+          "public_knowledge": 85,
+          "emotional_weight": 60
+        },
+        "memory_templates": {
+          "attendee": "I attended a political rally in {location}. I felt {emotion}.",
+          "politician": "I spoke at a rally and the crowd reacted. I felt {emotion}.",
+          "organizer": "I organized a rally. I felt {emotion}.",
+          "journalist": "I covered a rally and saw the mood. {emotion}."
+        },
+        "emotions": [
+          "energized",
+          "skeptical",
+          "hopeful",
+          "cynical",
+          "curious"
+        ],
+        "common_locations": [
+          "stadium",
+          "street",
+          "community ground",
+          "market square"
+        ]
+      },
+      "neighborhood_security_incident": {
+        "display_name": "Neighborhood Security Incident",
+        "type": "safety",
+        "required_participants": [
+          "resident"
+        ],
+        "optional_participants": [
+          "security_guard",
+          "vigilante",
+          "police",
+          "neighbor"
+        ],
+        "impact": {
+          "severity": 60,
+          "public_knowledge": 75,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "resident": "There was a security scare in our area at {location}. I felt {emotion}.",
+          "security_guard": "We handled a security incident. I felt {emotion}.",
+          "police": "We responded to reports from {location}. {emotion}.",
+          "neighbor": "I heard about a security issue nearby. I felt {emotion}."
+        },
+        "emotions": [
+          "afraid",
+          "alert",
+          "angry",
+          "relieved",
+          "paranoid"
+        ],
+        "common_locations": [
+          "street",
+          "estate gate",
+          "compound",
+          "market"
+        ]
+      },
+      "community_support": {
+        "display_name": "Community Support",
+        "type": "solidarity",
+        "required_participants": [
+          "person_helped"
+        ],
+        "optional_participants": [
+          "helper",
+          "family",
+          "religious_group"
+        ],
+        "impact": {
+          "severity": 20,
+          "public_knowledge": 50,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "person_helped": "People supported me when I needed help. I felt {emotion}.",
+          "helper": "I contributed to help {person_name}. I felt {emotion}.",
+          "religious_group": "Our group supported someone in need. We felt {emotion}."
+        },
+        "emotions": [
+          "grateful",
+          "moved",
+          "humbled",
+          "connected",
+          "hopeful"
+        ],
+        "common_locations": [
+          "church",
+          "mosque",
+          "community hall",
+          "home"
+        ]
+      }
+    },
+    "criminal": {
+      "robbery": {
+        "display_name": "Robbery",
+        "type": "crime",
+        "required_participants": [
+          "victim"
+        ],
+        "optional_participants": [
+          "witness",
+          "robber",
+          "police"
+        ],
+        "impact": {
+          "severity": 80,
+          "public_knowledge": 60,
+          "emotional_weight": 85
+        },
+        "memory_templates": {
+          "victim": "I was robbed at {location}. I felt {emotion}. Lost {items}.",
+          "witness": "I saw {victim_name} get robbed at {location}. I felt {emotion}.",
+          "robber": "I robbed {victim_name} at {location}. I felt {emotion}.",
+          "police": "We received a robbery report at {location}. {emotion}."
+        },
+        "victim_emotions": [
+          "terrified",
+          "violated and angry",
+          "traumatized",
+          "shocked"
+        ],
+        "witness_emotions": [
+          "scared",
+          "sympathetic",
+          "grateful it wasn't me",
+          "angry at insecurity"
+        ],
+        "robber_emotions": [
+          "desperate",
+          "cold",
+          "adrenaline-rushed",
+          "guilty"
+        ],
+        "common_locations": [
+          "central market",
+          "bus stop",
+          "dark street",
+          "home",
+          "shopping district"
+        ]
+      },
+      "arrest": {
+        "display_name": "Arrest",
+        "type": "legal",
+        "required_participants": [
+          "arrested_person",
+          "police"
+        ],
+        "optional_participants": [
+          "witness",
+          "family"
+        ],
+        "impact": {
+          "severity": 75,
+          "public_knowledge": 70,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "arrested_person": "I was arrested for {reason}. I felt {emotion}.",
+          "police": "We arrested {person_name} for {reason}. {emotion}.",
+          "family": "{person_name} was arrested. I felt {emotion}.",
+          "witness": "I saw {person_name} get arrested at {location}. {emotion}."
+        },
+        "reasons": [
+          "theft",
+          "fight",
+          "fraud",
+          "traffic-related incident",
+          "false accusation"
+        ],
+        "emotions_guilty": [
+          "caught and ashamed",
+          "defiant",
+          "regretful"
+        ],
+        "emotions_innocent": [
+          "wrongly accused and furious",
+          "confused and scared",
+          "humiliated"
+        ],
+        "common_locations": [
+          "street",
+          "market",
+          "bus stop",
+          "home",
+          "police station"
+        ]
+      },
+      "police_extortion": {
+        "display_name": "Police Extortion",
+        "type": "corruption",
+        "required_participants": [
+          "victim"
+        ],
+        "optional_participants": [
+          "police",
+          "witness"
+        ],
+        "impact": {
+          "severity": 65,
+          "public_knowledge": 45,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "victim": "I was stopped and extorted by police at {location}. I felt {emotion}.",
+          "police": "We demanded money at a checkpoint. I felt {emotion}.",
+          "witness": "I saw police extort someone at {location}. I felt {emotion}."
+        },
+        "emotions": [
+          "furious",
+          "powerless",
+          "fearful",
+          "humiliated",
+          "resigned"
+        ],
+        "common_locations": [
+          "checkpoint",
+          "major road",
+          "bridge",
+          "junction"
+        ]
+      },
+      "area_boys_extortion": {
+        "display_name": "Area Boys Extortion",
+        "type": "crime",
+        "required_participants": [
+          "victim"
+        ],
+        "optional_participants": [
+          "extorter",
+          "witness",
+          "community_leader"
+        ],
+        "impact": {
+          "severity": 70,
+          "public_knowledge": 65,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "victim": "Area boys demanded money from me at {location}. I felt {emotion}.",
+          "extorter": "We collected 'settlement' at {location}. I felt {emotion}.",
+          "witness": "I saw extortion happen on the street. I felt {emotion}.",
+          "community_leader": "We tried to control street extortion. I felt {emotion}."
+        },
+        "emotions": [
+          "angry",
+          "afraid",
+          "helpless",
+          "forced to comply",
+          "resentful"
+        ],
+        "common_locations": [
+          "market entrance",
+          "bus stop",
+          "street corner",
+          "construction site"
+        ]
+      },
+      "fraud_scam": {
+        "display_name": "Fraud/Scam",
+        "type": "crime",
+        "required_participants": [
+          "victim"
+        ],
+        "optional_participants": [
+          "scammer",
+          "witness",
+          "family"
+        ],
+        "impact": {
+          "severity": 70,
+          "public_knowledge": 35,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "victim": "I was scammed and lost {amount}. I felt {emotion}.",
+          "scammer": "I scammed someone for money. I felt {emotion}.",
+          "family": "{victim_name} was scammed. I felt {emotion}.",
+          "witness": "I heard about a scam. I felt {emotion}."
+        },
+        "emotions": [
+          "ashamed",
+          "angry",
+          "betrayed",
+          "shocked",
+          "determined to recover"
+        ],
+        "common_locations": [
+          "online",
+          "bank hall",
+          "street",
+          "phone_call"
+        ]
+      },
+      "violent_attack": {
+        "display_name": "Violent Attack",
+        "type": "crime",
+        "required_participants": [
+          "victim"
+        ],
+        "optional_participants": [
+          "attacker",
+          "witness",
+          "police",
+          "family"
+        ],
+        "impact": {
+          "severity": 90,
+          "public_knowledge": 60,
+          "emotional_weight": 95
+        },
+        "memory_templates": {
+          "victim": "I was attacked at {location}. I felt {emotion}.",
+          "witness": "I witnessed a violent attack. I felt {emotion}.",
+          "family": "{victim_name} was attacked. I felt {emotion}.",
+          "police": "We responded to a violent incident. {emotion}."
+        },
+        "emotions": [
+          "terrified",
+          "traumatized",
+          "furious",
+          "in shock",
+          "paranoid afterward"
+        ],
+        "common_locations": [
+          "dark street",
+          "bus stop",
+          "market road",
+          "home"
+        ]
+      },
+      "court_case": {
+        "display_name": "Court Case",
+        "type": "legal",
+        "required_participants": [
+          "defendant"
+        ],
+        "optional_participants": [
+          "plaintiff",
+          "lawyer",
+          "judge",
+          "witness",
+          "family"
+        ],
+        "impact": {
+          "severity": 70,
+          "public_knowledge": 55,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "defendant": "I had a court case about {issue}. I felt {emotion}.",
+          "plaintiff": "I went to court over {issue}. I felt {emotion}.",
+          "lawyer": "I handled a case about {issue}. I felt {emotion}.",
+          "family": "Our family was involved in a court matter. I felt {emotion}."
+        },
+        "issues": [
+          "land dispute",
+          "assault",
+          "fraud",
+          "custody",
+          "debt"
+        ],
+        "emotions": [
+          "stressed",
+          "anxious",
+          "hopeful",
+          "angry",
+          "drained"
+        ],
+        "common_locations": [
+          "magistrate court",
+          "high court",
+          "police station"
+        ]
+      },
+      "imprisonment": {
+        "display_name": "Imprisonment",
+        "type": "legal",
+        "required_participants": [
+          "prisoner"
+        ],
+        "optional_participants": [
+          "family",
+          "cellmate",
+          "guard",
+          "lawyer"
+        ],
+        "impact": {
+          "severity": 90,
+          "public_knowledge": 65,
+          "emotional_weight": 95
+        },
+        "memory_templates": {
+          "prisoner": "I was imprisoned. I felt {emotion}.",
+          "family": "{prisoner_name} was imprisoned. I felt {emotion}.",
+          "cellmate": "I shared a cell with {prisoner_name}. I felt {emotion}.",
+          "guard": "I supervised prisoners. I felt {emotion}."
+        },
+        "emotions": [
+          "hopeless",
+          "furious",
+          "regretful",
+          "numb",
+          "determined to survive"
+        ],
+        "common_locations": [
+          "prison",
+          "court",
+          "police station"
+        ]
+      }
+    },
+    "achievement": {
+      "school_admission": {
+        "display_name": "School Admission",
+        "type": "achievement",
+        "required_participants": [
+          "student"
+        ],
+        "optional_participants": [
+          "parent",
+          "guardian",
+          "teacher"
+        ],
+        "impact": {
+          "severity": 20,
+          "public_knowledge": 35,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "student": "I got admitted to {school_name}. I felt {emotion}.",
+          "parent": "{student_name} got admitted to {school_name}. I felt {emotion}.",
+          "teacher": "A student gained admission. I felt {emotion}."
+        },
+        "emotions": [
+          "proud",
+          "excited",
+          "relieved",
+          "motivated",
+          "grateful"
+        ],
+        "common_locations": [
+          "school",
+          "home",
+          "cybercafe",
+          "education office"
+        ]
+      },
+      "graduation": {
+        "display_name": "Graduation",
+        "type": "achievement",
+        "required_participants": [
+          "graduate"
+        ],
+        "optional_participants": [
+          "family",
+          "friends",
+          "teacher"
+        ],
+        "impact": {
+          "severity": 30,
+          "public_knowledge": 70,
+          "emotional_weight": 85
+        },
+        "memory_templates": {
+          "graduate": "I graduated from {institution}. I felt {emotion}.",
+          "family": "{graduate_name} graduated. I felt {emotion}.",
+          "friends": "We celebrated {graduate_name}'s graduation. {emotion}.",
+          "teacher": "I watched students graduate. I felt {emotion}."
+        },
+        "emotions": [
+          "proud",
+          "emotional",
+          "hopeful",
+          "relieved",
+          "accomplished"
+        ],
+        "common_locations": [
+          "school hall",
+          "university campus",
+          "event hall",
+          "home"
+        ]
+      },
+      "award": {
+        "display_name": "Award",
+        "type": "achievement",
+        "required_participants": [
+          "recipient"
+        ],
+        "optional_participants": [
+          "presenter",
+          "audience",
+          "family",
+          "friends"
+        ],
+        "impact": {
+          "severity": 20,
+          "public_knowledge": 60,
+          "emotional_weight": 70
+        },
+        "memory_templates": {
+          "recipient": "I received an award for {reason}. I felt {emotion}.",
+          "family": "{recipient_name} won an award. I felt {emotion}.",
+          "presenter": "I gave an award to {recipient_name}. {emotion}.",
+          "audience": "We watched someone win an award. {emotion}."
+        },
+        "reasons": [
+          "academic excellence",
+          "community service",
+          "sports",
+          "music",
+          "business"
+        ],
+        "emotions": [
+          "proud",
+          "validated",
+          "surprised",
+          "happy",
+          "motivated"
+        ],
+        "common_locations": [
+          "school",
+          "event hall",
+          "church",
+          "stadium",
+          "community center"
+        ]
+      },
+      "sports_victory": {
+        "display_name": "Sports Victory",
+        "type": "achievement",
+        "required_participants": [
+          "player"
+        ],
+        "optional_participants": [
+          "team",
+          "coach",
+          "fans"
+        ],
+        "impact": {
+          "severity": 15,
+          "public_knowledge": 70,
+          "emotional_weight": 65
+        },
+        "memory_templates": {
+          "player": "We won the match. I felt {emotion}.",
+          "coach": "My team won. I felt {emotion}.",
+          "fans": "We celebrated a big win. We felt {emotion}."
+        },
+        "emotions": [
+          "ecstatic",
+          "energized",
+          "proud",
+          "unstoppable",
+          "relieved"
+        ],
+        "common_locations": [
+          "stadium",
+          "field",
+          "school grounds",
+          "sports bar"
+        ]
+      },
+      "music_or_art_breakthrough": {
+        "display_name": "Music/Art Breakthrough",
+        "type": "achievement",
+        "required_participants": [
+          "artist"
+        ],
+        "optional_participants": [
+          "producer",
+          "fans",
+          "label_rep",
+          "family"
+        ],
+        "impact": {
+          "severity": 25,
+          "public_knowledge": 60,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "artist": "My work gained attention. I felt {emotion}.",
+          "producer": "{artist_name}'s work started blowing up. I felt {emotion}.",
+          "fans": "I discovered a new artist. I felt {emotion}.",
+          "family": "{artist_name} started succeeding. I felt {emotion}."
+        },
+        "emotions": [
+          "overjoyed",
+          "shocked",
+          "hungry for more",
+          "grateful",
+          "proud"
+        ],
+        "common_locations": [
+          "studio",
+          "online",
+          "club",
+          "event"
+        ]
+      },
+      "visa_or_travel_opportunity": {
+        "display_name": "Travel Opportunity",
+        "type": "opportunity",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "family",
+          "friend",
+          "employer"
+        ],
+        "impact": {
+          "severity": 30,
+          "public_knowledge": 40,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "person": "I got a travel opportunity to {destination}. I felt {emotion}.",
+          "family": "{person_name} got a chance to travel. I felt {emotion}.",
+          "employer": "{person_name} got a work travel opportunity. {emotion}."
+        },
+        "emotions": [
+          "excited",
+          "hopeful",
+          "nervous",
+          "proud",
+          "anxious"
+        ],
+        "common_locations": [
+          "home",
+          "embassy",
+          "office",
+          "airport"
+        ]
+      },
+      "major_purchase": {
+        "display_name": "Major Purchase",
+        "type": "achievement",
+        "required_participants": [
+          "buyer"
+        ],
+        "optional_participants": [
+          "family",
+          "friend",
+          "seller"
+        ],
+        "impact": {
+          "severity": 15,
+          "public_knowledge": 35,
+          "emotional_weight": 60
+        },
+        "memory_templates": {
+          "buyer": "I bought {item}. I felt {emotion}.",
+          "family": "{buyer_name} made a big purchase. I felt {emotion}.",
+          "seller": "I sold {item} to {buyer_name}. {emotion}."
+        },
+        "items": [
+          "a car",
+          "land",
+          "a new phone",
+          "a generator",
+          "a house"
+        ],
+        "emotions": [
+          "proud",
+          "relieved",
+          "excited",
+          "validated",
+          "anxious about money"
+        ],
+        "common_locations": [
+          "market",
+          "car lot",
+          "bank",
+          "home",
+          "estate"
+        ]
+      },
+      "entrepreneurship_success": {
+        "display_name": "Entrepreneurship Success",
+        "type": "achievement",
+        "required_participants": [
+          "owner"
+        ],
+        "optional_participants": [
+          "employees",
+          "customers",
+          "family"
+        ],
+        "impact": {
+          "severity": 25,
+          "public_knowledge": 50,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "owner": "My business started doing well. I felt {emotion}.",
+          "employees": "The business improved and we benefited. I felt {emotion}.",
+          "family": "{owner_name}'s business improved. I felt {emotion}.",
+          "customers": "A business I patronize improved. I felt {emotion}."
+        },
+        "emotions": [
+          "proud",
+          "relieved",
+          "energized",
+          "confident",
+          "grateful"
+        ],
+        "common_locations": [
+          "market",
+          "shop",
+          "office",
+          "home"
+        ]
+      }
+    },
+    "work_community": {
+      "strike": {
+        "display_name": "Strike/Work Stoppage",
+        "type": "collective_action",
+        "required_participants": [
+          "worker"
+        ],
+        "optional_participants": [
+          "union_leader",
+          "employer",
+          "police",
+          "public"
+        ],
+        "impact": {
+          "severity": 55,
+          "public_knowledge": 80,
+          "emotional_weight": 65
+        },
+        "memory_templates": {
+          "worker": "We went on strike over {reason}. I felt {emotion}.",
+          "union_leader": "I led a strike for workers. I felt {emotion}.",
+          "employer": "Workers stopped work. I felt {emotion}.",
+          "public": "Services were disrupted by a strike. I felt {emotion}."
+        },
+        "reasons": [
+          "unpaid wages",
+          "poor conditions",
+          "policy changes",
+          "layoffs"
+        ],
+        "emotions": [
+          "angry",
+          "determined",
+          "hopeful",
+          "frustrated",
+          "tired"
+        ],
+        "common_locations": [
+          "office gate",
+          "factory gate",
+          "government complex",
+          "street"
+        ]
+      },
+      "market_union_dispute": {
+        "display_name": "Market/Union Dispute",
+        "type": "conflict",
+        "required_participants": [
+          "member"
+        ],
+        "optional_participants": [
+          "leader",
+          "rival_group",
+          "police",
+          "community"
+        ],
+        "impact": {
+          "severity": 60,
+          "public_knowledge": 75,
+          "emotional_weight": 70
+        },
+        "memory_templates": {
+          "member": "There was a dispute in our association about {reason}. I felt {emotion}.",
+          "leader": "I tried to manage a union dispute. I felt {emotion}.",
+          "police": "We responded to tension around a union dispute. {emotion}."
+        },
+        "reasons": [
+          "levies",
+          "leadership contest",
+          "territory",
+          "member discipline"
+        ],
+        "emotions": [
+          "tense",
+          "angry",
+          "worried",
+          "defiant",
+          "ready to fight"
+        ],
+        "common_locations": [
+          "market",
+          "motor park",
+          "union office",
+          "street"
+        ]
+      },
+      "fire_outbreak": {
+        "display_name": "Fire Outbreak",
+        "type": "disaster",
+        "required_participants": [
+          "affected_person"
+        ],
+        "optional_participants": [
+          "fire_service",
+          "neighbors",
+          "vendor",
+          "police"
+        ],
+        "impact": {
+          "severity": 85,
+          "public_knowledge": 90,
+          "emotional_weight": 90
+        },
+        "memory_templates": {
+          "affected_person": "A fire destroyed property at {location}. I felt {emotion}.",
+          "neighbors": "We saw a big fire outbreak. I felt {emotion}.",
+          "vendor": "My shop was affected by fire. I felt {emotion}.",
+          "fire_service": "We responded to a fire outbreak. {emotion}."
+        },
+        "emotions": [
+          "terrified",
+          "devastated",
+          "panicked",
+          "hopeless",
+          "grateful for survivors"
+        ],
+        "common_locations": [
+          "market",
+          "residential street",
+          "warehouse",
+          "compound"
+        ]
+      },
+      "flooding": {
+        "display_name": "Flooding",
+        "type": "disaster",
+        "required_participants": [
+          "resident"
+        ],
+        "optional_participants": [
+          "family",
+          "neighbors",
+          "government_worker"
+        ],
+        "impact": {
+          "severity": 70,
+          "public_knowledge": 85,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "resident": "Flooding affected our area in {location}. I felt {emotion}.",
+          "neighbors": "We struggled through floods. I felt {emotion}.",
+          "government_worker": "We tried to manage flooding and drainage. {emotion}."
+        },
+        "emotions": [
+          "frustrated",
+          "scared",
+          "tired",
+          "angry",
+          "resigned"
+        ],
+        "common_locations": [
+          "low-lying streets",
+          "riverside",
+          "market",
+          "compound"
+        ]
+      },
+      "public_scandal": {
+        "display_name": "Public Scandal",
+        "type": "scandal",
+        "required_participants": [
+          "person"
+        ],
+        "optional_participants": [
+          "accuser",
+          "witness",
+          "community",
+          "journalist"
+        ],
+        "impact": {
+          "severity": 65,
+          "public_knowledge": 85,
+          "emotional_weight": 80
+        },
+        "memory_templates": {
+          "person": "A scandal about me spread. I felt {emotion}.",
+          "community": "We heard a scandal about {person_name}. I felt {emotion}.",
+          "journalist": "I covered a scandal and saw reactions. {emotion}."
+        },
+        "emotions": [
+          "humiliated",
+          "angry",
+          "defiant",
+          "panicked",
+          "ashamed"
+        ],
+        "common_locations": [
+          "online",
+          "market",
+          "workplace",
+          "neighborhood"
+        ]
+      },
+      "religious_discipline": {
+        "display_name": "Religious Discipline",
+        "type": "social_control",
+        "required_participants": [
+          "member"
+        ],
+        "optional_participants": [
+          "leader",
+          "witness",
+          "family"
+        ],
+        "impact": {
+          "severity": 45,
+          "public_knowledge": 60,
+          "emotional_weight": 75
+        },
+        "memory_templates": {
+          "member": "I was disciplined in my religious community. I felt {emotion}.",
+          "leader": "We disciplined a member for {reason}. I felt {emotion}.",
+          "family": "Our family heard about the discipline issue. I felt {emotion}."
+        },
+        "reasons": [
+          "behavior",
+          "public reputation",
+          "relationship issues",
+          "conflict"
+        ],
+        "emotions": [
+          "ashamed",
+          "angry",
+          "humiliated",
+          "repentant",
+          "resentful"
+        ],
+        "common_locations": [
+          "church",
+          "mosque",
+          "leader's office",
+          "home"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,3201 @@
+{
+  "_readme": "Organization templates for Lagos Stories world generation. Fictional Nigerian city inspired by Lagos; all institution names are fictional but culturally plausible. Templates define name generation pools, size distributions, internal positions, reputation ranges, and typical pillars/missions.",
+  "_version": "1.0",
+  "_last_updated": "2025-12-23",
+  "categories": {
+    "religious": {
+      "christian_churches": [
+        {
+          "name_template": "{denomination} {location_suffix}",
+          "denominations": [
+            "Covenant Fire Assembly",
+            "Grace Harvest Church",
+            "New Dawn Gospel Centre",
+            "Dominion Life Chapel",
+            "Streams of Mercy Ministry",
+            "Royal Banner Church",
+            "Higher Ground Fellowship",
+            "Anchor of Hope Church",
+            "Everlasting Word Mission",
+            "Throne of Grace Cathedral",
+            "Kingdom Embassy Church",
+            "Spirit & Truth Tabernacle"
+          ],
+          "location_suffixes": [
+            "International",
+            "City Branch",
+            "Main Auditorium",
+            "District Assembly",
+            "Community Chapel",
+            "Worship Centre",
+            "Family Centre",
+            "Prayer House",
+            "Global Outreach",
+            "Southside Parish",
+            "Northgate Parish"
+          ],
+          "size_distribution": {
+            "mega_church": {
+              "weight": 8,
+              "member_range": [
+                800,
+                8000
+              ]
+            },
+            "large": {
+              "weight": 22,
+              "member_range": [
+                150,
+                800
+              ]
+            },
+            "medium": {
+              "weight": 45,
+              "member_range": [
+                40,
+                150
+              ]
+            },
+            "small": {
+              "weight": 25,
+              "member_range": [
+                10,
+                40
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Senior Pastor",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Associate Pastor",
+              "count": [
+                0,
+                4
+              ],
+              "weight": 7,
+              "required": false
+            },
+            {
+              "title": "Assistant Pastor",
+              "count": [
+                0,
+                6
+              ],
+              "weight": 5,
+              "required": false
+            },
+            {
+              "title": "Elder",
+              "count": [
+                2,
+                16
+              ],
+              "weight": 5,
+              "required": true
+            },
+            {
+              "title": "Deacon/Deaconess",
+              "count": [
+                3,
+                24
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Choir Lead",
+              "count": [
+                0,
+                2
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Choir Member",
+              "count": [
+                3,
+                60
+              ],
+              "weight": 1,
+              "required": false
+            },
+            {
+              "title": "Usher",
+              "count": [
+                2,
+                40
+              ],
+              "weight": 1,
+              "required": false
+            },
+            {
+              "title": "Welfare Coordinator",
+              "count": [
+                0,
+                2
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Media/Technical",
+              "count": [
+                0,
+                6
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                1,
+                8
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Account/Finance",
+              "count": [
+                0,
+                3
+              ],
+              "weight": 3,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              55,
+              95
+            ],
+            "innovation": [
+              30,
+              85
+            ],
+            "morality": [
+              60,
+              100
+            ],
+            "influence": [
+              35,
+              95
+            ]
+          },
+          "typical_pillars": [
+            "Spiritual growth and discipleship",
+            "Community support and welfare",
+            "Evangelism and outreach",
+            "Youth development and mentorship"
+          ]
+        }
+      ],
+      "mosques": [
+        {
+          "name_templates": [
+            "{area} Central Mosque",
+            "{area} Jumu'ah Mosque",
+            "Al-{virtue} Mosque",
+            "{area} Community Mosque"
+          ],
+          "areas": [
+            "Old Town",
+            "Market District",
+            "Riverside",
+            "Central",
+            "Northgate",
+            "Mainland",
+            "Harbor",
+            "Hillview",
+            "New Estate",
+            "Industrial"
+          ],
+          "virtues": [
+            "Salam",
+            "Nur",
+            "Rahma",
+            "Hidaya",
+            "Taqwa",
+            "Ikhlas",
+            "Falah",
+            "Sabr"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 18,
+              "member_range": [
+                200,
+                1500
+              ]
+            },
+            "medium": {
+              "weight": 52,
+              "member_range": [
+                60,
+                200
+              ]
+            },
+            "small": {
+              "weight": 30,
+              "member_range": [
+                15,
+                60
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Chief Imam",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Assistant Imam",
+              "count": [
+                0,
+                3
+              ],
+              "weight": 6,
+              "required": false
+            },
+            {
+              "title": "Muezzin",
+              "count": [
+                1,
+                2
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Qur'an Teacher",
+              "count": [
+                0,
+                4
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Caretaker",
+              "count": [
+                1,
+                2
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Committee Elder",
+              "count": [
+                2,
+                10
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Security",
+              "count": [
+                1,
+                5
+              ],
+              "weight": 2,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              60,
+              95
+            ],
+            "innovation": [
+              20,
+              60
+            ],
+            "morality": [
+              65,
+              100
+            ],
+            "influence": [
+              30,
+              85
+            ]
+          },
+          "typical_pillars": [
+            "Religious guidance and education",
+            "Community charity (zakat/sadaqah)",
+            "Conflict mediation",
+            "Youth moral development"
+          ]
+        }
+      ],
+      "traditional_shrines": [
+        {
+          "name_templates": [
+            "Shrine of {deity}",
+            "{deity} Sacred Grove",
+            "{deity} Ancestral Shrine",
+            "{deity} River Shrine"
+          ],
+          "deities": [
+            "Ogun",
+            "Sango",
+            "Yemoja",
+            "Osun",
+            "Ala",
+            "Amadioha",
+            "Esu",
+            "Oya"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 10,
+              "member_range": [
+                60,
+                250
+              ]
+            },
+            "medium": {
+              "weight": 35,
+              "member_range": [
+                20,
+                60
+              ]
+            },
+            "small": {
+              "weight": 55,
+              "member_range": [
+                5,
+                20
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Chief Priest/Priestess",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Acolyte",
+              "count": [
+                0,
+                6
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Drummer/Chanter",
+              "count": [
+                0,
+                4
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Caretaker",
+              "count": [
+                0,
+                2
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Council Elder",
+              "count": [
+                0,
+                5
+              ],
+              "weight": 4,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              35,
+              80
+            ],
+            "innovation": [
+              5,
+              30
+            ],
+            "morality": [
+              30,
+              85
+            ],
+            "influence": [
+              10,
+              65
+            ]
+          },
+          "typical_pillars": [
+            "Cultural preservation",
+            "Spiritual protection and rites",
+            "Community ceremonies",
+            "Conflict resolution through tradition"
+          ]
+        }
+      ]
+    },
+    "education": {
+      "primary_schools": [
+        {
+          "name_templates": [
+            "{name} Primary School",
+            "{name} Nursery & Primary",
+            "{name} Model School",
+            "{location} Community Primary"
+          ],
+          "names": [
+            "Bright Future",
+            "Pacesetters",
+            "Golden Steps",
+            "Emerald Heights",
+            "Sunrise",
+            "Beacon",
+            "Little Scholars",
+            "Evergreen",
+            "City Pride",
+            "Harmony"
+          ],
+          "locations": [
+            "Old Town",
+            "Market District",
+            "Central",
+            "Riverside",
+            "Northgate",
+            "Industrial",
+            "Harbor",
+            "Hillview"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 18,
+              "student_range": [
+                500,
+                1500
+              ]
+            },
+            "medium": {
+              "weight": 52,
+              "student_range": [
+                200,
+                500
+              ]
+            },
+            "small": {
+              "weight": 30,
+              "student_range": [
+                50,
+                200
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Headteacher",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Teacher",
+              "count": [
+                6,
+                60
+              ],
+              "weight": 5,
+              "required": true
+            },
+            {
+              "title": "Bursar",
+              "count": [
+                0,
+                1
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Secretary",
+              "count": [
+                0,
+                1
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                1,
+                6
+              ],
+              "weight": 1,
+              "required": true
+            },
+            {
+              "title": "Security",
+              "count": [
+                1,
+                3
+              ],
+              "weight": 2,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              55,
+              95
+            ],
+            "innovation": [
+              25,
+              70
+            ],
+            "morality": [
+              65,
+              100
+            ],
+            "influence": [
+              20,
+              70
+            ]
+          },
+          "typical_pillars": [
+            "Foundational education",
+            "Child safety and discipline",
+            "Community participation",
+            "Merit and excellence"
+          ]
+        }
+      ],
+      "secondary_schools": [
+        {
+          "name_templates": [
+            "{name} College",
+            "{name} High School",
+            "{name} Grammar School",
+            "{location} Community Secondary"
+          ],
+          "names": [
+            "King's",
+            "Queen's",
+            "Unity",
+            "Progress",
+            "Heritage",
+            "Renaissance",
+            "Christ",
+            "Crescent",
+            "Victory",
+            "Wesley"
+          ],
+          "locations": [
+            "Central",
+            "Old Town",
+            "Northgate",
+            "Market District",
+            "Harbor",
+            "Hillview",
+            "New Estate",
+            "Industrial"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 28,
+              "student_range": [
+                800,
+                3000
+              ]
+            },
+            "medium": {
+              "weight": 52,
+              "student_range": [
+                300,
+                800
+              ]
+            },
+            "small": {
+              "weight": 20,
+              "student_range": [
+                100,
+                300
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Principal",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Vice Principal",
+              "count": [
+                1,
+                2
+              ],
+              "weight": 8,
+              "required": true
+            },
+            {
+              "title": "Teacher",
+              "count": [
+                15,
+                120
+              ],
+              "weight": 5,
+              "required": true
+            },
+            {
+              "title": "Guidance Counselor",
+              "count": [
+                0,
+                3
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Librarian",
+              "count": [
+                0,
+                1
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Lab Technician",
+              "count": [
+                0,
+                3
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                2,
+                6
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                2,
+                10
+              ],
+              "weight": 1,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              55,
+              95
+            ],
+            "innovation": [
+              35,
+              80
+            ],
+            "morality": [
+              60,
+              100
+            ],
+            "influence": [
+              35,
+              90
+            ]
+          },
+          "typical_pillars": [
+            "Academic performance",
+            "Discipline and character",
+            "Sports and clubs",
+            "Pathways to tertiary education"
+          ]
+        }
+      ],
+      "universities": [
+        {
+          "name_templates": [
+            "{name} University",
+            "{name} Institute of Technology",
+            "{name} City University",
+            "{name} Polytechnic"
+          ],
+          "names": [
+            "Coastal State",
+            "Mainland Metropolitan",
+            "Crownstone",
+            "Bridgeview",
+            "New Horizon",
+            "Unity State",
+            "Cedarcrest",
+            "Harborline"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 20,
+              "student_range": [
+                12000,
+                45000
+              ]
+            },
+            "medium": {
+              "weight": 55,
+              "student_range": [
+                4000,
+                12000
+              ]
+            },
+            "small": {
+              "weight": 25,
+              "student_range": [
+                800,
+                4000
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Vice Chancellor",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Registrar",
+              "count": 1,
+              "weight": 9,
+              "required": true
+            },
+            {
+              "title": "Bursar",
+              "count": 1,
+              "weight": 8,
+              "required": true
+            },
+            {
+              "title": "Dean",
+              "count": [
+                3,
+                12
+              ],
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "HOD",
+              "count": [
+                6,
+                30
+              ],
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Lecturer",
+              "count": [
+                60,
+                700
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Admin Staff",
+              "count": [
+                20,
+                250
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Security",
+              "count": [
+                10,
+                80
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Student Union Leader",
+              "count": [
+                5,
+                20
+              ],
+              "weight": 3,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              45,
+              90
+            ],
+            "innovation": [
+              40,
+              95
+            ],
+            "morality": [
+              40,
+              90
+            ],
+            "influence": [
+              55,
+              100
+            ]
+          },
+          "typical_pillars": [
+            "Teaching and research excellence",
+            "Professional development",
+            "Industry partnerships",
+            "Student welfare and governance"
+          ]
+        }
+      ]
+    },
+    "healthcare": {
+      "hospitals": [
+        {
+          "name_templates": [
+            "{name} General Hospital",
+            "{name} Specialist Hospital",
+            "{name} Medical Centre",
+            "{location} District Hospital"
+          ],
+          "names": [
+            "Bridgeview",
+            "Cedarcrest",
+            "Lakeside",
+            "Mainland",
+            "Harborline",
+            "Northgate",
+            "Unity",
+            "Crownstone"
+          ],
+          "locations": [
+            "Central",
+            "Mainland",
+            "Harbor",
+            "Northgate",
+            "Hillview",
+            "Industrial"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 25,
+              "bed_range": [
+                200,
+                800
+              ],
+              "staff_range": [
+                250,
+                1200
+              ]
+            },
+            "medium": {
+              "weight": 55,
+              "bed_range": [
+                60,
+                200
+              ],
+              "staff_range": [
+                90,
+                250
+              ]
+            },
+            "small": {
+              "weight": 20,
+              "bed_range": [
+                20,
+                60
+              ],
+              "staff_range": [
+                25,
+                90
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Chief Medical Director",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Consultant Doctor",
+              "count": [
+                3,
+                80
+              ],
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Resident Doctor",
+              "count": [
+                5,
+                120
+              ],
+              "weight": 5,
+              "required": true
+            },
+            {
+              "title": "Nurse",
+              "count": [
+                20,
+                400
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Pharmacist",
+              "count": [
+                1,
+                20
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Lab Scientist",
+              "count": [
+                2,
+                60
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Records Officer",
+              "count": [
+                2,
+                30
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                5,
+                120
+              ],
+              "weight": 1,
+              "required": true
+            },
+            {
+              "title": "Security",
+              "count": [
+                4,
+                80
+              ],
+              "weight": 2,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              55,
+              95
+            ],
+            "innovation": [
+              35,
+              85
+            ],
+            "morality": [
+              55,
+              100
+            ],
+            "influence": [
+              40,
+              90
+            ]
+          },
+          "typical_pillars": [
+            "Accessible emergency care",
+            "Patient safety and standards",
+            "Public health outreach",
+            "Training and workforce development"
+          ]
+        }
+      ],
+      "clinics": [
+        {
+          "name_templates": [
+            "{name} Clinic",
+            "{name} Family Practice",
+            "{name} Maternity Home",
+            "{area} Community Clinic"
+          ],
+          "names": [
+            "Mercy Springs",
+            "Evercare",
+            "Good Health",
+            "PrimeWell",
+            "CityMed",
+            "HavenCare",
+            "Harmony Health",
+            "SafeHands"
+          ],
+          "areas": [
+            "Old Town",
+            "Market District",
+            "Riverside",
+            "Central",
+            "New Estate",
+            "Industrial"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 15,
+              "patient_per_day_range": [
+                120,
+                450
+              ],
+              "staff_range": [
+                25,
+                120
+              ]
+            },
+            "medium": {
+              "weight": 45,
+              "patient_per_day_range": [
+                40,
+                120
+              ],
+              "staff_range": [
+                10,
+                25
+              ]
+            },
+            "small": {
+              "weight": 40,
+              "patient_per_day_range": [
+                10,
+                40
+              ],
+              "staff_range": [
+                3,
+                10
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Medical Director",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Doctor",
+              "count": [
+                1,
+                10
+              ],
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Nurse/Midwife",
+              "count": [
+                1,
+                20
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Pharmacy Tech",
+              "count": [
+                0,
+                3
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Receptionist",
+              "count": [
+                1,
+                3
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                0,
+                4
+              ],
+              "weight": 1,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                0,
+                2
+              ],
+              "weight": 2,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              45,
+              95
+            ],
+            "innovation": [
+              20,
+              70
+            ],
+            "morality": [
+              45,
+              100
+            ],
+            "influence": [
+              15,
+              60
+            ]
+          },
+          "typical_pillars": [
+            "Affordable neighborhood care",
+            "Maternal and child health",
+            "Fast service and follow-up",
+            "Community trust"
+          ]
+        }
+      ]
+    },
+    "business": {
+      "markets": [
+        {
+          "name_templates": [
+            "{area} Market",
+            "{area} Trading Hub",
+            "{area} Open Market",
+            "{name} Commodities Market"
+          ],
+          "areas": [
+            "Central",
+            "Old Town",
+            "Market District",
+            "Harbor",
+            "Mainland",
+            "Northgate",
+            "Riverside"
+          ],
+          "names": [
+            "Unity",
+            "Prosperity",
+            "Bridgeview",
+            "Crownstone",
+            "Harborline",
+            "New Dawn"
+          ],
+          "size_distribution": {
+            "major_market": {
+              "weight": 15,
+              "vendor_range": [
+                800,
+                4000
+              ],
+              "stall_range": [
+                600,
+                3200
+              ]
+            },
+            "large": {
+              "weight": 30,
+              "vendor_range": [
+                300,
+                800
+              ],
+              "stall_range": [
+                220,
+                650
+              ]
+            },
+            "medium": {
+              "weight": 35,
+              "vendor_range": [
+                120,
+                300
+              ],
+              "stall_range": [
+                90,
+                220
+              ]
+            },
+            "small": {
+              "weight": 20,
+              "vendor_range": [
+                30,
+                120
+              ],
+              "stall_range": [
+                20,
+                90
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Market Chairperson",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Treasurer",
+              "count": 1,
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Secretary",
+              "count": 1,
+              "weight": 5,
+              "required": true
+            },
+            {
+              "title": "Section Leader",
+              "count": [
+                2,
+                20
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Union Marshal",
+              "count": [
+                2,
+                30
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Night Watch",
+              "count": [
+                2,
+                40
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                2,
+                30
+              ],
+              "weight": 1,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              30,
+              80
+            ],
+            "innovation": [
+              10,
+              55
+            ],
+            "morality": [
+              25,
+              85
+            ],
+            "influence": [
+              35,
+              95
+            ]
+          },
+          "typical_pillars": [
+            "Collective bargaining and stall protection",
+            "Fair access to stalls and space",
+            "Market security and sanitation",
+            "Dispute resolution among traders"
+          ]
+        }
+      ],
+      "restaurants_and_bukas": [
+        {
+          "name_templates": [
+            "{name} Buka",
+            "{name} Kitchen",
+            "{name} Eatery",
+            "{name} Suya Spot",
+            "{location} Food Corner"
+          ],
+          "names": [
+            "Mama T's",
+            "Aunty Bola's",
+            "City Spice",
+            "Pepper & Palm",
+            "Coastal Pot",
+            "Mainland Bites",
+            "Golden Spoon",
+            "Harbor Grill",
+            "PalmWine Kitchen",
+            "Night Market Suya"
+          ],
+          "locations": [
+            "Old Town",
+            "Market District",
+            "Central",
+            "Mainland",
+            "Harbor",
+            "Hillview",
+            "Industrial"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 12,
+              "capacity_range": [
+                80,
+                250
+              ],
+              "staff_range": [
+                20,
+                80
+              ]
+            },
+            "medium": {
+              "weight": 38,
+              "capacity_range": [
+                30,
+                80
+              ],
+              "staff_range": [
+                8,
+                20
+              ]
+            },
+            "small": {
+              "weight": 50,
+              "capacity_range": [
+                8,
+                30
+              ],
+              "staff_range": [
+                2,
+                8
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Owner/Manager",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Head Chef",
+              "count": [
+                1,
+                2
+              ],
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Cook",
+              "count": [
+                1,
+                12
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Server",
+              "count": [
+                0,
+                20
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Dishwasher",
+              "count": [
+                0,
+                6
+              ],
+              "weight": 1,
+              "required": false
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                0,
+                5
+              ],
+              "weight": 1,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                0,
+                2
+              ],
+              "weight": 2,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              35,
+              90
+            ],
+            "innovation": [
+              10,
+              65
+            ],
+            "morality": [
+              30,
+              95
+            ],
+            "influence": [
+              10,
+              55
+            ]
+          },
+          "typical_pillars": [
+            "Quality food and consistency",
+            "Affordable pricing",
+            "Cleanliness and customer care",
+            "Neighborhood reputation"
+          ]
+        }
+      ],
+      "tech_companies": [
+        {
+          "name_templates": [
+            "{name} Technologies",
+            "{name} Systems",
+            "{name} Digital",
+            "{name} Innovations",
+            "{name} Labs"
+          ],
+          "names": [
+            "Crownstone",
+            "Bridgeview",
+            "LagoonLink",
+            "MainlandMetrics",
+            "HarborByte",
+            "GreenPalm",
+            "KoraCloud",
+            "SunriseStack",
+            "NairaNova",
+            "CoastalCode"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 10,
+              "employee_range": [
+                200,
+                1500
+              ]
+            },
+            "medium": {
+              "weight": 35,
+              "employee_range": [
+                50,
+                200
+              ]
+            },
+            "small": {
+              "weight": 55,
+              "employee_range": [
+                5,
+                50
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "CEO/Founder",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "COO",
+              "count": [
+                0,
+                1
+              ],
+              "weight": 8,
+              "required": false
+            },
+            {
+              "title": "CTO",
+              "count": [
+                0,
+                1
+              ],
+              "weight": 9,
+              "required": false
+            },
+            {
+              "title": "Engineering Manager",
+              "count": [
+                0,
+                8
+              ],
+              "weight": 7,
+              "required": false
+            },
+            {
+              "title": "Software Engineer",
+              "count": [
+                2,
+                200
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Product Manager",
+              "count": [
+                0,
+                20
+              ],
+              "weight": 5,
+              "required": false
+            },
+            {
+              "title": "Sales/BD",
+              "count": [
+                0,
+                120
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "HR/Admin",
+              "count": [
+                0,
+                40
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Customer Support",
+              "count": [
+                0,
+                120
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Security/Facilities",
+              "count": [
+                0,
+                10
+              ],
+              "weight": 1,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              40,
+              95
+            ],
+            "innovation": [
+              60,
+              100
+            ],
+            "morality": [
+              35,
+              90
+            ],
+            "influence": [
+              20,
+              90
+            ]
+          },
+          "typical_pillars": [
+            "Product innovation",
+            "Customer growth and retention",
+            "Operational excellence",
+            "Talent development"
+          ]
+        }
+      ],
+      "banks_and_mfb": [
+        {
+          "name_templates": [
+            "{name} Bank",
+            "{name} Microfinance",
+            "{name} Savings & Loans",
+            "{name} Finance House"
+          ],
+          "names": [
+            "Crownstone",
+            "Unity Trust",
+            "Harborline",
+            "Bridgeview",
+            "Evergreen",
+            "Sunrise",
+            "Northgate",
+            "Coastal"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 15,
+              "branch_range": [
+                15,
+                80
+              ],
+              "employee_range": [
+                400,
+                4000
+              ]
+            },
+            "medium": {
+              "weight": 45,
+              "branch_range": [
+                4,
+                15
+              ],
+              "employee_range": [
+                120,
+                400
+              ]
+            },
+            "small": {
+              "weight": 40,
+              "branch_range": [
+                1,
+                4
+              ],
+              "employee_range": [
+                25,
+                120
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Managing Director",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Regional Manager",
+              "count": [
+                0,
+                10
+              ],
+              "weight": 8,
+              "required": false
+            },
+            {
+              "title": "Branch Manager",
+              "count": [
+                1,
+                80
+              ],
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Operations Officer",
+              "count": [
+                1,
+                200
+              ],
+              "weight": 5,
+              "required": true
+            },
+            {
+              "title": "Teller",
+              "count": [
+                2,
+                600
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Risk/Compliance",
+              "count": [
+                0,
+                120
+              ],
+              "weight": 6,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                2,
+                250
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                1,
+                200
+              ],
+              "weight": 1,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              30,
+              90
+            ],
+            "innovation": [
+              25,
+              85
+            ],
+            "morality": [
+              20,
+              85
+            ],
+            "influence": [
+              55,
+              100
+            ]
+          },
+          "typical_pillars": [
+            "Financial services access",
+            "Risk management",
+            "Customer trust",
+            "Profitability and growth"
+          ]
+        }
+      ],
+      "media_and_entertainment": [
+        {
+          "name_templates": [
+            "{name} FM",
+            "{name} Radio",
+            "{name} Media Network",
+            "{name} Studios",
+            "{name} TV"
+          ],
+          "names": [
+            "CityPulse",
+            "HarborWave",
+            "Mainland Voice",
+            "Coastal Beat",
+            "Northgate Signal",
+            "Bridgeview Broadcast",
+            "Crownstone Media",
+            "Lagoon Lights"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 12,
+              "employee_range": [
+                120,
+                800
+              ]
+            },
+            "medium": {
+              "weight": 40,
+              "employee_range": [
+                30,
+                120
+              ]
+            },
+            "small": {
+              "weight": 48,
+              "employee_range": [
+                5,
+                30
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Station Director",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Program Manager",
+              "count": [
+                0,
+                4
+              ],
+              "weight": 7,
+              "required": false
+            },
+            {
+              "title": "On-Air Talent",
+              "count": [
+                1,
+                40
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Producer",
+              "count": [
+                0,
+                25
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Reporter",
+              "count": [
+                0,
+                60
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Sound/Video Tech",
+              "count": [
+                0,
+                30
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Sales/Ad Rep",
+              "count": [
+                0,
+                50
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                0,
+                8
+              ],
+              "weight": 2,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              30,
+              85
+            ],
+            "innovation": [
+              35,
+              95
+            ],
+            "morality": [
+              20,
+              80
+            ],
+            "influence": [
+              40,
+              95
+            ]
+          },
+          "typical_pillars": [
+            "Audience growth",
+            "Community information and culture",
+            "Advertising revenue",
+            "Entertainment programming"
+          ]
+        }
+      ]
+    },
+    "government": {
+      "local_government": [
+        {
+          "name_templates": [
+            "{district} Local Council",
+            "{district} Municipal Authority",
+            "{district} Area Secretariat"
+          ],
+          "districts": [
+            "Central",
+            "Old Town",
+            "Market District",
+            "Riverside",
+            "Harbor",
+            "Mainland",
+            "Northgate",
+            "Industrial",
+            "Hillview",
+            "New Estate"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 20,
+              "employee_range": [
+                400,
+                2000
+              ]
+            },
+            "medium": {
+              "weight": 55,
+              "employee_range": [
+                150,
+                400
+              ]
+            },
+            "small": {
+              "weight": 25,
+              "employee_range": [
+                60,
+                150
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Council Chair",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Council Secretary",
+              "count": 1,
+              "weight": 8,
+              "required": true
+            },
+            {
+              "title": "Department Head",
+              "count": [
+                3,
+                10
+              ],
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Civil Servant",
+              "count": [
+                30,
+                600
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Revenue Officer",
+              "count": [
+                5,
+                120
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Sanitation Marshal",
+              "count": [
+                10,
+                300
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                6,
+                80
+              ],
+              "weight": 2,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              10,
+              70
+            ],
+            "innovation": [
+              10,
+              60
+            ],
+            "morality": [
+              5,
+              65
+            ],
+            "influence": [
+              40,
+              95
+            ]
+          },
+          "typical_pillars": [
+            "Public service delivery",
+            "Revenue collection and budgeting",
+            "Infrastructure maintenance",
+            "Community safety and sanitation"
+          ]
+        }
+      ],
+      "police": [
+        {
+          "name_templates": [
+            "{district} Police Division",
+            "{district} Area Command",
+            "{district} Police Station"
+          ],
+          "districts": [
+            "Central",
+            "Old Town",
+            "Market District",
+            "Riverside",
+            "Harbor",
+            "Mainland",
+            "Northgate",
+            "Industrial",
+            "Hillview"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 18,
+              "officer_range": [
+                220,
+                1200
+              ]
+            },
+            "medium": {
+              "weight": 52,
+              "officer_range": [
+                80,
+                220
+              ]
+            },
+            "small": {
+              "weight": 30,
+              "officer_range": [
+                25,
+                80
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Divisional Police Officer (DPO)",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Second-in-Command",
+              "count": 1,
+              "weight": 8,
+              "required": true
+            },
+            {
+              "title": "Investigator",
+              "count": [
+                5,
+                80
+              ],
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Patrol Officer",
+              "count": [
+                15,
+                900
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Desk Officer",
+              "count": [
+                2,
+                30
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Armoury/Logistics",
+              "count": [
+                1,
+                10
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Traffic Unit",
+              "count": [
+                0,
+                120
+              ],
+              "weight": 4,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              5,
+              70
+            ],
+            "innovation": [
+              10,
+              60
+            ],
+            "morality": [
+              0,
+              65
+            ],
+            "influence": [
+              45,
+              95
+            ]
+          },
+          "typical_pillars": [
+            "Public safety and patrol",
+            "Crime investigation",
+            "Order maintenance",
+            "Community policing (variable)"
+          ]
+        }
+      ],
+      "courts": [
+        {
+          "name_templates": [
+            "{district} Magistrate Court",
+            "{district} High Court Complex",
+            "{district} Customary Court"
+          ],
+          "districts": [
+            "Central",
+            "Old Town",
+            "Mainland",
+            "Northgate",
+            "Harbor"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 15,
+              "employee_range": [
+                200,
+                900
+              ]
+            },
+            "medium": {
+              "weight": 55,
+              "employee_range": [
+                60,
+                200
+              ]
+            },
+            "small": {
+              "weight": 30,
+              "employee_range": [
+                20,
+                60
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Chief Judge/Presiding Judge",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Judge/Magistrate",
+              "count": [
+                2,
+                30
+              ],
+              "weight": 8,
+              "required": true
+            },
+            {
+              "title": "Registrar",
+              "count": [
+                1,
+                5
+              ],
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Court Clerk",
+              "count": [
+                5,
+                80
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Bailiff",
+              "count": [
+                2,
+                30
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Cleaner",
+              "count": [
+                1,
+                20
+              ],
+              "weight": 1,
+              "required": true
+            },
+            {
+              "title": "Security",
+              "count": [
+                2,
+                25
+              ],
+              "weight": 2,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              20,
+              85
+            ],
+            "innovation": [
+              10,
+              55
+            ],
+            "morality": [
+              25,
+              90
+            ],
+            "influence": [
+              40,
+              95
+            ]
+          },
+          "typical_pillars": [
+            "Rule of law",
+            "Dispute resolution",
+            "Due process",
+            "Public confidence in justice"
+          ]
+        }
+      ]
+    },
+    "transport": {
+      "transport_unions": [
+        {
+          "name_templates": [
+            "{area} Drivers Union",
+            "{area} Road Transport Association",
+            "{area} Park Management Committee"
+          ],
+          "areas": [
+            "Central",
+            "Market District",
+            "Mainland",
+            "Old Town",
+            "Northgate",
+            "Harbor",
+            "Industrial"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 20,
+              "member_range": [
+                500,
+                2500
+              ]
+            },
+            "medium": {
+              "weight": 50,
+              "member_range": [
+                180,
+                500
+              ]
+            },
+            "small": {
+              "weight": 30,
+              "member_range": [
+                60,
+                180
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Chairman",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Vice Chairman",
+              "count": [
+                0,
+                1
+              ],
+              "weight": 8,
+              "required": false
+            },
+            {
+              "title": "Secretary",
+              "count": 1,
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Treasurer",
+              "count": 1,
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Route Coordinator",
+              "count": [
+                2,
+                20
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Park Marshal",
+              "count": [
+                3,
+                40
+              ],
+              "weight": 3,
+              "required": true
+            },
+            {
+              "title": "Driver Member",
+              "count": [
+                50,
+                2400
+              ],
+              "weight": 1,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              15,
+              75
+            ],
+            "innovation": [
+              5,
+              40
+            ],
+            "morality": [
+              10,
+              70
+            ],
+            "influence": [
+              50,
+              100
+            ]
+          },
+          "typical_pillars": [
+            "Route control and operations",
+            "Member welfare and dues",
+            "Dispute mediation",
+            "Transport park security and order"
+          ]
+        }
+      ],
+      "logistics_companies": [
+        {
+          "name_templates": [
+            "{name} Logistics",
+            "{name} Dispatch",
+            "{name} Courier Services",
+            "{name} Haulage"
+          ],
+          "names": [
+            "Harborline",
+            "Bridgeview",
+            "CoastalSwift",
+            "MainlandHaul",
+            "Northgate Express",
+            "LagoonRoute",
+            "Crownstone Cargo",
+            "Sunrise Dispatch"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 12,
+              "employee_range": [
+                250,
+                1500
+              ],
+              "fleet_range": [
+                80,
+                600
+              ]
+            },
+            "medium": {
+              "weight": 38,
+              "employee_range": [
+                60,
+                250
+              ],
+              "fleet_range": [
+                20,
+                80
+              ]
+            },
+            "small": {
+              "weight": 50,
+              "employee_range": [
+                6,
+                60
+              ],
+              "fleet_range": [
+                2,
+                20
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Operations Director",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Fleet Manager",
+              "count": [
+                0,
+                6
+              ],
+              "weight": 6,
+              "required": false
+            },
+            {
+              "title": "Dispatcher",
+              "count": [
+                1,
+                40
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Driver",
+              "count": [
+                3,
+                900
+              ],
+              "weight": 2,
+              "required": true
+            },
+            {
+              "title": "Rider",
+              "count": [
+                0,
+                700
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Mechanic",
+              "count": [
+                0,
+                30
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Customer Service",
+              "count": [
+                0,
+                80
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Security",
+              "count": [
+                0,
+                15
+              ],
+              "weight": 2,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              35,
+              90
+            ],
+            "innovation": [
+              20,
+              75
+            ],
+            "morality": [
+              30,
+              90
+            ],
+            "influence": [
+              20,
+              75
+            ]
+          },
+          "typical_pillars": [
+            "Fast, reliable delivery",
+            "Fleet safety",
+            "Customer satisfaction",
+            "Cost efficiency"
+          ]
+        }
+      ]
+    },
+    "social": {
+      "ethnic_associations": [
+        {
+          "name_templates": [
+            "{group} Progressive Union",
+            "{group} Cultural Association",
+            "{group} Development Society"
+          ],
+          "groups": [
+            "Yoruba",
+            "Igbo",
+            "Hausa",
+            "Edo",
+            "Ijaw",
+            "Ibibio",
+            "Tiv",
+            "Nupe"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 20,
+              "member_range": [
+                300,
+                2000
+              ]
+            },
+            "medium": {
+              "weight": 55,
+              "member_range": [
+                80,
+                300
+              ]
+            },
+            "small": {
+              "weight": 25,
+              "member_range": [
+                20,
+                80
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "President",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Vice President",
+              "count": [
+                0,
+                1
+              ],
+              "weight": 7,
+              "required": false
+            },
+            {
+              "title": "General Secretary",
+              "count": 1,
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Treasurer",
+              "count": 1,
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Welfare Officer",
+              "count": [
+                0,
+                2
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Youth Leader",
+              "count": [
+                0,
+                2
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Member",
+              "count": [
+                20,
+                2000
+              ],
+              "weight": 1,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              45,
+              95
+            ],
+            "innovation": [
+              10,
+              55
+            ],
+            "morality": [
+              40,
+              100
+            ],
+            "influence": [
+              20,
+              75
+            ]
+          },
+          "typical_pillars": [
+            "Mutual aid and welfare",
+            "Cultural events and identity",
+            "Business networking",
+            "Community development projects"
+          ]
+        }
+      ],
+      "sports_clubs": [
+        {
+          "name_templates": [
+            "{area} Sports Club",
+            "{name} Athletic Club",
+            "{area} Football Academy",
+            "{name} Boxing Gym"
+          ],
+          "areas": [
+            "Central",
+            "Mainland",
+            "Northgate",
+            "Old Town",
+            "Harbor",
+            "Hillview"
+          ],
+          "names": [
+            "Crownstone",
+            "Bridgeview",
+            "Harborline",
+            "Unity",
+            "Renaissance",
+            "Sunrise"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 15,
+              "member_range": [
+                250,
+                1500
+              ]
+            },
+            "medium": {
+              "weight": 45,
+              "member_range": [
+                80,
+                250
+              ]
+            },
+            "small": {
+              "weight": 40,
+              "member_range": [
+                20,
+                80
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Club President",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Coach",
+              "count": [
+                1,
+                15
+              ],
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Team Captain",
+              "count": [
+                0,
+                10
+              ],
+              "weight": 4,
+              "required": false
+            },
+            {
+              "title": "Athlete",
+              "count": [
+                20,
+                1500
+              ],
+              "weight": 1,
+              "required": true
+            },
+            {
+              "title": "Physio",
+              "count": [
+                0,
+                4
+              ],
+              "weight": 3,
+              "required": false
+            },
+            {
+              "title": "Kit Manager",
+              "count": [
+                0,
+                3
+              ],
+              "weight": 2,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              40,
+              95
+            ],
+            "innovation": [
+              15,
+              70
+            ],
+            "morality": [
+              35,
+              95
+            ],
+            "influence": [
+              15,
+              75
+            ]
+          },
+          "typical_pillars": [
+            "Talent development",
+            "Community engagement",
+            "Competition and excellence",
+            "Youth mentorship"
+          ]
+        }
+      ],
+      "professional_associations": [
+        {
+          "name_templates": [
+            "{sector} Professionals Guild",
+            "{sector} Practitioners Association",
+            "{sector} Network Forum"
+          ],
+          "sectors": [
+            "Legal",
+            "Medical",
+            "Engineering",
+            "Media",
+            "Finance",
+            "Education",
+            "Construction",
+            "Tech"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 18,
+              "member_range": [
+                400,
+                6000
+              ]
+            },
+            "medium": {
+              "weight": 52,
+              "member_range": [
+                120,
+                400
+              ]
+            },
+            "small": {
+              "weight": 30,
+              "member_range": [
+                30,
+                120
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Chair",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Secretary",
+              "count": 1,
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Treasurer",
+              "count": 1,
+              "weight": 6,
+              "required": true
+            },
+            {
+              "title": "Committee Member",
+              "count": [
+                2,
+                20
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Member",
+              "count": [
+                30,
+                6000
+              ],
+              "weight": 1,
+              "required": true
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              50,
+              98
+            ],
+            "innovation": [
+              25,
+              85
+            ],
+            "morality": [
+              45,
+              98
+            ],
+            "influence": [
+              25,
+              85
+            ]
+          },
+          "typical_pillars": [
+            "Professional standards",
+            "Networking and mentorship",
+            "Continuing education",
+            "Advocacy and policy influence"
+          ]
+        }
+      ]
+    },
+    "criminal": {
+      "street_gangs": [
+        {
+          "name_templates": [
+            "The {name} Crew",
+            "{name} Boys",
+            "{area} Corner Crew",
+            "{name} Syndicate"
+          ],
+          "names": [
+            "NightHawks",
+            "IronPalm",
+            "RazorLine",
+            "Backstreet",
+            "Dockside",
+            "Crossroads",
+            "ShadowMarket",
+            "RedLantern"
+          ],
+          "areas": [
+            "Old Town",
+            "Market District",
+            "Riverside",
+            "Industrial",
+            "Harbor",
+            "Mainland"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 20,
+              "member_range": [
+                40,
+                180
+              ]
+            },
+            "medium": {
+              "weight": 50,
+              "member_range": [
+                15,
+                40
+              ]
+            },
+            "small": {
+              "weight": 30,
+              "member_range": [
+                6,
+                15
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Boss",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Lieutenant",
+              "count": [
+                1,
+                4
+              ],
+              "weight": 7,
+              "required": true
+            },
+            {
+              "title": "Enforcer",
+              "count": [
+                2,
+                30
+              ],
+              "weight": 4,
+              "required": true
+            },
+            {
+              "title": "Scout/Lookout",
+              "count": [
+                1,
+                20
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Runner",
+              "count": [
+                0,
+                30
+              ],
+              "weight": 1,
+              "required": false
+            },
+            {
+              "title": "Fence",
+              "count": [
+                0,
+                5
+              ],
+              "weight": 5,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              0,
+              45
+            ],
+            "innovation": [
+              10,
+              70
+            ],
+            "morality": [
+              0,
+              35
+            ],
+            "influence": [
+              20,
+              85
+            ]
+          },
+          "typical_pillars": [
+            "Territory control",
+            "Income generation",
+            "Protection and intimidation",
+            "Internal loyalty (often enforced)"
+          ]
+        }
+      ],
+      "fraud_rings": [
+        {
+          "name_templates": [
+            "{name} Network",
+            "{name} Circle",
+            "{name} Office",
+            "{name} Agency"
+          ],
+          "names": [
+            "SilverPalm",
+            "BlueLedger",
+            "CoastalLink",
+            "CrownWire",
+            "BridgeStack",
+            "Northgate Exchange",
+            "Harbor Accounts",
+            "CityMint"
+          ],
+          "size_distribution": {
+            "large": {
+              "weight": 10,
+              "member_range": [
+                25,
+                80
+              ]
+            },
+            "medium": {
+              "weight": 45,
+              "member_range": [
+                10,
+                25
+              ]
+            },
+            "small": {
+              "weight": 45,
+              "member_range": [
+                3,
+                10
+              ]
+            }
+          },
+          "positions": [
+            {
+              "title": "Coordinator",
+              "count": 1,
+              "weight": 10,
+              "required": true
+            },
+            {
+              "title": "Operator",
+              "count": [
+                2,
+                25
+              ],
+              "weight": 5,
+              "required": true
+            },
+            {
+              "title": "Mule/Runner",
+              "count": [
+                0,
+                30
+              ],
+              "weight": 2,
+              "required": false
+            },
+            {
+              "title": "Tech Specialist",
+              "count": [
+                0,
+                6
+              ],
+              "weight": 6,
+              "required": false
+            },
+            {
+              "title": "Inside Contact",
+              "count": [
+                0,
+                4
+              ],
+              "weight": 7,
+              "required": false
+            }
+          ],
+          "reputation_ranges": {
+            "trustworthiness": [
+              0,
+              35
+            ],
+            "innovation": [
+              35,
+              95
+            ],
+            "morality": [
+              0,
+              25
+            ],
+            "influence": [
+              10,
+              70
+            ]
+          },
+          "typical_pillars": [
+            "Low-visibility income streams",
+            "Operational security",
+            "Recruitment and training",
+            "Access to insider information"
+          ]
+        }
+      ]
+    }
+  }
+}

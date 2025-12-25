@@ -1,0 +1,1122 @@
+{
+	"_readme": "Location templates for Lagos Stories. Defines building archetypes for procedural generation. Used by world_generator.gd. Fields 'capacity_range' and 'condition_range' are required by the current generator script.",
+	"residential": {
+		"types": [
+			{
+				"name": "luxury_apartment",
+				"display_name": "Luxury High-Rise Apartment",
+				"names": [
+					"{Name} Heights",
+					"{Name} Towers",
+					"{Name} Court",
+					"{Name} Gardens",
+					"The {Name} Residence",
+					"Eko {Name} Towers",
+					"Atlantic {Name} View"
+				],
+				"capacity_range": [
+					50,
+					300
+				],
+				"condition_range": [
+					85,
+					100
+				],
+				"security_range": [
+					80,
+					100
+				],
+				"base_reputation": {
+					"safety": 90,
+					"prestige": 95,
+					"activity_level": 40
+				},
+				"amenities_probability": {
+					"swimming_pool": 0.95,
+					"gym": 0.9,
+					"24h_power": 1.0,
+					"underground_parking": 0.9,
+					"tennis_court": 0.6,
+					"rooftop_lounge": 0.7,
+					"concierge": 0.8,
+					"high_speed_internet": 1.0
+				}
+			},
+			{
+				"name": "gated_estate_duplex",
+				"display_name": "Gated Estate Duplex",
+				"names": [
+					"{Name} Villa",
+					"Plot {Number}, Block {Letter}",
+					"No. {Number} {Street}"
+				],
+				"capacity_range": [
+					5,
+					12
+				],
+				"condition_range": [
+					80,
+					100
+				],
+				"security_range": [
+					70,
+					95
+				],
+				"base_reputation": {
+					"safety": 85,
+					"prestige": 90,
+					"activity_level": 30
+				},
+				"amenities_probability": {
+					"security_gate": 1.0,
+					"paved_roads": 1.0,
+					"street_lights": 0.9,
+					"central_water": 0.8,
+					"generator": 1.0,
+					"sq_garden": 0.7
+				}
+			},
+			{
+				"name": "detached_duplex",
+				"display_name": "Detached Duplex",
+				"names": [
+					"No. {Number} {Street}",
+					"{Name} House",
+					"Chief {Name}'s Residence"
+				],
+				"capacity_range": [
+					5,
+					15
+				],
+				"condition_range": [
+					60,
+					90
+				],
+				"security_range": [
+					50,
+					85
+				],
+				"base_reputation": {
+					"safety": 70,
+					"prestige": 65,
+					"activity_level": 20
+				},
+				"amenities_probability": {
+					"generator": 0.9,
+					"gate_house": 0.8,
+					"water_tank": 1.0,
+					"garden": 0.4,
+					"boys_quarters": 0.7
+				}
+			},
+			{
+				"name": "semi_detached_bungalow",
+				"display_name": "Semi-Detached Bungalow",
+				"names": [
+					"No. {Number} {Street}",
+					"Block {Number} Flat {Letter}"
+				],
+				"capacity_range": [
+					4,
+					10
+				],
+				"condition_range": [
+					50,
+					80
+				],
+				"security_range": [
+					40,
+					70
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 50,
+					"activity_level": 50
+				},
+				"amenities_probability": {
+					"fenced_compound": 0.9,
+					"borehole": 0.8,
+					"prepaid_meter": 0.7,
+					"veranda": 0.9
+				}
+			},
+			{
+				"name": "tenement_block",
+				"display_name": "Tenement Block (Face-me-I-face-you)",
+				"names": [
+					"No. {Number} {Street}",
+					"{Name} Lodge",
+					"{Name} Compound",
+					"Baba {Name}'s House"
+				],
+				"capacity_range": [
+					20,
+					80
+				],
+				"condition_range": [
+					20,
+					60
+				],
+				"security_range": [
+					20,
+					50
+				],
+				"base_reputation": {
+					"safety": 40,
+					"prestige": 20,
+					"activity_level": 80
+				},
+				"amenities_probability": {
+					"shared_bathroom": 1.0,
+					"communal_kitchen": 1.0,
+					"well_water": 0.8,
+					"electricity_meter": 0.5,
+					"central_corridor": 1.0
+				}
+			},
+			{
+				"name": "boys_quarters",
+				"display_name": "Boys' Quarters (BQ)",
+				"names": [
+					"The BQ",
+					"Back House"
+				],
+				"capacity_range": [
+					1,
+					4
+				],
+				"condition_range": [
+					30,
+					70
+				],
+				"security_range": [
+					40,
+					70
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 30,
+					"activity_level": 40
+				},
+				"amenities_probability": {
+					"shared_toilet": 0.8,
+					"single_room": 1.0,
+					"kitchenette": 0.4
+				}
+			},
+			{
+				"name": "shanty_structure",
+				"display_name": "Makeshift Structure",
+				"names": [
+					"Block {Letter}, Room {Number}",
+					"Structure {Number}",
+					"Zone {Letter}"
+				],
+				"capacity_range": [
+					2,
+					10
+				],
+				"condition_range": [
+					0,
+					30
+				],
+				"security_range": [
+					0,
+					20
+				],
+				"base_reputation": {
+					"safety": 20,
+					"prestige": 5,
+					"activity_level": 60
+				},
+				"amenities_probability": {
+					"makeshift_roof": 1.0,
+					"public_latrine_access": 0.5,
+					"illegal_connection": 0.4,
+					"plywood_walls": 0.8
+				}
+			},
+			{
+				"name": "water_stilt_house",
+				"display_name": "Stilt House (Makoko Style)",
+				"names": [
+					"House {Number}",
+					"{Name}'s Place"
+				],
+				"capacity_range": [
+					4,
+					12
+				],
+				"condition_range": [
+					10,
+					40
+				],
+				"security_range": [
+					10,
+					30
+				],
+				"base_reputation": {
+					"safety": 30,
+					"prestige": 10,
+					"activity_level": 70
+				},
+				"amenities_probability": {
+					"canoe_dock": 1.0,
+					"wooden_planks": 1.0,
+					"fishing_nets": 0.8
+				}
+			}
+		]
+	},
+	"commercial": {
+		"types": [
+			{
+				"name": "corporate_tower",
+				"display_name": "Corporate Office Tower",
+				"names": [
+					"{Company} Plaza",
+					"{Company} Towers",
+					"{Name} House",
+					"The {Name} Building",
+					"Heritage {Name} Place"
+				],
+				"capacity_range": [
+					200,
+					1000
+				],
+				"condition_range": [
+					85,
+					100
+				],
+				"security_range": [
+					80,
+					100
+				],
+				"base_reputation": {
+					"safety": 90,
+					"prestige": 90,
+					"activity_level": 70
+				},
+				"amenities_probability": {
+					"elevators": 1.0,
+					"central_ac": 1.0,
+					"access_control": 1.0,
+					"banking_hall": 0.6,
+					"conference_centre": 0.5,
+					"helipad": 0.2
+				}
+			},
+			{
+				"name": "tech_hub",
+				"display_name": "Tech Hub / Co-working Space",
+				"names": [
+					"{Name} Hub",
+					"The {Name} Space",
+					"Innovate {Name}",
+					"Co-Work {Name}"
+				],
+				"capacity_range": [
+					50,
+					200
+				],
+				"condition_range": [
+					80,
+					95
+				],
+				"security_range": [
+					60,
+					85
+				],
+				"base_reputation": {
+					"safety": 80,
+					"prestige": 85,
+					"activity_level": 80
+				},
+				"amenities_probability": {
+					"high_speed_internet": 1.0,
+					"coffee_bar": 0.9,
+					"gaming_room": 0.6,
+					"meeting_pods": 0.8,
+					"backup_inverter": 1.0
+				}
+			},
+			{
+				"name": "shopping_mall",
+				"display_name": "Modern Shopping Mall",
+				"names": [
+					"{Name} Mall",
+					"{District} City Mall",
+					"The {Name} Centre"
+				],
+				"capacity_range": [
+					500,
+					5000
+				],
+				"condition_range": [
+					80,
+					100
+				],
+				"security_range": [
+					70,
+					90
+				],
+				"base_reputation": {
+					"safety": 85,
+					"prestige": 80,
+					"activity_level": 95
+				},
+				"amenities_probability": {
+					"cinema": 0.8,
+					"food_court": 1.0,
+					"escalators": 1.0,
+					"parking_lot": 1.0,
+					"supermarket_anchor": 1.0
+				}
+			},
+			{
+				"name": "shopping_plaza",
+				"display_name": "Shopping Plaza",
+				"names": [
+					"{Name} Plaza",
+					"{Name} Complex",
+					"{Name} Arcade"
+				],
+				"capacity_range": [
+					50,
+					200
+				],
+				"condition_range": [
+					60,
+					90
+				],
+				"security_range": [
+					50,
+					80
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 60,
+					"activity_level": 80
+				},
+				"amenities_probability": {
+					"parking_lot": 0.8,
+					"security_guard": 0.9,
+					"generator": 0.8,
+					"public_toilet": 0.6
+				}
+			},
+			{
+				"name": "hotel_luxury",
+				"display_name": "Luxury Hotel",
+				"names": [
+					"The {Name} Hotel",
+					"{Name} Continental",
+					"{Name} Palace Hotel"
+				],
+				"capacity_range": [
+					100,
+					500
+				],
+				"condition_range": [
+					90,
+					100
+				],
+				"security_range": [
+					80,
+					100
+				],
+				"base_reputation": {
+					"safety": 90,
+					"prestige": 95,
+					"activity_level": 60
+				},
+				"amenities_probability": {
+					"swimming_pool": 1.0,
+					"buffet_restaurant": 1.0,
+					"spa": 0.8,
+					"ballroom": 0.9,
+					"concierge": 1.0
+				}
+			},
+			{
+				"name": "hotel_budget",
+				"display_name": "Budget Hotel / Guest House",
+				"names": [
+					"{Name} Guest House",
+					"{Name} Suites",
+					"{Name} Inn"
+				],
+				"capacity_range": [
+					10,
+					50
+				],
+				"condition_range": [
+					40,
+					70
+				],
+				"security_range": [
+					40,
+					60
+				],
+				"base_reputation": {
+					"safety": 50,
+					"prestige": 40,
+					"activity_level": 50
+				},
+				"amenities_probability": {
+					"bar": 0.9,
+					"generator": 0.7,
+					"cable_tv": 0.8
+				}
+			},
+			{
+				"name": "market_stall",
+				"display_name": "Market Stall",
+				"names": [
+					"Shop {Number}, Line {Letter}",
+					"Stall {Number}, {Section}"
+				],
+				"capacity_range": [
+					2,
+					5
+				],
+				"condition_range": [
+					30,
+					60
+				],
+				"security_range": [
+					20,
+					50
+				],
+				"base_reputation": {
+					"safety": 40,
+					"prestige": 30,
+					"activity_level": 100
+				},
+				"amenities_probability": {
+					"display_shelves": 1.0,
+					"storage_loft": 0.5,
+					"fan": 0.3
+				}
+			},
+			{
+				"name": "street_kiosk",
+				"display_name": "Street Kiosk / Container Shop",
+				"names": [
+					"{Name}'s Corner",
+					"{Name} Point",
+					"Mama {Name} Shop"
+				],
+				"capacity_range": [
+					1,
+					3
+				],
+				"condition_range": [
+					20,
+					50
+				],
+				"security_range": [
+					10,
+					30
+				],
+				"base_reputation": {
+					"safety": 30,
+					"prestige": 10,
+					"activity_level": 60
+				},
+				"amenities_probability": {
+					"umbrella_shade": 0.8,
+					"generator_power": 0.3,
+					"bench": 0.5
+				}
+			},
+			{
+				"name": "mechanic_workshop",
+				"display_name": "Mechanic Workshop",
+				"names": [
+					"{Name} Motors",
+					"Ladipo {Name} Works",
+					"Engineer {Name} Workshop"
+				],
+				"capacity_range": [
+					10,
+					50
+				],
+				"condition_range": [
+					20,
+					50
+				],
+				"security_range": [
+					30,
+					50
+				],
+				"base_reputation": {
+					"safety": 50,
+					"prestige": 30,
+					"activity_level": 70
+				},
+				"amenities_probability": {
+					"inspection_pit": 0.7,
+					"spare_parts_store": 0.6,
+					"vulcanizer_point": 0.8
+				}
+			},
+			{
+				"name": "buka",
+				"display_name": "Local Buka / Canteen",
+				"names": [
+					"Mama {Name} Put",
+					"{Name} Kitchen",
+					"Iya {Name} Food Canteen"
+				],
+				"capacity_range": [
+					10,
+					40
+				],
+				"condition_range": [
+					30,
+					60
+				],
+				"security_range": [
+					40,
+					60
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 40,
+					"activity_level": 90
+				},
+				"amenities_probability": {
+					"plastic_chairs": 1.0,
+					"hand_washing_bowl": 1.0,
+					"outdoor_cooking": 0.9,
+					"fan": 0.5
+				}
+			},
+			{
+				"name": "nightclub",
+				"display_name": "Nightclub / Lounge",
+				"names": [
+					"Club {Name}",
+					"{Name} Lounge",
+					"The {Name}"
+				],
+				"capacity_range": [
+					100,
+					400
+				],
+				"condition_range": [
+					70,
+					95
+				],
+				"security_range": [
+					60,
+					90
+				],
+				"base_reputation": {
+					"safety": 70,
+					"prestige": 80,
+					"activity_level": 95
+				},
+				"amenities_probability": {
+					"vip_section": 1.0,
+					"dj_booth": 1.0,
+					"bar": 1.0,
+					"bouncers": 1.0,
+					"shisha_corner": 0.7
+				}
+			},
+			{
+				"name": "bank_branch",
+				"display_name": "Bank Branch",
+				"names": [
+					"{Name} Bank",
+					"First {Name} Bank",
+					"United {Name} Bank"
+				],
+				"capacity_range": [
+					50,
+					150
+				],
+				"condition_range": [
+					80,
+					100
+				],
+				"security_range": [
+					90,
+					100
+				],
+				"base_reputation": {
+					"safety": 90,
+					"prestige": 85,
+					"activity_level": 80
+				},
+				"amenities_probability": {
+					"atm_gallery": 1.0,
+					"security_doors": 1.0,
+					"teller_counters": 1.0,
+					"customer_service_desk": 1.0
+				}
+			}
+		]
+	},
+	"public": {
+		"types": [
+			{
+				"name": "police_station",
+				"display_name": "Divisional Police HQ",
+				"names": [
+					"{District} Divisional HQ",
+					"Area {Letter} Command",
+					"{District} Police Post"
+				],
+				"capacity_range": [
+					20,
+					100
+				],
+				"condition_range": [
+					30,
+					70
+				],
+				"security_range": [
+					60,
+					90
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 50,
+					"activity_level": 70
+				},
+				"amenities_probability": {
+					"counter": 1.0,
+					"cells": 1.0,
+					"armory": 1.0,
+					"interrogation_room": 0.8,
+					"impound_lot": 0.6
+				}
+			},
+			{
+				"name": "general_hospital",
+				"display_name": "General Hospital",
+				"names": [
+					"General Hospital {District}",
+					"{Name} Medical Centre",
+					"Federal Medical Centre {District}"
+				],
+				"capacity_range": [
+					100,
+					500
+				],
+				"condition_range": [
+					40,
+					80
+				],
+				"security_range": [
+					40,
+					70
+				],
+				"base_reputation": {
+					"safety": 70,
+					"prestige": 60,
+					"activity_level": 90
+				},
+				"amenities_probability": {
+					"emergency_ward": 1.0,
+					"morgue": 1.0,
+					"pharmacy": 1.0,
+					"operating_theatre": 0.8,
+					"ambulance_bay": 0.7
+				}
+			},
+			{
+				"name": "primary_health_centre",
+				"display_name": "Primary Health Centre",
+				"names": [
+					"{District} PHC",
+					"{Name} Community Health Centre"
+				],
+				"capacity_range": [
+					20,
+					60
+				],
+				"condition_range": [
+					30,
+					60
+				],
+				"security_range": [
+					30,
+					50
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 40,
+					"activity_level": 60
+				},
+				"amenities_probability": {
+					"maternity_ward": 0.9,
+					"immunization_room": 1.0,
+					"records_office": 1.0
+				}
+			},
+			{
+				"name": "public_school",
+				"display_name": "Public Secondary School",
+				"names": [
+					"{District} Senior Secondary School",
+					"{Name} High School",
+					"{District} Grammar School",
+					"Government College {District}"
+				],
+				"capacity_range": [
+					200,
+					1000
+				],
+				"condition_range": [
+					30,
+					70
+				],
+				"security_range": [
+					30,
+					60
+				],
+				"base_reputation": {
+					"safety": 50,
+					"prestige": 40,
+					"activity_level": 80
+				},
+				"amenities_probability": {
+					"classrooms": 1.0,
+					"assembly_hall": 0.9,
+					"football_pitch": 0.7,
+					"library": 0.5,
+					"staff_room": 1.0,
+					"laboratory": 0.4
+				}
+			},
+			{
+				"name": "private_school",
+				"display_name": "Private International School",
+				"names": [
+					"{Name} International School",
+					"{Name} College",
+					"British {Name} Academy"
+				],
+				"capacity_range": [
+					100,
+					500
+				],
+				"condition_range": [
+					80,
+					100
+				],
+				"security_range": [
+					70,
+					95
+				],
+				"base_reputation": {
+					"safety": 85,
+					"prestige": 90,
+					"activity_level": 70
+				},
+				"amenities_probability": {
+					"swimming_pool": 0.6,
+					"computer_lab": 1.0,
+					"air_conditioned_classes": 0.9,
+					"school_bus_park": 0.8
+				}
+			},
+			{
+				"name": "university_campus",
+				"display_name": "University Campus",
+				"names": [
+					"University of {Name}",
+					"{Name} University",
+					"{District} Polytechnic"
+				],
+				"capacity_range": [
+					1000,
+					10000
+				],
+				"condition_range": [
+					40,
+					80
+				],
+				"security_range": [
+					40,
+					70
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 75,
+					"activity_level": 95
+				},
+				"amenities_probability": {
+					"lecture_theatres": 1.0,
+					"hostels": 1.0,
+					"senate_building": 1.0,
+					"sports_complex": 0.8,
+					"student_union_building": 1.0
+				}
+			},
+			{
+				"name": "park",
+				"display_name": "Public Park / Garden",
+				"names": [
+					"{Name} Park",
+					"{Name} Gardens",
+					"Freedom Park {District}",
+					"Ndubuisi Kanu Park"
+				],
+				"capacity_range": [
+					50,
+					500
+				],
+				"condition_range": [
+					40,
+					80
+				],
+				"security_range": [
+					20,
+					60
+				],
+				"base_reputation": {
+					"safety": 50,
+					"prestige": 50,
+					"activity_level": 60
+				},
+				"amenities_probability": {
+					"benches": 0.9,
+					"trees": 1.0,
+					"playground": 0.6,
+					"fountain": 0.3,
+					"picnic_area": 0.7
+				}
+			},
+			{
+				"name": "bus_terminal",
+				"display_name": "Bus Terminal / Garage",
+				"names": [
+					"{District} Bus Stop",
+					"{District} Terminal",
+					"{Name} Motor Park"
+				],
+				"capacity_range": [
+					100,
+					1000
+				],
+				"condition_range": [
+					20,
+					60
+				],
+				"security_range": [
+					10,
+					40
+				],
+				"base_reputation": {
+					"safety": 30,
+					"prestige": 20,
+					"activity_level": 100
+				},
+				"amenities_probability": {
+					"ticket_booth": 0.8,
+					"hawkers_corner": 1.0,
+					"union_office": 0.9,
+					"public_toilet": 0.5
+				}
+			},
+			{
+				"name": "stadium",
+				"display_name": "Sports Stadium",
+				"names": [
+					"{Name} Stadium",
+					"{District} Township Stadium"
+				],
+				"capacity_range": [
+					1000,
+					20000
+				],
+				"condition_range": [
+					30,
+					70
+				],
+				"security_range": [
+					40,
+					70
+				],
+				"base_reputation": {
+					"safety": 50,
+					"prestige": 60,
+					"activity_level": 80
+				},
+				"amenities_probability": {
+					"pitch": 1.0,
+					"bleachers": 1.0,
+					"changing_rooms": 0.8,
+					"floodlights": 0.6
+				}
+			}
+		]
+	},
+	"religious": {
+		"types": [
+			{
+				"name": "mega_church",
+				"display_name": "Mega Church Cathedral",
+				"names": [
+					"{Adjective} {Noun} Cathedral",
+					"Faith Tabernacle",
+					"Glory Dome"
+				],
+				"capacity_range": [
+					1000,
+					50000
+				],
+				"condition_range": [
+					80,
+					100
+				],
+				"security_range": [
+					50,
+					80
+				],
+				"base_reputation": {
+					"safety": 80,
+					"prestige": 85,
+					"activity_level": 90
+				},
+				"amenities_probability": {
+					"auditorium": 1.0,
+					"broadcast_studio": 0.9,
+					"bookshop": 0.8,
+					"parking_lot": 1.0,
+					"children_church": 1.0
+				}
+			},
+			{
+				"name": "street_church",
+				"display_name": "Street Corner Church",
+				"names": [
+					"Mountain of {Noun}",
+					"{Adjective} Grace Assembly",
+					"{Noun} of God Mission"
+				],
+				"capacity_range": [
+					30,
+					100
+				],
+				"condition_range": [
+					40,
+					70
+				],
+				"security_range": [
+					30,
+					60
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 40,
+					"activity_level": 70
+				},
+				"amenities_probability": {
+					"plastic_chairs": 1.0,
+					"loudspeaker": 1.0,
+					"altar": 1.0,
+					"drum_set": 0.8
+				}
+			},
+			{
+				"name": "central_mosque",
+				"display_name": "Central Mosque",
+				"names": [
+					"{District} Central Mosque",
+					"Jamia Masjid {District}"
+				],
+				"capacity_range": [
+					500,
+					2000
+				],
+				"condition_range": [
+					70,
+					95
+				],
+				"security_range": [
+					50,
+					80
+				],
+				"base_reputation": {
+					"safety": 80,
+					"prestige": 85,
+					"activity_level": 80
+				},
+				"amenities_probability": {
+					"prayer_hall": 1.0,
+					"ablution_area": 1.0,
+					"minaret": 1.0,
+					"library": 0.6
+				}
+			},
+			{
+				"name": "street_mosque",
+				"display_name": "Street Mosque",
+				"names": [
+					"Masjid {Name}",
+					"Al-Huda Mosque"
+				],
+				"capacity_range": [
+					20,
+					100
+				],
+				"condition_range": [
+					40,
+					70
+				],
+				"security_range": [
+					30,
+					60
+				],
+				"base_reputation": {
+					"safety": 60,
+					"prestige": 40,
+					"activity_level": 70
+				},
+				"amenities_probability": {
+					"loudspeaker": 1.0,
+					"ablution_area": 1.0,
+					"mats": 1.0
+				}
+			},
+			{
+				"name": "traditional_shrine",
+				"display_name": "Traditional Shrine",
+				"names": [
+					"Ile {Deity}",
+					"Ogun Shrine",
+					"Esu Grove"
+				],
+				"capacity_range": [
+					5,
+					30
+				],
+				"condition_range": [
+					30,
+					80
+				],
+				"security_range": [
+					20,
+					60
+				],
+				"base_reputation": {
+					"safety": 40,
+					"prestige": 50,
+					"activity_level": 30
+				},
+				"amenities_probability": {
+					"altar": 1.0,
+					"sacred_grove": 0.8,
+					"offering_spot": 1.0,
+					"carved_statues": 0.9
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,212 @@
+Lagos Stories
+AI-first, text-based Lagos city simulation with persistent world state and episode-driven gameplay
+Technical Brief (Discussion-phase summary) | Author: Jason Ikeokwu | Date: 2025-12-23
+Purpose: Summarize the current concept, design principles, layered simulation approach, local-LLM
+requirements, and open questions for stakeholders (developers, researchers, and investors).
+One-line concept: A Dwarf Fortress-inspired world generator and history engine for a realistic Lagos
+city, paired with Sims-like character-level play inside focused, AI-authored “instances” (episodes),
+where both player and key NPCs (including an antagonist) have meaningful agency within constrained
+rules.
+Status: Concept locked at the philosophy + loop level; detailed schemas and implementation
+specifications intentionally deferred until remaining core decisions are finalized.
+Lagos Stories | Technical Brief | Jason Ikeokwu
+1. Vision and Goals
+Lagos Stories explores how locally-run LLMs can transform simulation games by giving characters
+initiative, adaptive opposition, and emergent narrative generation—while preserving coherence through
+hard constraints and persistent world state.
+Primary goals
+• AI-first simulation: LLMs drive intent interpretation, episode framing, role-filling, opposition, and
+narrative meaning—beyond cosmetic dialogue.
+• Realistic setting: single-city Lagos world generation with no fantasy elements; should mirror real-world
+dynamics and constraints.
+• Player freedom: player can rise, disrupt, or simply get by—without a mandated progression path.
+• Coherence under freedom: novelty and agency are allowed, but always bounded by ontology,
+capabilities, costs, and consequences.
+• Local-first privacy and autonomy: all LLM inference runs locally; online access is optional and not
+required for core play.
+Non-goals (current phase)
+• High-fidelity 3D presentation (the project is intentionally text-first to maximize expressiveness and
+reduce content bottlenecks).
+• A single canonical “main quest” or authored branching story tree (emergent narrative is preferred).
+• Full-city, tick-by-tick simulation of all NPCs at all times (instances are the fidelity focus).
+Lagos Stories | Technical Brief | Jason Ikeokwu
+2. Design Principles
+Constraints with freedom
+Agency is real only when the game enforces constraints. The design therefore separates: (a) what the
+model may propose, (b) what the system will accept, and (c) what the world will remember.
+• AI proposes intent, plans, and novelty; the system adjudicates validity and commits consequences.
+• No “magic” creation: instance characters are selected from the pre-generated NPC pool; new
+permanent entities are not invented arbitrarily.
+• Capability-bound actions: characters can only do what their skills, resources, access, and relationships
+plausibly allow.
+• Costed actions: time, money, reputation, and risk exposure are always in play; no action increases all
+value dimensions at once.
+• Remembered outcomes: episodes are saved into world history; future instances reflect accumulated
+consequences.
+Text-first as a deliberate design choice
+• Text aligns naturally with LLM reasoning and generation; supports rapid iteration and high narrative
+density.
+• Rooms and scenes are treated as “stages” (lenses) inside instances, not necessarily permanent map
+tiles.
+• The prompt box is an intent interface and an interpreter: player actions can be expressed naturally; the
+system translates them into available actions.
+Lagos Stories | Technical Brief | Jason Ikeokwu
+3. Core Game Loop (DF-inspired)
+The loop is divided into slow, expensive generation phases and fast, event-driven gameplay phases.
+Phase What happens Allowed time cost Key outputs
+World Generation (World Layer) Player prompts a realistic Lagos city; sliders constrain scale and structure. AI builds the city level-by-level, including his Slow / minutes to hours acceptable Persistent city state + NPC databas
+Instance Setup (Instance Layer) Player selects (non-AI) a protagonist (direct choice or constrained random). Player prompts desired episode; AI frames Slow / seconds to minutes acceptable Episode stage: locations/rooms, cas
+resource
+Resolution & Reintegration Episode results are committed to the persistent world. Ripple effects propagate to nearby graph nodes (family/org), and Moderate / seconds to minutes acceptable Updated world state + updated NPC
+Instance Gameplay Text-first, tick-based simulation focused on a small cast. Player acts freely; AI is invoked primarily for dialogues, negoti Fast / responsive interaction State deltas: relationships, Lagos Stories | Technical Brief | Jason Ikeokwu
+4. Layered Simulation Model
+World Layer (persistent, low-fidelity)
+• Single realistic Lagos city per save/world.
+• Macro state: districts/topography, organizations, major families, economy signals,
+enforcement/pressure signals, and a complete NPC population stored in a database.
+• World generation can be intentionally slow and compute-heavy; it establishes deep context for later
+emergent stories.
+• Outside of instances, the world is not simulated at full tick fidelity; it advances through abstract updates
+and time-passing logic.
+Instance Layer (focused, high-fidelity)
+• A playable “episode” spotlighting a small cast (commonly 10–30 NPCs) drawn from the persistent NPC
+database.
+• Contains explicit outcome framing: win conditions, fail conditions, time outs; the player is not required
+to pursue any particular path.
+• Variable time scale: instances may cover a single date (fine ticks) or long arcs (e.g., a school year with
+coarse ticks/time skips).
+• Player may follow a single character across many instances (life arc) or jump between characters
+freely.
+• Antagonist is present by default as a goal-bearing opposing agent (not necessarily evil; structurally
+opposed).
+Lagos Stories | Technical Brief | Jason Ikeokwu
+5. AI Integration: Responsibilities and Boundaries
+AI responsibilities (AI-first scope)
+• World gen assistance: historically grounded formation of the city, cultural/economic texture,
+families/organizations, and NPC profiles (within slider constraints).
+• Instance framing: interpret player prompt to propose episode parameters, required roles, tensions, and
+plausible objectives/outcomes.
+• Role filling: select appropriate existing NPCs to occupy generated roles using a structured selection
+interface (tool calls).
+• Dialogue and negotiation: high-quality multi-lingual/creole/Pidgin-capable conversational behavior
+grounded in state.
+• Antagonist planning: multi-step opposition, including behind-the-scenes moves such as rumor seeding,
+social maneuvering, and strategic counteractions (coarse cadence).
+• Narrative meaning layer: translate state changes into human-readable consequences, perceptions,
+and social interpretation.
+System responsibilities (non-AI / adjudication)
+• Canonical state: the system is the source of truth for all persistent data.
+• Action space definition: what actions exist, prerequisites, costs, and mechanical outcomes.
+• Validation: all AI outputs must be validated (format, plausibility, capability-bound constraints).
+• Persistence: committing episode deltas to the world layer; writing immutable episode history.
+• Fairness and determinism where needed: character selection is non-AI; filters and constrained random
+selection are inspectable.
+Key tension to resolve (not yet locked)
+• How often should LLMs run during instance gameplay? Event-driven (dialogue + major decisions) vs
+background cognition for key agents.
+• How much off-screen antagonism should occur between ticks, and how is it surfaced to the player
+without feeling arbitrary?
+• What is the minimal set of non-LLM heuristics that keeps the sim stable, while reserving LLM usage for
+initiative and meaning?
+Lagos Stories | Technical Brief | Jason Ikeokwu
+6. Simulation & World Modeling (What must exist)
+NPC minimum model (persistent)
+• Profile: traits, alignment tendencies, background, voice/style, and adjustable slider-driven distributions
+at world-gen.
+• Resources: money/assets, obligations, access to services, and dependency load (e.g., family
+responsibilities).
+• Skills: competence vectors that gate actions and influence outcomes.
+• Relationships: ties to other NPCs and entities (families, organizations); includes strength, trust, and
+historical baggage.
+• Affiliations: membership/roles in organizations; loyalties can shift over time.
+• History: episode participation and notable events influence future behavior and social perception.
+Entities beyond NPCs
+• City: districts/topography, macro signals (stability, economic throughput, enforcement intensity), and
+historical milestones.
+• Organizations: businesses, social groups, families, institutions; each has resources, influence,
+membership, and internal dynamics.
+• Instance stages: rooms/locations for text play; these are constructed per episode as a lens for
+interaction.
+• Episode history: immutable records that allow the world to “remember” and evolve.
+Value systems by entity type (conceptual framework)
+Different entity types optimize different value systems. A shared set of universal value axes exists
+(resources, influence, information, legitimacy/trust, stability/exposure), but each entity weights them
+differently.
+• City: stability, legitimacy, resilience, economic throughput.
+• Organization: continuity, influence, loyalty, operational capacity, risk management.
+• Individual NPC: survival, belonging, autonomy, status, meaning (with personality/culture modifiers).
+Lagos Stories | Technical Brief | Jason Ikeokwu
+7. Local LLM-First System Requirements
+Because Lagos Stories is designed for local inference, practical system requirements are defined by
+model size, quantization level, and how frequently the game invokes LLM calls (event-driven vs
+continuous cognition).
+Tier Target local model Gameplay capability Hardware guidance (examples)
+Minimum playable 7B-class, 4-bit (Q4) inference Dialogue, event narration, basic role filling; limited planning for a small number of key agents. Apple Silicon 16GB unified; or NVIDIA Recommended Premium local GPU ~8G
+14B-class, 4-bit (Q4) inference Stronger instance framing and antagonist planning; more coherent long conversations; richer e Apple Silicon 24GB unified (e.g., M4 Pro 24GB);
+inference Deep long-horizon planning and more simultaneous “agentic” characters; best narrative consis Apple Silicon 48GB+ unified; or NVIDIA GPU 24
+30B–34B-class, 4-bit (Q4) Storage and operational considerations
+• Model storage: reserve 50–150GB free for local models, variants, and caches (more if multiple tiers are
+supported).
+• Latency budgeting: avoid per-tick LLM calls for all NPCs; keep continuous cognition limited to
+antagonist + a few key agents.
+• World gen is allowed to be slow; gameplay inside instances should remain responsive.
+Workarounds to reduce local compute requirements
+• Downloadable pre-generated worlds: players can download worlds generated by other users (or
+curated packs) to skip expensive world generation on weaker machines.
+• World portability: worlds are serialized as shareable artifacts (city state + NPC database + history
+baseline).
+• Instance frameworks: shareable episode templates that define roles, constraints, and required NPC
+archetypes; local machines only need to check whether the world contains sufficient matching NPCs
+and then fill roles deterministically (no heavy generation).
+• Hybrid mode: low-spec machines run a smaller model (7B) for dialogue while relying on pre-generated
+world/instance artifacts for depth; higher tiers unlock richer planning and more agentic NPC behavior.
+Lagos Stories | Technical Brief | Jason Ikeokwu
+8. Knowns, Unknowns, and Key Questions
+Knowns (agreed direction)
+• Text-first gameplay; isometric/graphical presentation is optional and secondary.
+• Two primary layers: persistent world layer + focused instance layer.
+• All NPCs are generated at world launch and persisted; instances pull from the existing NPC pool.
+• Player may stay with one character for life arcs or jump between characters freely.
+• Instances can vary in scope and tick granularity (single date vs school-year arcs).
+• Antagonist is present by default as a goal-bearing opposing agent.
+• All LLM inference is local-first; online services not required for core gameplay.
+• Character selection UI should be non-AI (deterministic, inspectable filters and constrained random).
+• AI can identify required roles and fill them by selecting from the existing NPC pool.
+Unknowns (to lock before implementation detail)
+• Exact definition of “win/fail” in a world that supports ‘just get by’ play; how outcomes are communicated
+without forcing a goal mindset.
+• How antagonists operate off-screen: cadence, visibility, and fairness boundaries.
+• The right balance between rule-based tick logic and LLM-driven decisions for key agents.
+• How to represent multi-entity value systems consistently while keeping them simple enough for
+iteration.
+• World time advancement rules between instances: what updates are abstract vs simulated.
+Key questions by category (discussion prompts)
+• Gameplay: What are the minimum verbs/actions the text engine must support to make agency real
+(without exploding scope)?
+• AI usage: Which actions require LLM reasoning versus deterministic resolution? What are acceptable
+failure/repair behaviors when outputs are invalid?
+• Fairness: How do we ensure that off-screen antagonist actions feel earned and not arbitrary? What
+evidence is surfaced to the player?
+• Persistence: How far do ripple effects propagate on resolution (direct participants vs 2–3 graph nodes
+away)?
+• Performance: What is the target cadence and concurrency for “agentic” characters per instance given
+local-only inference?
+Lagos Stories | Technical Brief | Jason Ikeokwu
+9. Suggested Prototype Path
+Given the concept is AI-first, the first prototype should validate the instance loop, antagonist opposition,
+and persistence—before scaling world size or adding visuals.
+Prototype milestones (concept-aligned)
+• Text-first instance runner: rooms, items, NPC presence, and a basic tick loop.
+• Non-AI character picker: constrained random selection from a seeded NPC set.
+• Instance framing: prompt -> cast roles -> antagonist assigned -> start state produced.
+• Dialogue + negotiation events mediated by local LLM calls (event-driven).
+• Resolution pipeline: commit deltas to persistent profiles; episode recorded; re-open another instance
+and observe continuity.
+• Add limited off-screen antagonist actions at coarse cadence (e.g., rumor move between ticks) with
+player-visible evidence trails.
+Candidate technology direction (discussion-phase)
+• Game interface: text-first; engine choice can remain flexible (Godot 4 discussed previously as a viable
+host).
+• Local LLM runtime: local model server approach to swap models and quantizations cleanly.
+• Persistence: database-backed NPC and world state; episodic history log as immutable records.
+Lagos Stories | Technical Brief | Jason Ikeokwu

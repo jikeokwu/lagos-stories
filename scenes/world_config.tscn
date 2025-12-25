@@ -1,0 +1,288 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnk3yb5wm3iu7"]
+
+[ext_resource type="Script" path="res://scripts/ui/world_config.gd" id="1_world_config"]
+
+[node name="WorldConfig" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_world_config")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.12, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 30.0
+offset_right = -50.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.6, 1)
+theme_override_font_sizes/font_size = 32
+text = "Configure New World"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Choose a preset optimized for your hardware, or customize all parameters."
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ConfigPanel" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="ModeSelectionContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel"]
+layout_mode = 2
+
+[node name="ModeSelectionLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/ModeSelectionContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Configuration Mode"
+
+[node name="ModeSelection" type="OptionButton" parent="VBoxContainer/ScrollContainer/ConfigPanel/ModeSelectionContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+selected = 0
+
+[node name="CommonFieldsContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="WorldNameContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer"]
+layout_mode = 2
+
+[node name="WorldNameLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer/WorldNameContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "World Name"
+
+[node name="WorldNameEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer/WorldNameContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "Enter world name..."
+
+[node name="SeedContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer"]
+layout_mode = 2
+
+[node name="SeedLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer/SeedContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Random Seed"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer/SeedContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SeedEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer/SeedContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Random seed..."
+
+[node name="RandomSeedButton" type="Button" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer/SeedContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Randomize"
+
+[node name="SeedHint" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CommonFieldsContainer/SeedContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Same seed = identical world. Useful for testing."
+
+[node name="PresetContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PresetLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/PresetContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Select Preset"
+
+[node name="PresetDropdown" type="OptionButton" parent="VBoxContainer/ScrollContainer/ConfigPanel/PresetContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="PresetDescription" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/ConfigPanel/PresetContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "Select a preset to see description..."
+
+[node name="PresetSpecLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/PresetContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.85, 0.6, 1)
+theme_override_font_sizes/font_size = 13
+text = "Spec requirements will appear here..."
+
+[node name="CustomContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+visible = false
+
+[node name="TargetNPCsContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer"]
+layout_mode = 2
+
+[node name="TargetNPCsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/TargetNPCsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Target NPCs: 1000"
+
+[node name="TargetNPCsSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/TargetNPCsContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+min_value = 100.0
+max_value = 10000.0
+step = 50.0
+value = 1000.0
+
+[node name="TargetNPCsHint" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/TargetNPCsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Total number of NPCs to generate. Higher = more complex world, longer generation time."
+
+[node name="FamilyCompositionContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer"]
+layout_mode = 2
+
+[node name="FamilyCompositionLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/FamilyCompositionContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Singles Ratio: 30% (Families: 70%)"
+
+[node name="FamilyCompositionSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/FamilyCompositionContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 5.0
+value = 30.0
+
+[node name="FamilyCompositionHint" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/FamilyCompositionContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Percentage of NPCs who are single (not in families). Higher = more independent NPCs."
+
+[node name="DistrictDensityContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer"]
+layout_mode = 2
+
+[node name="DistrictDensityLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/DistrictDensityContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "District Density: 100%"
+
+[node name="DistrictDensitySlider" type="HSlider" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/DistrictDensityContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+min_value = 50.0
+max_value = 150.0
+step = 5.0
+value = 100.0
+
+[node name="DistrictDensityHint" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/DistrictDensityContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Multiplier for district count (calculated from NPC count). 100% = standard density."
+
+[node name="OrgDensityContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer"]
+layout_mode = 2
+
+[node name="OrgDensityLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/OrgDensityContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Organization Density: 100%"
+
+[node name="OrgDensitySlider" type="HSlider" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/OrgDensityContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+min_value = 50.0
+max_value = 150.0
+step = 5.0
+value = 100.0
+
+[node name="OrgDensityHint" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/OrgDensityContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Multiplier for organization count (need-based). 100% = standard density."
+
+[node name="LocationDensityContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer"]
+layout_mode = 2
+
+[node name="LocationDensityLabel" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/LocationDensityContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Location Density: 100%"
+
+[node name="LocationDensitySlider" type="HSlider" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/LocationDensityContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+min_value = 50.0
+max_value = 150.0
+step = 5.0
+value = 100.0
+
+[node name="LocationDensityHint" type="Label" parent="VBoxContainer/ScrollContainer/ConfigPanel/CustomContainer/LocationDensityContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Multiplier for location count (need-based). 100% = standard density."
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "Cancel"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="GenerateButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "Generate World"

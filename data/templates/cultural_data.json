@@ -1,0 +1,790 @@
+{
+  "_readme": "Cultural data for Nigerian city simulation - tribes, languages, customs, values",
+  "_version": "1.0",
+  "tribes": {
+    "yoruba": {
+      "name": "Yoruba",
+      "population_percentage": 60,
+      "primary_language": "Yoruba",
+      "common_languages": [
+        "English",
+        "Yoruba",
+        "Pidgin"
+      ],
+      "dominant_religion": "Christian",
+      "religion_distribution": {
+        "Christian": 70,
+        "Muslim": 25,
+        "Traditional": 5
+      },
+      "common_values": {
+        "respect_for_elders": [
+          70,
+          100
+        ],
+        "family_loyalty": [
+          70,
+          100
+        ],
+        "religious_devotion": [
+          50,
+          90
+        ],
+        "entrepreneurship": [
+          60,
+          90
+        ],
+        "education_value": [
+          70,
+          95
+        ]
+      },
+      "traditional_roles": [
+        "Oba",
+        "Chief",
+        "Babalawo",
+        "Iyaloja"
+      ],
+      "festivals": [
+        "Eyo Festival",
+        "Ojude Oba",
+        "Oro Festival (community-specific)"
+      ],
+      "common_greetings": [
+        "E kaasan",
+        "E kaale",
+        "Bawo ni?",
+        "Pele o"
+      ],
+      "typical_occupations": [
+        "Trading",
+        "Business",
+        "Arts",
+        "Government",
+        "Transportation"
+      ]
+    },
+    "igbo": {
+      "name": "Igbo",
+      "population_percentage": 25,
+      "primary_language": "Igbo",
+      "common_languages": [
+        "English",
+        "Igbo",
+        "Pidgin"
+      ],
+      "dominant_religion": "Christian",
+      "religion_distribution": {
+        "Christian": 85,
+        "Traditional": 10,
+        "Muslim": 5
+      },
+      "common_values": {
+        "respect_for_elders": [
+          70,
+          100
+        ],
+        "family_loyalty": [
+          80,
+          100
+        ],
+        "entrepreneurship": [
+          80,
+          100
+        ],
+        "education_value": [
+          80,
+          100
+        ],
+        "independence": [
+          70,
+          95
+        ]
+      },
+      "traditional_roles": [
+        "Igwe",
+        "Ozo title holder",
+        "Dibia",
+        "Umuada (women's council)"
+      ],
+      "festivals": [
+        "New Yam Festival",
+        "Iwa Ji",
+        "Iri Ji (regional variants)"
+      ],
+      "common_greetings": [
+        "Kedu",
+        "Ndewo",
+        "K'odi?"
+      ],
+      "typical_occupations": [
+        "Trading",
+        "Manufacturing",
+        "Technology",
+        "Import/Export",
+        "Logistics"
+      ]
+    },
+    "hausa": {
+      "name": "Hausa",
+      "population_percentage": 10,
+      "primary_language": "Hausa",
+      "common_languages": [
+        "English",
+        "Hausa",
+        "Pidgin"
+      ],
+      "dominant_religion": "Muslim",
+      "religion_distribution": {
+        "Muslim": 95,
+        "Christian": 5
+      },
+      "common_values": {
+        "respect_for_elders": [
+          80,
+          100
+        ],
+        "family_loyalty": [
+          80,
+          100
+        ],
+        "religious_devotion": [
+          80,
+          100
+        ],
+        "modesty": [
+          70,
+          95
+        ],
+        "hospitality": [
+          80,
+          100
+        ]
+      },
+      "traditional_roles": [
+        "Emir",
+        "Mallam",
+        "Sarki"
+      ],
+      "festivals": [
+        "Durbar",
+        "Eid celebrations"
+      ],
+      "common_greetings": [
+        "Sannu",
+        "Ina kwana?",
+        "Lafiya?"
+      ],
+      "typical_occupations": [
+        "Trading",
+        "Security",
+        "Transportation",
+        "Livestock",
+        "Food vending"
+      ]
+    },
+    "edo": {
+      "name": "Edo",
+      "population_percentage": 4,
+      "primary_language": "Edo",
+      "common_languages": [
+        "English",
+        "Edo",
+        "Pidgin"
+      ],
+      "dominant_religion": "Christian",
+      "religion_distribution": {
+        "Christian": 75,
+        "Traditional": 20,
+        "Muslim": 5
+      },
+      "common_values": {
+        "respect_for_elders": [
+          75,
+          100
+        ],
+        "family_loyalty": [
+          75,
+          100
+        ],
+        "traditional_respect": [
+          60,
+          90
+        ],
+        "artistic_expression": [
+          60,
+          90
+        ]
+      },
+      "traditional_roles": [
+        "Oba (Benin Kingdom)",
+        "Iyoba",
+        "Chiefs"
+      ],
+      "festivals": [
+        "Igue Festival",
+        "Ugie ceremonies (seasonal)"
+      ],
+      "common_greetings": [
+        "Koyo",
+        "Wa do"
+      ],
+      "typical_occupations": [
+        "Arts and Crafts",
+        "Trading",
+        "Construction",
+        "Hospitality"
+      ]
+    },
+    "other": {
+      "name": "Other Nigerian Tribes",
+      "population_percentage": 1,
+      "tribes_included": [
+        "Ijaw",
+        "Urhobo",
+        "Itsekiri",
+        "Fulani",
+        "Ibibio/Efik",
+        "Tiv",
+        "Kanuri"
+      ],
+      "common_languages": [
+        "English",
+        "Pidgin",
+        "Various"
+      ],
+      "religion_distribution": {
+        "Christian": 70,
+        "Muslim": 25,
+        "Traditional": 5
+      },
+      "notes": [
+        "Lagos is highly multi-ethnic due to migration; minority groups concentrate around trade clusters, transport corridors, and specific neighborhoods.",
+        "Minority groups may be bilingual or trilingual (native language + Pidgin + English)."
+      ]
+    }
+  },
+  "languages": {
+    "english": {
+      "name": "English",
+      "proficiency_by_education": {
+        "none": [
+          20,
+          50
+        ],
+        "primary": [
+          40,
+          70
+        ],
+        "secondary": [
+          60,
+          90
+        ],
+        "undergraduate": [
+          80,
+          100
+        ],
+        "postgraduate": [
+          90,
+          100
+        ]
+      },
+      "usage_contexts": [
+        "professional",
+        "formal_education",
+        "official_documents",
+        "middle_upper_class_home"
+      ],
+      "code_switching": {
+        "with_pidgin": "very_common",
+        "with_native_languages": "common"
+      }
+    },
+    "pidgin": {
+      "name": "Nigerian Pidgin",
+      "proficiency_by_education": {
+        "none": [
+          60,
+          95
+        ],
+        "primary": [
+          70,
+          100
+        ],
+        "secondary": [
+          70,
+          100
+        ],
+        "undergraduate": [
+          60,
+          95
+        ],
+        "postgraduate": [
+          50,
+          90
+        ]
+      },
+      "usage_contexts": [
+        "street",
+        "informal_social",
+        "market_trade",
+        "transport"
+      ],
+      "notes": [
+        "Pidgin is a key bridge language across ethnic groups.",
+        "Professional settings often suppress Pidgin, but it remains common in informal team interactions."
+      ]
+    },
+    "yoruba": {
+      "name": "Yoruba",
+      "proficiency_by_education": {
+        "none": [
+          30,
+          70
+        ],
+        "primary": [
+          50,
+          90
+        ],
+        "secondary": [
+          50,
+          85
+        ],
+        "undergraduate": [
+          40,
+          80
+        ],
+        "postgraduate": [
+          35,
+          75
+        ]
+      },
+      "usage_contexts": [
+        "home",
+        "community_elder_interaction",
+        "local_ceremonies",
+        "traditional_events"
+      ],
+      "dialect_notes": [
+        "Urban Lagos Yoruba often includes loanwords and heavy code-switching."
+      ]
+    },
+    "igbo": {
+      "name": "Igbo",
+      "proficiency_by_education": {
+        "none": [
+          20,
+          55
+        ],
+        "primary": [
+          35,
+          75
+        ],
+        "secondary": [
+          35,
+          70
+        ],
+        "undergraduate": [
+          30,
+          65
+        ],
+        "postgraduate": [
+          25,
+          60
+        ]
+      },
+      "usage_contexts": [
+        "home",
+        "ethnic_association_meetings",
+        "family_calls"
+      ],
+      "dialect_notes": [
+        "Urban Igbo usage may be reduced in second-generation Lagos-born families."
+      ]
+    },
+    "hausa": {
+      "name": "Hausa",
+      "proficiency_by_education": {
+        "none": [
+          30,
+          70
+        ],
+        "primary": [
+          40,
+          85
+        ],
+        "secondary": [
+          40,
+          80
+        ],
+        "undergraduate": [
+          35,
+          75
+        ],
+        "postgraduate": [
+          30,
+          70
+        ]
+      },
+      "usage_contexts": [
+        "home",
+        "community_trade_clusters",
+        "religious_settings"
+      ],
+      "dialect_notes": [
+        "Hausa is often maintained strongly within Hausa/Fulani communities."
+      ]
+    }
+  },
+  "social_norms": {
+    "respect_for_elders": {
+      "importance": "very_high",
+      "value_range": [
+        70,
+        100
+      ],
+      "expressions": [
+        "Use honorifics/titles (e.g., Sir/Ma, Uncle/Aunty) even for non-relatives",
+        "Standing or greeting rituals in formal settings",
+        "Deference in disagreements, especially in public"
+      ]
+    },
+    "family_obligation": {
+      "importance": "very_high",
+      "value_range": [
+        75,
+        100
+      ],
+      "typical_expectations": [
+        "Support parents/extended family financially when able",
+        "Host relatives during migration or hardship",
+        "Family reputation influences romantic and business decisions"
+      ]
+    },
+    "community_networking": {
+      "importance": "high",
+      "value_range": [
+        60,
+        95
+      ],
+      "notes": [
+        "Informal referrals and introductions drive jobs and opportunities.",
+        "Social capital is frequently exchanged through favors, mentorship, and patronage."
+      ]
+    },
+    "entrepreneurship": {
+      "importance": "high",
+      "value_range": [
+        60,
+        95
+      ],
+      "notes": [
+        "Side-hustles and micro-enterprises are common across classes.",
+        "Business ownership is a major pathway to mobility and status."
+      ]
+    },
+    "informal_economy": {
+      "importance": "critical",
+      "participation_rate_estimate": 0.6,
+      "notes": [
+        "Informal work and cash transactions remain prevalent.",
+        "Market associations and unions often regulate day-to-day operations."
+      ]
+    },
+    "religious_life": {
+      "importance": "very_high",
+      "church_attendance": "high_among_christians",
+      "mosque_attendance": "high_among_muslims",
+      "interfaith_relations": "generally_tolerant",
+      "notes": [
+        "Religious organizations often provide welfare, matchmaking, mentorship, and conflict mediation.",
+        "Prosperity-oriented Christianity and reformist Islam can shape attitudes toward wealth, charity, and discipline."
+      ]
+    },
+    "status_and_reputation": {
+      "importance": "high",
+      "value_range": [
+        55,
+        95
+      ],
+      "signals": [
+        "Education credentials",
+        "Neighborhood/district",
+        "Visible consumption (phones, cars, fashion)",
+        "Religious standing",
+        "Family name and associations"
+      ]
+    },
+    "gender_and_relationship_expectations": {
+      "importance": "high",
+      "notes": [
+        "Norms vary by religion, class, and family conservatism.",
+        "Public reputation (especially for women) can significantly impact opportunity and relationship outcomes."
+      ]
+    }
+  },
+  "economic_classes": {
+    "upper_class": {
+      "percentage": 5,
+      "typical_occupations": [
+        "CEO",
+        "Politician",
+        "Large Business Owner",
+        "Executive",
+        "Partner (Law/Finance)"
+      ],
+      "typical_districts": [
+        "Waterfront District",
+        "Island District",
+        "Peninsula Heights"
+      ],
+      "wealth_range": [
+        10000000,
+        1000000000
+      ],
+      "education_level": [
+        "undergraduate",
+        "postgraduate"
+      ],
+      "common_values": {
+        "ambition": [
+          60,
+          95
+        ],
+        "education_value": [
+          70,
+          100
+        ],
+        "social_status_concern": [
+          70,
+          100
+        ],
+        "global_outlook": [
+          60,
+          95
+        ],
+        "privacy": [
+          50,
+          90
+        ]
+      },
+      "consumption_patterns": [
+        "Private schooling and international exposure are common.",
+        "Security and controlled access (gated living, private drivers) are more likely."
+      ]
+    },
+    "middle_class": {
+      "percentage": 25,
+      "typical_occupations": [
+        "Manager",
+        "Professional",
+        "Business Owner",
+        "Senior Civil Servant",
+        "Engineer",
+        "Medical staff"
+      ],
+      "typical_districts": [
+        "Central District",
+        "Commercial Zone",
+        "University Area"
+      ],
+      "wealth_range": [
+        1000000,
+        10000000
+      ],
+      "education_level": [
+        "secondary",
+        "undergraduate"
+      ],
+      "common_values": {
+        "ambition": [
+          50,
+          80
+        ],
+        "education_value": [
+          70,
+          95
+        ],
+        "family_security": [
+          70,
+          95
+        ],
+        "stability": [
+          60,
+          90
+        ],
+        "reputation_management": [
+          55,
+          90
+        ]
+      },
+      "consumption_patterns": [
+        "Balancing comfort with financial pressure is common.",
+        "Strong desire for upward mobility; may invest heavily in education and business."
+      ]
+    },
+    "working_class": {
+      "percentage": 45,
+      "typical_occupations": [
+        "Artisan",
+        "Trader",
+        "Driver",
+        "Teacher",
+        "Nurse",
+        "Security Guard",
+        "Retail worker"
+      ],
+      "typical_districts": [
+        "Market District",
+        "Industrial Area",
+        "Old Town"
+      ],
+      "wealth_range": [
+        200000,
+        1000000
+      ],
+      "education_level": [
+        "primary",
+        "secondary"
+      ],
+      "common_values": {
+        "hard_work": [
+          70,
+          95
+        ],
+        "family_loyalty": [
+          80,
+          100
+        ],
+        "survival": [
+          70,
+          100
+        ],
+        "religious_devotion": [
+          55,
+          95
+        ],
+        "risk_tolerance": [
+          45,
+          85
+        ]
+      },
+      "consumption_patterns": [
+        "High sensitivity to inflation and transport costs.",
+        "Community and religious networks are key safety nets."
+      ]
+    },
+    "lower_class": {
+      "percentage": 25,
+      "typical_occupations": [
+        "Laborer",
+        "Street Vendor",
+        "Cleaner",
+        "Unemployed",
+        "Informal assistant",
+        "Waste collector"
+      ],
+      "typical_districts": [
+        "Riverside Slums",
+        "Factory District",
+        "Shanty Town"
+      ],
+      "wealth_range": [
+        0,
+        200000
+      ],
+      "education_level": [
+        "none",
+        "primary"
+      ],
+      "common_values": {
+        "survival": [
+          80,
+          100
+        ],
+        "family_loyalty": [
+          80,
+          100
+        ],
+        "day_to_day_focus": [
+          80,
+          100
+        ],
+        "informal_networking": [
+          70,
+          100
+        ],
+        "risk_tolerance": [
+          55,
+          95
+        ]
+      },
+      "consumption_patterns": [
+        "Income is volatile; debt and informal loans are common.",
+        "Security concerns and local power brokers can affect daily life."
+      ]
+    }
+  },
+  "education_system": {
+    "levels": [
+      "none",
+      "primary",
+      "secondary",
+      "undergraduate",
+      "postgraduate"
+    ],
+    "structure_notes": [
+      "Education access is stratified by class; private schooling increases outcomes but is costly.",
+      "Apprenticeship and vocational pathways are common for trades, even among those with secondary education."
+    ],
+    "typical_attainment_by_class": {
+      "upper_class": {
+        "secondary_completion": 0.98,
+        "undergraduate_completion": 0.75,
+        "postgraduate_completion": 0.35
+      },
+      "middle_class": {
+        "secondary_completion": 0.85,
+        "undergraduate_completion": 0.35,
+        "postgraduate_completion": 0.08
+      },
+      "working_class": {
+        "secondary_completion": 0.55,
+        "undergraduate_completion": 0.08,
+        "postgraduate_completion": 0.01
+      },
+      "lower_class": {
+        "secondary_completion": 0.25,
+        "undergraduate_completion": 0.01,
+        "postgraduate_completion": 0.0
+      }
+    },
+    "english_proficiency_link": "English proficiency correlates strongly with education level, but Pidgin remains widely used across classes."
+  },
+  "customs": {
+    "greetings_and_titles": {
+      "notes": [
+        "Titles and relational honorifics (Aunty/Uncle) are widely used for respect and social harmony.",
+        "Greeting rituals are strongest in interactions with elders, religious leaders, and community figures."
+      ]
+    },
+    "money_and_gifting": {
+      "notes": [
+        "Gift-giving during ceremonies (weddings, funerals, naming ceremonies) is common.",
+        "Public generosity can function as reputation-building, especially among elites and religious communities."
+      ]
+    },
+    "conflict_and_resolution": {
+      "notes": [
+        "Conflicts often resolve through intermediaries: elders, religious leaders, family heads, or respected community members.",
+        "Public confrontations can be avoided to prevent reputation damage, especially in tightly-knit neighborhoods."
+      ]
+    },
+    "migration_and_mobility": {
+      "notes": [
+        "Internal migration (from other states) is a constant feature of city life.",
+        "International migration aspirations may appear as a strong driver in middle and upper classes ('japa' motivation)."
+      ]
+    }
+  }
+}

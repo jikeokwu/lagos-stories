@@ -1,0 +1,259 @@
+[gd_scene load_steps=2 format=3 uid="uid://world_summary_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/world_summary.gd" id="1_world_summary"]
+
+[node name="WorldSummary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_world_summary")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.12, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 30.0
+offset_right = -50.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.6, 1)
+theme_override_font_sizes/font_size = 32
+text = "World Generation Complete"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContentPanel" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="WorldInfoContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ContentPanel"]
+layout_mode = 2
+
+[node name="WorldNameLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/WorldInfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 24
+text = "World Name"
+
+[node name="CreatedDateLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/WorldInfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Created: --"
+
+[node name="SeedLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/WorldInfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Seed: --"
+
+[node name="StatisticsContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ContentPanel"]
+layout_mode = 2
+
+[node name="StatisticsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "Statistics"
+
+[node name="StatsGrid" type="GridContainer" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+
+[node name="NPCsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "NPCs:"
+
+[node name="NPCsValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "0"
+
+[node name="FamiliesLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "Families:"
+
+[node name="FamiliesValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "0"
+
+[node name="DistrictsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "Districts:"
+
+[node name="DistrictsValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "0"
+
+[node name="OrganizationsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "Organizations:"
+
+[node name="OrganizationsValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "0"
+
+[node name="LocationsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "Locations:"
+
+[node name="LocationsValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/StatisticsContainer/StatsGrid"]
+layout_mode = 2
+text = "0"
+
+[node name="SocialNetworkContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ContentPanel"]
+layout_mode = 2
+
+[node name="SocialNetworkLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/SocialNetworkContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "Social Network"
+
+[node name="RelationshipsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/SocialNetworkContainer"]
+layout_mode = 2
+text = "Total Relationships:"
+
+[node name="RelationshipsValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/SocialNetworkContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="AvgRelationshipsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/SocialNetworkContainer"]
+layout_mode = 2
+text = "Average per NPC:"
+
+[node name="AvgRelationshipsValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/SocialNetworkContainer"]
+layout_mode = 2
+text = "0.0"
+
+[node name="HistoryContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ContentPanel"]
+layout_mode = 2
+
+[node name="HistoryLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/HistoryContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "History"
+
+[node name="EventsLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/HistoryContainer"]
+layout_mode = 2
+text = "Events:"
+
+[node name="EventsValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/HistoryContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="MemoriesLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/HistoryContainer"]
+layout_mode = 2
+text = "Memories:"
+
+[node name="MemoriesValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/HistoryContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="GenerationInfoContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ContentPanel"]
+layout_mode = 2
+
+[node name="GenerationInfoLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/GenerationInfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "Generation Info"
+
+[node name="GenerationTimeLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/GenerationInfoContainer"]
+layout_mode = 2
+text = "Total Time:"
+
+[node name="GenerationTimeValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/GenerationInfoContainer"]
+layout_mode = 2
+text = "0.00 seconds"
+
+[node name="TimingsText" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/ContentPanel/GenerationInfoContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 150)
+bbcode_enabled = true
+text = "Phase timings..."
+
+[node name="ValidationContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/ContentPanel"]
+layout_mode = 2
+
+[node name="ValidationLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/ValidationContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "Validation"
+
+[node name="IssuesFoundLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/ValidationContainer"]
+layout_mode = 2
+text = "Issues Found:"
+
+[node name="IssuesFoundValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/ValidationContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="IssuesFixedLabel" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/ValidationContainer"]
+layout_mode = 2
+text = "Issues Fixed:"
+
+[node name="IssuesFixedValue" type="Label" parent="VBoxContainer/ScrollContainer/ContentPanel/ValidationContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "Back to Worlds"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="GenerateAnotherButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "Generate Another"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="EnterChroniclesButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "Enter Chronicles"
+
