@@ -394,4 +394,3 @@ func _on_refresh_pressed():
 
 func _on_back_pressed():
 	GameState.exit_chronicles()
-

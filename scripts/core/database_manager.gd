@@ -414,13 +414,27 @@ func get_npcs_at_location(location_id: String) -> Array:
 # RELATIONSHIP OPERATIONS
 # ============================================================
 
-## Create a relationship (directional)
+## Create a relationship (directional, or bidirectional for symmetric types)
 func create_relationship(source_id: String, target_id: String, rel_type: String, affection: int = 0, trust: int = 0, attraction: int = 0, respect: int = 0, formed_date: String = "") -> bool:
+	# Symmetric relationship types that need both directions created
+	var symmetric_types = ["friend", "colleague", "neighbor", "acquaintance"]
+	var is_symmetric = rel_type in symmetric_types
+	
+	# Create A→B
+	var success_ab = _create_single_relationship(source_id, target_id, rel_type, affection, trust, attraction, respect, formed_date)
+	
+	# Create B→A for symmetric types
+	if is_symmetric:
+		_create_single_relationship(target_id, source_id, rel_type, affection, trust, attraction, respect, formed_date)
+	
+	return success_ab
+
+## Internal helper to create a single directional relationship
+func _create_single_relationship(source_id: String, target_id: String, rel_type: String, affection: int, trust: int, attraction: int, respect: int, formed_date: String) -> bool:
 	# Check if relationship already exists to avoid duplicates
 	var check_query = "SELECT 1 FROM relationships WHERE source_npc_id = '%s' AND target_npc_id = '%s' LIMIT 1;" % [source_id, target_id]
 	if db.query(check_query) and db.query_result and db.query_result.size() > 0:
-		# Relationship already exists, skip
-		return true
+		return true  # Already exists
 	
 	var data = {
 		"source_npc_id": source_id,
@@ -432,7 +446,6 @@ func create_relationship(source_id: String, target_id: String, rel_type: String,
 		"respect": respect
 	}
 	
-	# Add formed_date if provided
 	if not formed_date.is_empty():
 		data["formed_date"] = formed_date
 	
