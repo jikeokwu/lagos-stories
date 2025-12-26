@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2sqrwkc4e5pc"]
 
-[ext_resource type="Script" path="res://scripts/ui/chronicles.gd" id="1_chronicles"]
+[ext_resource type="Script" path="res://scripts/chronicles/chronicles.gd" id="1_chronicles"]
 
 [node name="Chronicles" type="Control"]
 layout_mode = 3

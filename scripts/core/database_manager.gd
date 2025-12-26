@@ -504,6 +504,13 @@ func calculate_attraction(source_id: String, target_id: String) -> int:
 	
 	return clampi(final_attraction, -100, 100)
 
+## Get all relationships
+func get_all_relationships() -> Array:
+	var query = "SELECT * FROM relationships;"
+	if not db.query(query):
+		return []
+	return db.query_result if db.query_result else []
+
 ## Get all relationships for an NPC (both outgoing and incoming)
 func get_npc_relationships(npc_id: String) -> Dictionary:
 	var query_out = "SELECT * FROM relationships WHERE source_npc_id = '%s';" % npc_id
@@ -516,6 +523,33 @@ func get_npc_relationships(npc_id: String) -> Dictionary:
 		"outgoing": outgoing if outgoing else [], # What this NPC feels about others
 		"incoming": incoming if incoming else []   # What others feel about this NPC
 	}
+
+## Get relationships for an NPC (returns array format expected by chronicles)
+func get_relationships_for_npc(npc_id: String) -> Array:
+	var query_out = "SELECT * FROM relationships WHERE source_npc_id = '%s';" % npc_id
+	var query_in = "SELECT * FROM relationships WHERE target_npc_id = '%s';" % npc_id
+	
+	var relationships = []
+	
+	# Get outgoing relationships (this NPC -> others)
+	if db.query(query_out) and db.query_result:
+		var outgoing_results = db.query_result.duplicate()
+		for rel in outgoing_results:
+			var formatted_rel = rel.duplicate()
+			formatted_rel["npc_b_id"] = rel.get("target_npc_id", "")
+			formatted_rel["relationship_type"] = rel.get("type", "unknown")
+			relationships.append(formatted_rel)
+	
+	# Get incoming relationships (others -> this NPC)
+	if db.query(query_in) and db.query_result:
+		var incoming_results = db.query_result.duplicate()
+		for rel in incoming_results:
+			var formatted_rel = rel.duplicate()
+			formatted_rel["npc_b_id"] = rel.get("source_npc_id", "")
+			formatted_rel["relationship_type"] = rel.get("type", "unknown")
+			relationships.append(formatted_rel)
+	
+	return relationships
 
 ## Get relationship between two NPCs (directional)
 func get_relationship(source_id: String, target_id: String) -> Dictionary:
@@ -747,7 +781,49 @@ func get_event(event_id: String) -> Dictionary:
 		if key in event and event[key] is String:
 			event[key] = JSON.parse_string(event[key])
 	
+	# Map summary to description for chronicles compatibility
+	if "summary" in event:
+		event["description"] = event["summary"]
+	
+	# Get participants
+	var participants_query = "SELECT entity_id FROM event_participants WHERE event_id = '%s' AND entity_type = 'npc';" % event_id
+	if db.query(participants_query) and db.query_result:
+		var participants = []
+		for p in db.query_result:
+			participants.append(p.get("entity_id", ""))
+		event["participants"] = participants
+	else:
+		event["participants"] = []
+	
 	return event
+
+## Get all events
+func get_all_events() -> Array:
+	var query = "SELECT * FROM events ORDER BY timestamp DESC;"
+	var results = db.query(query)
+	
+	# Parse JSON fields and add participants
+	if results:
+		for event in results:
+			for key in ["details", "impact", "consequences", "affected_nodes"]:
+				if key in event and event[key] is String:
+					event[key] = JSON.parse_string(event[key])
+			
+			# Map summary to description for chronicles compatibility
+			if "summary" in event:
+				event["description"] = event["summary"]
+			
+			# Get participants for this event
+			var participants_query = "SELECT entity_id FROM event_participants WHERE event_id = '%s' AND entity_type = 'npc';" % event.get("id", "")
+			if db.query(participants_query) and db.query_result:
+				var participants = []
+				for p in db.query_result:
+					participants.append(p.get("entity_id", ""))
+				event["participants"] = participants
+			else:
+				event["participants"] = []
+	
+	return results if results else []
 
 ## Get recent events (limit by count)
 func get_recent_events(limit: int = 50) -> Array:
