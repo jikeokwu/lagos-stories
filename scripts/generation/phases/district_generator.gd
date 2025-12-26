@@ -63,7 +63,7 @@ func generate(target_npcs: int, density_ratio: float) -> Dictionary:
 		var type_id = selected_archetypes[i]
 		var template = archetypes[type_id]
 		var district_name = district_names.pop_back() if not district_names.is_empty() else "District %d" % (i+1)
-		var district_id = "dist_%d_%s" % [i, type_id]
+		var district_id = "dist_%s" % Utils.generate_uuid()
 		
 		var district_data = {
 			"id": district_id,

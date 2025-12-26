@@ -121,4 +121,3 @@ func _on_generate_another_pressed():
 	GameState.current_world_metadata = {}
 	GameState.current_world_generation_stats = {}
 	GameState.start_new_world()
-

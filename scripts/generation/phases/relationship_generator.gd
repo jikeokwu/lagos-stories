@@ -86,9 +86,9 @@ func assign_npc_careers_and_affiliations():
 			continue
 		
 		# Check if already employed
-		var existing = DB.get_npc_memberships(npc.id)
+		var existing_memberships = DB.get_npc_memberships(npc.id)
 		var has_job = false
-		for mem in existing:
+		for mem in existing_memberships:
 			if mem.get("role", "") not in ["Student", "Member", ""]:
 				has_job = true
 				break
@@ -96,25 +96,39 @@ func assign_npc_careers_and_affiliations():
 			continue
 		
 		var org_type = _get_org_type_for_occupation(occupation)
-		var district = identity.get("district", "central")
+		# Get district_id (standardized) or fall back to district (backward compatibility)
+		var district = identity.get("district_id", identity.get("district", "central"))
 		var employer = _find_local_org(orgs_by_type_dist, org_type, district)
 		
 		if employer and not employer.is_empty():
-			var role = occupation
-			var weight = 1
-			if "Manager" in role or "Director" in role:
-				weight = 5
-			if "CEO" in role or "Owner" in role:
-				weight = 10
+			# Check if already a member of this specific organization
+			var current_memberships = DB.get_npc_memberships(npc.id)
+			var already_member = false
+			for mem in current_memberships:
+				if mem.get("org_id") == employer.id:
+					already_member = true
+					break
 			
-			DB.create_membership(npc.id, employer.id, role, weight, rng.randi_range(0, 10), rng.randi_range(40, 90), 50, 50)
-			employer.filled_positions.append({"npc_id": npc.id, "title": role, "weight": weight})
-			jobs_assigned += 1
+			if not already_member:
+				var role = occupation
+				var weight = 1
+				if "Manager" in role or "Director" in role:
+					weight = 5
+				if "CEO" in role or "Owner" in role:
+					weight = 10
+				
+				DB.create_membership(npc.id, employer.id, role, weight, rng.randi_range(0, 10), rng.randi_range(40, 90), 50, 50)
+				employer.filled_positions.append({"npc_id": npc.id, "title": role, "weight": weight})
+				jobs_assigned += 1
 	
 	print("      ✅ %d adults assigned to jobs" % jobs_assigned)
 	
 	# 3. Assign religious affiliations
 	var religious_assigned = 0
+	var religious_npcs_found = 0
+	var orgs_found_count = 0
+	var orgs_not_found_count = 0
+	
 	for npc in all_npcs:
 		var identity = npc.get("identity", {})
 		if not identity is Dictionary:
@@ -126,10 +140,14 @@ func assign_npc_careers_and_affiliations():
 		if religion == "none" or religion == "":
 			continue
 		
-		var district = identity.get("district", "central")
+		religious_npcs_found += 1
+		
+		# Get district_id (standardized) or fall back to district (backward compatibility)
+		var district = identity.get("district_id", identity.get("district", "central"))
 		var church = _find_local_org(orgs_by_type_dist, "religious", district)
 		
 		if church and not church.is_empty():
+			orgs_found_count += 1
 			var existing = DB.get_npc_memberships(npc.id)
 			var already = false
 			for mem in existing:
@@ -140,17 +158,46 @@ func assign_npc_careers_and_affiliations():
 			if not already:
 				DB.create_membership(npc.id, church.id, "Member", 1, rng.randi_range(0, 20), 80, 50, 80)
 				religious_assigned += 1
+		else:
+			orgs_not_found_count += 1
 	
-	print("      ✅ %d religious affiliations created" % religious_assigned)
+	print("      ✅ %d religious org memberships created (found %d NPCs with religion, %d found orgs, %d not found)" % [religious_assigned, religious_npcs_found, orgs_found_count, orgs_not_found_count])
 
 func _find_local_org(org_index: Dictionary, type: String, district: String) -> Dictionary:
-	# Try local district first
-	if org_index.has(type) and org_index[type].has(district):
-		var options = org_index[type][district]
+	# Normalize district to district ID if needed
+	var district_id = district
+	if not district.begins_with("dist_"):
+		# Look up district by name
+		var all_districts = DB.get_all_districts()
+		for d in all_districts:
+			if d.get("name", "").to_lower() == district.to_lower() or district.to_lower() in d.get("name", "").to_lower():
+				district_id = d.get("id", district)
+				break
+	
+	# Try local district first (exact match)
+	if org_index.has(type) and org_index[type].has(district_id):
+		var options = org_index[type][district_id]
 		if not options.is_empty():
 			return options[rng.randi() % options.size()]
 	
-	# Fallback: any district
+	# Try substring matching for district IDs
+	if org_index.has(type):
+		for org_district in org_index[type].keys():
+			# Check if district IDs match (either exact or substring)
+			if district_id == org_district or district_id.begins_with("dist_") and org_district.begins_with("dist_"):
+				# If both are IDs, try substring matching
+				if district_id.length() > 8 and org_district.length() > 8:
+					# Match by first 8 chars (UUID prefix)
+					if district_id.substr(0, 8) == org_district.substr(0, 8):
+						var options = org_index[type][org_district]
+						if not options.is_empty():
+							return options[rng.randi() % options.size()]
+				elif district_id == org_district:
+					var options = org_index[type][org_district]
+					if not options.is_empty():
+						return options[rng.randi() % options.size()]
+	
+	# Fallback: any district of this type
 	if org_index.has(type):
 		var all_districts = org_index[type].keys()
 		if not all_districts.is_empty():
@@ -428,7 +475,8 @@ func _assign_schools_to_npcs() -> int:
 		if edu_level == "none" or current_school != null:
 			continue
 		
-		var district = identity.get("district", "central")
+		# Get district_id (standardized) or fall back to district (backward compatibility)
+		var district = identity.get("district_id", identity.get("district", "central"))
 		
 		# Find or create appropriate school in district
 		var school_id = _find_or_create_school(district, edu_level, school_orgs)
@@ -461,6 +509,16 @@ func _find_or_create_school(district: String, edu_level: String, school_cache: D
 	if school_cache.has(cache_key):
 		return school_cache[cache_key]
 	
+	# Convert district name to district ID if needed
+	var district_id = district
+	if not district.begins_with("dist_"):
+		# Look up district by name
+		var all_districts = DB.get_all_districts()
+		for d in all_districts:
+			if d.get("name", "").to_lower() == district.to_lower() or district.to_lower() in d.get("name", "").to_lower():
+				district_id = d.get("id", district)
+				break
+	
 	# Determine school type based on education level
 	var school_type = ""
 	var school_name_prefix = ""
@@ -490,16 +548,18 @@ func _find_or_create_school(district: String, edu_level: String, school_cache: D
 		
 		var is_education = org_type == "education" or cv_category == "education"
 		
-		# District matching - check substring match
+		# District matching - use district ID
 		var district_match = false
-		if org_district == "" or district == "":
+		if org_district == "" or district_id == "":
+			district_match = true  # Allow matching if either is missing
+		elif org_district == district_id:
 			district_match = true
-		elif org_district == district:
-			district_match = true
-		elif district.to_lower() in org_district.to_lower():
-			district_match = true
-		elif org_district.to_lower() in district.to_lower():
-			district_match = true
+		elif district_id.begins_with("dist_") and org_district.begins_with("dist_"):
+			# Both are IDs - exact match only
+			district_match = (org_district == district_id)
+		else:
+			# Fallback: substring matching
+			district_match = (district_id.to_lower() in org_district.to_lower() or org_district.to_lower() in district_id.to_lower())
 		
 		if is_education and district_match:
 			# Check if it matches the education level (simple heuristic: name contains level)
@@ -511,7 +571,7 @@ func _find_or_create_school(district: String, edu_level: String, school_cache: D
 	var district_name = district.replace("dist_", "").replace("_", " ").capitalize()
 	var school_name = "%s of %s" % [school_name_prefix, district_name]
 	
-	var school_id = "org_school_%d" % (rng.randi() % 100000)
+	var school_id = "org_school_%s" % Utils.generate_uuid()
 	var school_data = {
 		"id": school_id,
 		"name": school_name,
@@ -582,7 +642,8 @@ func _assign_religious_orgs_to_npcs() -> int:
 		npcs_with_religion += 1
 		religion_counts[religious_path] = religion_counts.get(religious_path, 0) + 1
 		
-		var district = npc.identity.get("district", "central")
+		# Get district_id (standardized) or fall back to district (backward compatibility)
+		var district = npc.identity.get("district_id", npc.identity.get("district", "central"))
 		
 		# Check if NPC is already a member of a religious org
 		var memberships = DB.get_npc_memberships(npc.id)
@@ -628,6 +689,16 @@ func _find_or_create_religious_org(district: String, religion: String, org_cache
 	if org_cache.has(cache_key):
 		return org_cache[cache_key]
 	
+	# Convert district name to district ID if needed
+	var district_id = district
+	if not district.begins_with("dist_"):
+		# Look up district by name
+		var all_districts = DB.get_all_districts()
+		for d in all_districts:
+			if d.get("name", "").to_lower() == district.to_lower() or district.to_lower() in d.get("name", "").to_lower():
+				district_id = d.get("id", district)
+				break
+	
 	# Map religion to expected subcategory
 	var expected_subcategory = ""
 	match religion.to_lower():
@@ -654,16 +725,18 @@ func _find_or_create_religious_org(district: String, religion: String, org_cache
 		if is_religious:
 			var org_district = cv.get("district_id", "")
 			
-			# Match by district - check if NPC district is contained in org district or vice versa
+			# Match by district ID
 			var district_match = false
-			if org_district == "" or district == "":
+			if org_district == "" or district_id == "":
+				district_match = true  # Allow matching if either is missing
+			elif org_district == district_id:
 				district_match = true
-			elif org_district == district:
-				district_match = true
-			elif district.to_lower() in org_district.to_lower():
-				district_match = true
-			elif org_district.to_lower() in district.to_lower():
-				district_match = true
+			elif district_id.begins_with("dist_") and org_district.begins_with("dist_"):
+				# Both are IDs - exact match only
+				district_match = (org_district == district_id)
+			else:
+				# Fallback: substring matching
+				district_match = (district_id.to_lower() in org_district.to_lower() or org_district.to_lower() in district_id.to_lower())
 			
 			var type_match = (cv_subcategory == expected_subcategory) or (religion.to_lower() in org.name.to_lower())
 			
@@ -683,7 +756,7 @@ func _find_or_create_religious_org(district: String, religion: String, org_cache
 		_:
 			org_name = "%s Community of %s" % [religion.capitalize(), district.capitalize()]
 	
-	var org_id = "org_religious_%d" % (rng.randi() % 100000)
+	var org_id = "org_religious_%s" % Utils.generate_uuid()
 	var org_data = {
 		"id": org_id,
 		"name": org_name,
@@ -735,7 +808,10 @@ func _fill_isolated_npcs() -> int:
 	var all_npcs = DB.get_all_npcs()
 	for npc in all_npcs:
 		var identity = npc.get("identity", {})
-		var district = identity.get("district", "unknown") if identity is Dictionary else "unknown"
+		# Get district_id (standardized) or fall back to district (backward compatibility)
+		var district = "unknown"
+		if identity is Dictionary:
+			district = identity.get("district_id", identity.get("district", "unknown"))
 		if not npcs_by_district.has(district):
 			npcs_by_district[district] = []
 		npcs_by_district[district].append(npc.id)

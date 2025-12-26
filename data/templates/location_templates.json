@@ -43,6 +43,45 @@
 				}
 			},
 			{
+				"name": "mansion",
+				"display_name": "Luxury Mansion",
+				"names": [
+					"{Name} Mansion",
+					"Chief {Name}'s Estate",
+					"{Name} Villa Estate",
+					"The {Name} Residence"
+				],
+				"capacity_range": [
+					8,
+					20
+				],
+				"condition_range": [
+					90,
+					100
+				],
+				"security_range": [
+					85,
+					100
+				],
+				"base_reputation": {
+					"safety": 95,
+					"prestige": 98,
+					"activity_level": 25
+				},
+				"amenities_probability": {
+					"swimming_pool": 0.9,
+					"gym": 0.8,
+					"security_gate": 1.0,
+					"generator": 1.0,
+					"garden": 0.95,
+					"boys_quarters": 0.9,
+					"concierge": 0.7,
+					"24h_power": 1.0,
+					"underground_parking": 0.8,
+					"high_speed_internet": 1.0
+				}
+			},
+			{
 				"name": "gated_estate_duplex",
 				"display_name": "Gated Estate Duplex",
 				"names": [

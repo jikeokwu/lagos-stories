@@ -62,18 +62,15 @@ func _ready():
 	# Get config from GameState
 	var config = GameState.current_world_config if GameState.current_world_config else {}
 	
-	# Initialize database
+	# Initialize database for this specific world
+	var world_db_path = ""
 	if GameState.current_world_id != "":
-		var world_db_path = WorldManager.get_world_db_path(GameState.current_world_id)
+		world_db_path = WorldManager.get_world_db_path(GameState.current_world_id)
 		print("1. Initializing database for world: %s" % GameState.current_world_id)
-		if not DB.initialize(world_db_path):
-			print("❌ Database initialization failed")
-			await get_tree().create_timer(1.0).timeout
-			get_tree().quit()
-			return
 	else:
 		print("1. Initializing database (default)...")
-	if not DB.initialize():
+	
+	if not DB.initialize(world_db_path):
 		print("❌ Database initialization failed")
 		await get_tree().create_timer(1.0).timeout
 		get_tree().quit()
@@ -207,6 +204,7 @@ func _run_generation(config: Dictionary) -> Dictionary:
 	loc_assign.set_family_frames(family_frames)
 	loc_assign.set_organization_frames(organization_frames)
 	loc_assign.set_singles_count(target_singles)
+	loc_assign.set_population_generator(pop_gen)  # Pass population generator for landlord creation
 	loc_assign.create_locations_need_based(location_density)
 	
 	timings.locations = (Time.get_ticks_msec() - phase6_start) / 1000.0
@@ -328,15 +326,15 @@ func _run_comprehensive_validation() -> Dictionary:
 	var unassigned = DB.count_npcs_without_location() if DB.has_method("count_npcs_without_location") else 0
 	if unassigned > 0:
 		validation_stats.issues_found += 1
-		validation_stats.npcs_without_location = unassigned
+		validation_stats["npcs_without_location"] = unassigned
 		print("      ⚠️ %d NPCs without location assignment" % unassigned)
 	
 	# Validate organization employees
-	var orgs_without_employees = DB.get_orgs_without_employees() if DB.has_method("get_orgs_without_employees") else []
-	if orgs_without_employees.size() > 0:
+	var orgs_without_employees_count = DB.get_orgs_without_employees() if DB.has_method("get_orgs_without_employees") else 0
+	if orgs_without_employees_count > 0:
 		validation_stats.issues_found += 1
-		validation_stats.orgs_without_employees = orgs_without_employees.size()
-		print("      ℹ️ %d organizations with no current members (new/defunct)" % orgs_without_employees.size())
+		validation_stats["orgs_without_employees"] = orgs_without_employees_count
+		print("      ℹ️ %d organizations with no current members (new/defunct)" % orgs_without_employees_count)
 	
 	# Validate relationship symmetry
 	var missing_rels = DB.get_asymmetric_relationships([], 100000)
@@ -373,7 +371,7 @@ func _run_comprehensive_validation() -> Dictionary:
 		print("      ⚠️ %d parent-child age inconsistencies found" % age_issues)
 	
 	print("      Found %d issues, fixed %d" % [validation_stats.issues_found, validation_stats.issues_fixed])
-	print("✅ Phase 11: Validation complete (%.3fs)\n" % (timings.get("validation_polish", 0.0)))
+	print("✅ Phase 11: Validation complete")
 	return validation_stats
 
 func _update_progress(status: String, percent: float):

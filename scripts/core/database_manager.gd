@@ -416,8 +416,9 @@ func get_npcs_at_location(location_id: String) -> Array:
 
 ## Create a relationship (directional, or bidirectional for symmetric types)
 func create_relationship(source_id: String, target_id: String, rel_type: String, affection: int = 0, trust: int = 0, attraction: int = 0, respect: int = 0, formed_date: String = "") -> bool:
-	# Symmetric relationship types that need both directions created
-	var symmetric_types = ["friend", "colleague", "neighbor", "acquaintance"]
+	# Symmetric relationship types that need both directions created automatically
+	# These relationships are bidirectional by nature
+	var symmetric_types = ["friend", "colleague", "neighbor", "acquaintance", "sibling", "cousin"]
 	var is_symmetric = rel_type in symmetric_types
 	
 	# Create A→B

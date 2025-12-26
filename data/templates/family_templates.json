@@ -414,5 +414,202 @@
 				100
 			]
 		}
+	},
+	"extended_family_with_aunts_uncles": {
+		"description": "Nuclear family living with extended relatives (aunts, uncles).",
+		"size_range": [
+			7,
+			12
+		],
+		"structure": {
+			"parent_1": {
+				"role": "head",
+				"age_min": 35,
+				"age_max": 55
+			},
+			"parent_2": {
+				"role": "spouse",
+				"age_min": 30,
+				"age_max": 50,
+				"optional": false
+			},
+			"children": {
+				"count_min": 2,
+				"count_max": 4,
+				"age_min": 5,
+				"age_max": 18
+			},
+			"aunt": {
+				"role": "extended",
+				"age_min": 25,
+				"age_max": 45,
+				"optional": true,
+				"count_max": 2
+			},
+			"uncle": {
+				"role": "extended",
+				"age_min": 28,
+				"age_max": 48,
+				"optional": true,
+				"count_max": 2
+			}
+		},
+		"wealth_distribution": {
+			"poor": 0.30,
+			"working_class": 0.40,
+			"middle_class": 0.25,
+			"wealthy": 0.04,
+			"elite": 0.01
+		},
+		"common_values": {
+			"family_loyalty": [
+				85,
+				100
+			],
+			"community_reliance": [
+				70,
+				95
+			]
+		}
+	},
+	"extended_family_with_cousins": {
+		"description": "Large extended family with multiple generations and cousins.",
+		"size_range": [
+			8,
+			15
+		],
+		"structure": {
+			"grandparent": {
+				"role": "elder",
+				"age_min": 60,
+				"age_max": 80,
+				"optional": true,
+				"count_max": 2
+			},
+			"parent_1": {
+				"role": "head",
+				"age_min": 40,
+				"age_max": 60
+			},
+			"parent_2": {
+				"role": "spouse",
+				"age_min": 35,
+				"age_max": 55,
+				"optional": false
+			},
+			"children": {
+				"count_min": 3,
+				"count_max": 5,
+				"age_min": 8,
+				"age_max": 22
+			},
+			"cousin": {
+				"role": "extended",
+				"age_min": 10,
+				"age_max": 25,
+				"optional": true,
+				"count_max": 4
+			}
+		},
+		"wealth_distribution": {
+			"poor": 0.25,
+			"working_class": 0.35,
+			"middle_class": 0.30,
+			"wealthy": 0.08,
+			"elite": 0.02
+		},
+		"common_values": {
+			"respect_for_elders": [
+				90,
+				100
+			],
+			"family_unity": [
+				85,
+				100
+			],
+			"tradition": [
+				75,
+				100
+			]
+		}
+	},
+	"extended_family_full": {
+		"description": "Complete extended family with grandparents, aunts, uncles, and cousins.",
+		"size_range": [
+			10,
+			18
+		],
+		"structure": {
+			"grandparent": {
+				"role": "elder",
+				"age_min": 65,
+				"age_max": 85,
+				"optional": true,
+				"count_max": 2
+			},
+			"parent_1": {
+				"role": "head",
+				"age_min": 40,
+				"age_max": 60
+			},
+			"parent_2": {
+				"role": "spouse",
+				"age_min": 35,
+				"age_max": 55,
+				"optional": false
+			},
+			"children": {
+				"count_min": 3,
+				"count_max": 6,
+				"age_min": 5,
+				"age_max": 20
+			},
+			"aunt": {
+				"role": "extended",
+				"age_min": 30,
+				"age_max": 50,
+				"optional": true,
+				"count_max": 2
+			},
+			"uncle": {
+				"role": "extended",
+				"age_min": 32,
+				"age_max": 52,
+				"optional": true,
+				"count_max": 2
+			},
+			"cousin": {
+				"role": "extended",
+				"age_min": 8,
+				"age_max": 22,
+				"optional": true,
+				"count_max": 3
+			}
+		},
+		"wealth_distribution": {
+			"poor": 0.20,
+			"working_class": 0.35,
+			"middle_class": 0.30,
+			"wealthy": 0.12,
+			"elite": 0.03
+		},
+		"common_values": {
+			"respect_for_elders": [
+				95,
+				100
+			],
+			"family_unity": [
+				90,
+				100
+			],
+			"tradition": [
+				80,
+				100
+			],
+			"collective_responsibility": [
+				75,
+				100
+			]
+		}
 	}
 }

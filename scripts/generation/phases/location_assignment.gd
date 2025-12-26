@@ -13,6 +13,7 @@ var stats: Dictionary
 var family_frames = []
 var organization_frames = []
 var target_singles_count = 0
+var population_generator = null  # Reference to PopulationGenerator for landlord creation
 
 func _init(p_stats: Dictionary, p_location_templates: Dictionary, p_district_archetypes: Dictionary):
 	stats = p_stats
@@ -28,6 +29,10 @@ func set_organization_frames(frames: Array):
 
 func set_singles_count(count: int):
 	target_singles_count = count
+
+func set_population_generator(pop_gen):
+	"""Set reference to PopulationGenerator for creating landlord NPCs."""
+	population_generator = pop_gen
 
 # =============================================================================
 # PHASE 3: NEED-BASED LOCATION CREATION
@@ -55,7 +60,6 @@ func create_locations_need_based(density_ratio: float = 1.0):
 	
 	var total_housing = 0
 	var total_commercial = 0
-	var loc_id_counter = 0
 	
 	# Calculate weighted distribution
 	var total_res_weight = 0.0
@@ -97,8 +101,7 @@ func create_locations_need_based(density_ratio: float = 1.0):
 		
 		# Generate housing
 		while district_housing < housing_share:
-			loc_id_counter += 1
-			var building_id = "loc_b_%d" % loc_id_counter
+			var building_id = "loc_b_%s" % Utils.generate_uuid()
 			
 			var wealth = "medium"
 			if demographics.has("wealth_preference"):
@@ -113,15 +116,13 @@ func create_locations_need_based(density_ratio: float = 1.0):
 			
 			var num_units = max(1, capacity / 5)
 			for u in range(num_units):
-				loc_id_counter += 1
-				var unit_id = "loc_u_%d" % loc_id_counter
+				var unit_id = "loc_u_%s" % Utils.generate_uuid()
 				_create_location_entry(unit_id, {"name": "apartment_unit", "display_name": "Unit %d" % (u + 1)}, district.id, building_id, 5, "residential_unit")
 				district_housing += 1
 		
 		# Generate commercial
 		while district_commercial < commercial_share:
-			loc_id_counter += 1
-			var building_id = "loc_b_%d" % loc_id_counter
+			var building_id = "loc_b_%s" % Utils.generate_uuid()
 			
 			var template = _pick_location_template("commercial", "medium")
 			var capacity = rng.randi_range(template.capacity_range[0], template.capacity_range[1])
@@ -130,8 +131,7 @@ func create_locations_need_based(density_ratio: float = 1.0):
 			
 			var num_units = max(1, capacity / 20)
 			for u in range(num_units):
-				loc_id_counter += 1
-				var unit_id = "loc_u_%d" % loc_id_counter
+				var unit_id = "loc_u_%s" % Utils.generate_uuid()
 				_create_location_entry(unit_id, {"name": "office_unit", "display_name": "Suite %d" % (u + 1)}, district.id, building_id, 20, "commercial_unit")
 				district_commercial += 1
 		
@@ -242,7 +242,11 @@ func assign_families_to_housing():
 		if npc.get("current_location_id") and npc.current_location_id != "":
 			continue
 		
-		var district = npc.identity.get("district", "central") if npc.get("identity") else "central"
+		# Get district_id (standardized) or fall back to district (backward compatibility)
+		var identity = npc.get("identity", {})
+		var district = "central"
+		if identity is Dictionary:
+			district = identity.get("district_id", identity.get("district", "central"))
 		
 		if current_unit_id == null or current_count >= 2:
 			if not units_by_district.has(district) or units_by_district[district].is_empty():
@@ -320,84 +324,100 @@ func assign_location_ownership():
 	"""Assign ownership to locations (owner-occupied vs rented)."""
 	print("   🏠 Determining location ownership...")
 	
-	# Step 1: Generate landlord NPCs (wealthy property investors)
-	_generate_landlord_npcs()
-	
-	# Step 2: Assign residential ownership
+	# Step 1: Assign residential ownership (determines rented vs owner-occupied)
 	var residential_stats = _assign_residential_ownership()
 	
-	# Step 3: Assign commercial ownership
+	# Step 2: Assign commercial ownership
 	var commercial_stats = _assign_commercial_ownership()
 	
-	# Step 4: Create landlord-tenant relationships
+	# Step 3: Generate dynamic landlord NPCs based on rented units
+	var total_rented = residential_stats.rented + commercial_stats.rented
+	var landlord_count = _calculate_landlord_count(total_rented)
+	_generate_landlord_npcs(landlord_count, residential_stats.rented_by_district)
+	
+	# Step 4: Assign landlords to rented properties
+	_assign_landlords_to_properties(residential_stats.rented, commercial_stats.rented)
+	
+	# Step 5: Assign landlords to luxury home locations
+	_assign_landlords_to_homes()
+	
+	# Step 6: Create landlord-tenant relationships
 	var landlord_rels = _create_landlord_tenant_relationships()
 	
-	print("      ✅ %d landlords created, %d owner-occupied, %d rented" % [landlord_npcs.size(), residential_stats.owner_occupied, residential_stats.rented])
+	print("      ✅ %d landlords created (dynamic, ~%d properties each), %d owner-occupied, %d rented" % [landlord_npcs.size(), int(total_rented / max(1, landlord_npcs.size())), residential_stats.owner_occupied, residential_stats.rented])
 	print("      ✅ %d commercial org-owned, %d commercial rented" % [commercial_stats.org_owned, commercial_stats.rented])
 	print("      ✅ %d landlord-tenant relationships created" % landlord_rels)
 
-func _generate_landlord_npcs():
-	# Generate 5-10 wealthy property investor NPCs
-	var landlord_count = rng.randi_range(5, 10)
-	print("      Generating %d landlord NPCs..." % landlord_count)
+func _calculate_landlord_count(total_rented: int) -> int:
+	"""Calculate dynamic landlord count based on rented properties."""
+	if total_rented == 0:
+		return 0
 	
-	# Get districts for distribution
-	var districts = []
-	var all_districts = DB.get_all_districts()
-	for d in all_districts:
-		districts.append(d.id)
+	# Target: 1 landlord per 20-30 properties (realistic portfolio size)
+	# Min 3 landlords, max reasonable (1 per 15 for large worlds)
+	var target_ratio = 25.0  # Average properties per landlord
+	var landlord_count = max(3, int(ceil(float(total_rented) / target_ratio)))
 	
-	if districts.is_empty():
-		push_error("❌ No districts found for landlord generation!")
+	# Cap at 1 per 15 properties for very large worlds
+	var max_ratio = 15.0
+	var max_landlords = int(ceil(float(total_rented) / max_ratio))
+	landlord_count = min(landlord_count, max_landlords)
+	
+	return landlord_count
+
+func _generate_landlord_npcs(count: int, rented_by_district: Dictionary):
+	"""Generate dynamic landlord NPCs distributed across districts."""
+	if count == 0:
 		return
 	
-	for i in range(landlord_count):
-		var landlord_id = "npc-landlord-%d" % i
-		var district = districts[rng.randi() % districts.size()]
-		var gender = "male" if rng.randf() < 0.6 else "female"
+	if population_generator == null:
+		push_error("❌ PopulationGenerator not set! Cannot create landlord NPCs.")
+		return
+	
+	print("      Generating %d landlord NPCs (dynamic, based on %d rented properties)..." % [count, rented_by_district.values().reduce(func(a, b): return a + b, 0)])
+	
+	# Get districts with rented properties, weighted by count
+	var district_weights = []
+	var all_districts = DB.get_all_districts()
+	var district_map = {}
+	
+	for d in all_districts:
+		district_map[d.id] = d
+		var rented_count = rented_by_district.get(d.id, 0)
+		if rented_count > 0:
+			district_weights.append({"id": d.id, "weight": rented_count})
+	
+	# If no rented properties by district, distribute evenly
+	if district_weights.is_empty():
+		for d in all_districts:
+			district_weights.append({"id": d.id, "weight": 1})
+	
+	# Calculate total weight for distribution
+	var total_weight = 0
+	for dw in district_weights:
+		total_weight += dw.weight
+	
+	# Generate landlords distributed by district weight
+	for i in range(count):
+		# Select district based on weight
+		var target = rng.randi() % total_weight
+		var current = 0
+		var selected_district_id = district_weights[0].id
+		for dw in district_weights:
+			current += dw.weight
+			if target < current:
+				selected_district_id = dw.id
+				break
+		
+		# Generate age (45-70)
 		var age = rng.randi_range(45, 70)
 		
-		# Create basic landlord NPC (simplified - using DB.create_npc directly)
-		var npc_data = {
-			"id": landlord_id,
-			"name": "Landlord %d" % i,
-			"definite": JSON.stringify({
-				"gender": gender,
-				"age": age,
-				"alive": true,
-				"orientation": rng.randi_range(60, 100)
-			}),
-			"attributes": JSON.stringify({"strength": 40, "intelligence": 70, "charisma": 65}),
-			"appearance": JSON.stringify({}),
-			"identity": JSON.stringify({
-				"tribe": "yoruba",
-				"spoken_languages": ["English", "Yoruba"],
-				"education": {"level": "postgraduate", "institution": null},
-				"religious_path": "christian",
-				"occupation": "Property Investor",
-				"family_id": null,
-				"district": district
-			}),
-			"personality": JSON.stringify({}),
-			"political_ideology": JSON.stringify({}),
-			"skills": JSON.stringify({"business": {"investing": 8, "negotiation": 7}}),
-			"resources": JSON.stringify({
-				"liquid_assets": [{"type": "bank_account", "amount": rng.randi_range(50000000, 200000000)}],
-				"property": [],
-				"access": [],
-				"annual_income": rng.randi_range(20000000, 80000000)
-			}),
-			"status": JSON.stringify({"health": 70, "stress": 30, "reputation": 70}),
-			"demographic_affinities": JSON.stringify({"capitalist_class": 80}),
-			"current_location_id": null
-		}
-		
-		DB.create_npc(npc_data)
+		# Use population generator to create landlord NPC
+		var landlord_id = population_generator.create_landlord_npc(selected_district_id, age)
 		landlord_npcs.append(landlord_id)
-		stats.npcs = stats.get("npcs", 0) + 1
 
 func _assign_residential_ownership() -> Dictionary:
-	var result = {"owner_occupied": 0, "rented": 0}
+	var result = {"owner_occupied": 0, "rented": 0, "rented_by_district": {}}
 	
 	# Get all residential units with their occupants
 	var units = DB.get_residential_units_with_details()
@@ -432,18 +452,18 @@ func _assign_residential_ownership() -> Dictionary:
 			access_data["ownership_type"] = "owner_occupied"
 			result.owner_occupied += 1
 		else:
-			# Rented - assign a landlord
-			if landlord_npcs.size() > 0:
-				var landlord_id = landlord_npcs[rng.randi() % landlord_npcs.size()]
-				access_data["owner_npc_id"] = landlord_id
-				access_data["ownership_type"] = "rented"
-				access_data["tenant_npc_id"] = unit.tenant_id
-				result.rented += 1
-				
-				# Update landlord's property list
-				_add_property_to_landlord(landlord_id, unit.location_id)
+			# Rented - mark for landlord assignment later
+			access_data["ownership_type"] = "rented"
+			access_data["tenant_npc_id"] = unit.tenant_id
+			result.rented += 1
+			
+			# Track rented units by district for landlord distribution
+			var district_id = unit.district_id if unit.has("district_id") else unit.district if unit.has("district") else "central"
+			if not result.rented_by_district.has(district_id):
+				result.rented_by_district[district_id] = 0
+			result.rented_by_district[district_id] += 1
 		
-		# Update location with ownership info
+		# Update location with ownership info (without landlord yet)
 		DB.update_location_access(unit.location_id, access_data)
 	
 	return result
@@ -462,12 +482,8 @@ func _assign_commercial_ownership() -> Dictionary:
 				access_data = parsed
 		
 		if unit.org_id == null:
-			# No org assigned, landlord owns empty commercial space
-			if landlord_npcs.size() > 0:
-				var landlord_id = landlord_npcs[rng.randi() % landlord_npcs.size()]
-				access_data["owner_npc_id"] = landlord_id
-				access_data["ownership_type"] = "vacant"
-				_add_property_to_landlord(landlord_id, unit.location_id)
+			# No org assigned, mark as vacant (will assign landlord later)
+			access_data["ownership_type"] = "vacant"
 		else:
 			# Org is assigned - determine if they own or rent
 			var org_owns_chance = 0.3  # Default 30% own
@@ -487,18 +503,205 @@ func _assign_commercial_ownership() -> Dictionary:
 				access_data["ownership_type"] = "org_owned"
 				result.org_owned += 1
 			else:
-				# Organization rents from landlord
-				if landlord_npcs.size() > 0:
-					var landlord_id = landlord_npcs[rng.randi() % landlord_npcs.size()]
-					access_data["owner_npc_id"] = landlord_id
-					access_data["ownership_type"] = "rented"
-					access_data["tenant_org_id"] = unit.org_id
-					result.rented += 1
-					_add_property_to_landlord(landlord_id, unit.location_id)
+				# Organization rents from landlord (will assign landlord later)
+				access_data["ownership_type"] = "rented"
+				access_data["tenant_org_id"] = unit.org_id
+				result.rented += 1
 		
 		DB.update_location_access(unit.location_id, access_data)
 	
 	return result
+
+func _assign_landlords_to_properties(_residential_rented: int, _commercial_rented: int):
+	"""Assign landlords to all rented residential and commercial properties."""
+	if landlord_npcs.is_empty():
+		return
+	
+	# Get all rented residential units
+	var residential_units = DB.get_residential_units_with_details()
+	var rented_residential = []
+	for unit in residential_units:
+		if unit.access and unit.access != "":
+			var access = JSON.parse_string(unit.access) if unit.access is String else unit.access
+			if access is Dictionary and access.get("ownership_type") == "rented":
+				rented_residential.append(unit)
+	
+	# Get all rented/vacant commercial units
+	var commercial_units = DB.get_commercial_units_with_details()
+	var rented_commercial = []
+	for unit in commercial_units:
+		if unit.access and unit.access != "":
+			var access = JSON.parse_string(unit.access) if unit.access is String else unit.access
+			if access is Dictionary:
+				var ownership = access.get("ownership_type")
+				if ownership == "rented" or ownership == "vacant":
+					rented_commercial.append(unit)
+	
+	# Distribute properties among landlords (round-robin for even distribution)
+	var landlord_index = 0
+	var properties_per_landlord = {}
+	
+	# Initialize property counts
+	for landlord_id in landlord_npcs:
+		properties_per_landlord[landlord_id] = []
+	
+	# Assign residential properties
+	for unit in rented_residential:
+		var landlord_id = landlord_npcs[landlord_index % landlord_npcs.size()]
+		landlord_index += 1
+		
+		var access_data = {}
+		if unit.access and unit.access != "":
+			var parsed = JSON.parse_string(unit.access)
+			if parsed is Dictionary:
+				access_data = parsed
+		
+		access_data["owner_npc_id"] = landlord_id
+		DB.update_location_access(unit.location_id, access_data)
+		_add_property_to_landlord(landlord_id, unit.location_id)
+		properties_per_landlord[landlord_id].append(unit.location_id)
+	
+	# Assign commercial properties
+	for unit in rented_commercial:
+		var landlord_id = landlord_npcs[landlord_index % landlord_npcs.size()]
+		landlord_index += 1
+		
+		var access_data = {}
+		if unit.access and unit.access != "":
+			var parsed = JSON.parse_string(unit.access)
+			if parsed is Dictionary:
+				access_data = parsed
+		
+		access_data["owner_npc_id"] = landlord_id
+		DB.update_location_access(unit.location_id, access_data)
+		_add_property_to_landlord(landlord_id, unit.location_id)
+		properties_per_landlord[landlord_id].append(unit.location_id)
+
+func _assign_landlords_to_homes():
+	"""Create a mansion for each landlord in their district."""
+	if landlord_npcs.is_empty():
+		return
+	
+	# Get mansion template from location_templates
+	var mansion_template = null
+	if location_templates.has("residential") and location_templates.residential.has("types"):
+		for template in location_templates.residential.types:
+			if template.get("name") == "mansion":
+				mansion_template = template
+				break
+	
+	if mansion_template == null:
+		push_error("❌ Mansion template not found! Cannot create mansions for landlords.")
+		return
+	
+	# Create a mansion for each landlord
+	for landlord_id in landlord_npcs:
+		# Get landlord's district
+		var landlord = DB.get_npc(landlord_id)
+		if landlord.is_empty():
+			continue
+		
+		var landlord_district = "central"
+		var identity = landlord.get("identity", {})
+		if identity is String:
+			identity = JSON.parse_string(identity)
+		if identity is Dictionary:
+			landlord_district = identity.get("district_id", identity.get("district", "central"))
+		
+		# Generate building ID and unit ID
+		var building_id = "loc_b_%s" % Utils.generate_uuid()
+		var unit_id = "loc_u_%s" % Utils.generate_uuid()
+		
+		# Get capacity, condition, security from mansion template
+		var capacity_range = mansion_template.get("capacity_range", [8, 20])
+		var condition_range = mansion_template.get("condition_range", [90, 100])
+		var security_range = mansion_template.get("security_range", [85, 100])
+		
+		var building_capacity = rng.randi_range(capacity_range[0], capacity_range[1])
+		var unit_capacity = rng.randi_range(8, 12)  # Smaller capacity for single unit
+		var condition = rng.randi_range(condition_range[0], condition_range[1])
+		var security = rng.randi_range(security_range[0], security_range[1])
+		
+		# Create mansion building
+		var building_name = mansion_template.get("display_name", "Luxury Mansion")
+		if mansion_template.has("names") and mansion_template.names.size() > 0:
+			var name_template = mansion_template.names[rng.randi() % mansion_template.names.size()]
+			# Simple name generation (could be enhanced with district name)
+			building_name = name_template.replace("{Name}", landlord.get("name", "Estate").split(" ")[0])
+		
+		var building_data = {
+			"id": building_id,
+			"name": building_name,
+			"type": "residential",
+			"district_id": landlord_district,
+			"building_id": null,
+			"parent_location_id": null,
+			"physical_properties": JSON.stringify({
+				"capacity": building_capacity,
+				"condition": condition,
+				"security": security
+			}),
+			"access": JSON.stringify({
+				"control_type": "private",
+				"owner_npc_id": landlord_id,
+				"ownership_type": "owner_occupied"
+			}),
+			"reputation": JSON.stringify(mansion_template.get("base_reputation", {"safety": 95, "prestige": 98, "activity_level": 25})),
+			"features": JSON.stringify({
+				"utilities": {},
+				"amenities": _generate_mansion_amenities(mansion_template)
+			})
+		}
+		
+		DB.create_location(building_data)
+		stats.locations += 1
+		
+		# Create residential unit within the mansion
+		var unit_data = {
+			"id": unit_id,
+			"name": "Main Residence",
+			"type": "residential_unit",
+			"district_id": landlord_district,
+			"building_id": building_id,
+			"parent_location_id": building_id,
+			"physical_properties": JSON.stringify({
+				"capacity": unit_capacity,
+				"condition": condition,
+				"security": security
+			}),
+			"access": JSON.stringify({
+				"control_type": "private",
+				"owner_npc_id": landlord_id,
+				"ownership_type": "owner_occupied"
+			}),
+			"reputation": JSON.stringify(mansion_template.get("base_reputation", {"safety": 95, "prestige": 98, "activity_level": 25})),
+			"features": JSON.stringify({
+				"utilities": {},
+				"amenities": {}
+			})
+		}
+		
+		DB.create_location(unit_data)
+		stats.locations += 1
+		
+		# Update landlord's current_location_id to the unit
+		DB.update_npc(landlord_id, {"current_location_id": unit_id})
+		
+		# Add both building and unit to landlord's property list
+		_add_property_to_landlord(landlord_id, building_id)
+		_add_property_to_landlord(landlord_id, unit_id)
+
+func _generate_mansion_amenities(template: Dictionary) -> Dictionary:
+	"""Generate amenities for mansion based on template probabilities."""
+	var amenities = {}
+	var amenities_prob = template.get("amenities_probability", {})
+	
+	for amenity_name in amenities_prob.keys():
+		var probability = amenities_prob[amenity_name]
+		if rng.randf() < probability:
+			amenities[amenity_name] = true
+	
+	return amenities
 
 func _add_property_to_landlord(landlord_id: String, location_id: String):
 	# Update landlord's resources.property array

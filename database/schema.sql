@@ -149,6 +149,7 @@ CREATE TABLE IF NOT EXISTS npcs (
 -- ============================================================
 -- Relationship Types:
 --   Family: sibling, parent, child, spouse, aunt, uncle, cousin, grandparent, grandchild
+--   In-Laws: mother_in_law, father_in_law, sister_in_law, brother_in_law, son_in_law, daughter_in_law
 --   Social: friend, acquaintance, rival, neighbor
 --   Work: colleague, mentor, boss, subordinate
 --   Authority: teacher, elder, leader (power dynamic relationships)

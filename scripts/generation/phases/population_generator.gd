@@ -135,7 +135,7 @@ func pass1_generate_founders():
 		var gender = "male" if rng.randf() < 0.5 else "female"
 		var first_name = _random_first_name(frame.tribe, gender)
 		
-		var npc_id = "npc_%d" % (stats.npcs + 1)
+		var npc_id = "npc_%s" % Utils.generate_uuid()
 		_create_npc(npc_id, first_name, frame.last_name, age, gender, frame.tribe, frame.family_id, frame.district)
 		
 		frame.generated_npcs.append({
@@ -186,7 +186,7 @@ func pass2_generate_spouses():
 		var age = rng.randi_range(p2_def.age_min, p2_def.age_max)
 		var first_name = _random_first_name(frame.tribe, spouse_gender)
 		
-		var npc_id = "npc_%d" % (stats.npcs + 1)
+		var npc_id = "npc_%s" % Utils.generate_uuid()
 		_create_npc(npc_id, first_name, frame.last_name, age, spouse_gender, frame.tribe, frame.family_id, frame.district)
 		
 		frame.generated_npcs.append({
@@ -257,7 +257,7 @@ func pass3_generate_children():
 			var gender = "male" if rng.randf() < 0.5 else "female"
 			var first_name = _random_first_name(frame.tribe, gender)
 			
-			var npc_id = "npc_%d" % (stats.npcs + 1)
+			var npc_id = "npc_%s" % Utils.generate_uuid()
 			_create_child_npc(npc_id, first_name, frame.last_name, age, gender, frame.tribe, frame.family_id, frame.district, parent1_data, parent2_data)
 			
 			frame.generated_npcs.append({
@@ -301,39 +301,68 @@ func pass3_generate_children():
 	print("      ✅ Created %d children + %d sibling rels (%.2fs)" % [created, sibling_count, (Time.get_ticks_msec() - start_time) / 1000.0])
 
 func pass4_generate_extended():
-	"""Pass 4: Generate extended family members"""
+	"""Pass 4: Generate extended family members (grandparents, aunts, uncles, cousins)"""
 	var start_time = Time.get_ticks_msec()
 	print("   👴 Pass 4: Generating extended family...")
 	var created = 0
 	
+	# Extended family member types that are NOT core family (parent_1, parent_2, children)
+	var extended_types = ["grandparent", "aunt", "uncle", "cousin", "nephew", "niece"]
+	
 	for frame in family_frames:
-		if not frame.structure.has("extended"):
+		var structure = frame.structure
+		if not structure is Dictionary:
 			continue
 		
-		var extended_def = frame.structure["extended"]
-		
-		for member_type in extended_def.keys():
-			var member_def = extended_def[member_type]
-			var count = 1
+		# Check for extended family members directly in structure
+		for member_type in extended_types:
+			if not structure.has(member_type):
+				continue
 			
+			var member_def = structure[member_type]
+			if not member_def is Dictionary:
+				continue
+			
+			# Determine count
+			var count = 1
 			if member_def.has("count"):
 				count = member_def["count"]
+			elif member_def.has("count_max"):
+				# For grandparent, use count_max (usually 2)
+				if member_type == "grandparent":
+					count = rng.randi_range(0, member_def.count_max)
+				else:
+					count = rng.randi_range(1, member_def.count_max)
 			elif member_def.has("count_min") and member_def.has("count_max"):
 				count = rng.randi_range(member_def.count_min, member_def.count_max)
 			
+			# Skip if optional and random check fails
 			if member_def.get("optional", false) and rng.randf() < 0.5:
 				continue
 			
+			# Generate members
 			for i in range(count):
 				var age = rng.randi_range(member_def.age_min, member_def.age_max)
 				var gender = "male" if rng.randf() < 0.5 else "female"
+				
+				# Gender-specific types
+				if member_type == "aunt":
+					gender = "female"
+				elif member_type == "uncle":
+					gender = "male"
+				elif member_type == "niece":
+					gender = "female"
+				elif member_type == "nephew":
+					gender = "male"
+				
 				var first_name = _random_first_name(frame.tribe, gender)
 				var last_name = frame.last_name
 				
-				if member_type in ["aunt", "uncle", "cousin"] and rng.randf() < 0.5:
+				# Extended family may have different last names
+				if member_type in ["aunt", "uncle", "cousin", "nephew", "niece"] and rng.randf() < 0.4:
 					last_name = _random_last_name(frame.tribe)
 				
-				var npc_id = "npc_%d" % (stats.npcs + 1)
+				var npc_id = "npc_%s" % Utils.generate_uuid()
 				_create_npc(npc_id, first_name, last_name, age, gender, frame.tribe, frame.family_id, frame.district)
 				
 				frame.generated_npcs.append({
@@ -345,8 +374,214 @@ func pass4_generate_extended():
 				
 				stats.npcs += 1
 				created += 1
+		
+		# Create relationships for extended family members
+		_create_extended_family_relationships(frame)
 	
 	print("      ✅ Created %d extended family (%.2fs)" % [created, (Time.get_ticks_msec() - start_time) / 1000.0])
+
+func _create_extended_family_relationships(frame: Dictionary):
+	"""Create relationships between extended family members and core family."""
+	var parent1_id = null
+	var parent2_id = null
+	var children = []
+	var grandparents = []
+	var aunts = []
+	var uncles = []
+	var cousins = []
+	var nephews = []
+	var nieces = []
+	
+	# Organize family members by role
+	for npc in frame.generated_npcs:
+		match npc.role:
+			"parent_1":
+				parent1_id = npc.id
+			"parent_2":
+				parent2_id = npc.id
+			"child":
+				children.append(npc)
+			"grandparent":
+				grandparents.append(npc)
+			"aunt":
+				aunts.append(npc)
+			"uncle":
+				uncles.append(npc)
+			"cousin":
+				cousins.append(npc)
+			"nephew":
+				nephews.append(npc)
+			"niece":
+				nieces.append(npc)
+	
+	# Grandparent relationships: randomly assign to one parent (blood), other gets in-law
+	for grandparent in grandparents:
+		# Randomly choose which parent gets the blood relationship
+		var blood_parent_id = parent1_id if (parent2_id == null or rng.randf() < 0.5) else parent2_id
+		var in_law_parent_id = parent2_id if blood_parent_id == parent1_id else parent1_id
+		
+		# Get grandparent gender to determine in-law type
+		var grandparent_data = DB.get_npc(grandparent.id)
+		var grandparent_gender = grandparent_data.get("definite", {}).get("gender", "male") if grandparent_data else "male"
+		
+		# Blood relationship: grandparent → parent (parent-child)
+		if blood_parent_id:
+			var aff = rng.randi_range(60, 90)
+			var trust = rng.randi_range(70, 95)
+			var respect = rng.randi_range(80, 100)
+			DB.create_relationship(grandparent.id, blood_parent_id, "parent", aff, trust, 0, respect)
+			DB.create_relationship(blood_parent_id, grandparent.id, "child", rng.randi_range(70, 95), rng.randi_range(80, 100), 0, rng.randi_range(85, 100))
+		
+		# In-law relationship: grandparent → spouse (mother_in_law/father_in_law)
+		if in_law_parent_id:
+			var aff = rng.randi_range(40, 75)  # Lower than blood relationship
+			var trust = rng.randi_range(50, 80)
+			var respect = rng.randi_range(60, 85)
+			var in_law_type = "mother_in_law" if grandparent_gender == "female" else "father_in_law"
+			# Get in-law parent gender to determine reverse
+			var in_law_data = DB.get_npc(in_law_parent_id)
+			var in_law_gender = in_law_data.get("definite", {}).get("gender", "male") if in_law_data else "male"
+			var reverse_type = "son_in_law" if in_law_gender == "male" else "daughter_in_law"
+			DB.create_relationship(grandparent.id, in_law_parent_id, in_law_type, aff, trust, 0, respect)
+			DB.create_relationship(in_law_parent_id, grandparent.id, reverse_type, rng.randi_range(50, 80), rng.randi_range(60, 85), 0, rng.randi_range(60, 80))
+		
+		# Grandparent → grandchildren (grandparent-grandchild relationship)
+		# All grandchildren are blood relatives regardless of which parent
+		for child in children:
+			var aff = rng.randi_range(70, 95)
+			var trust = rng.randi_range(75, 95)
+			var respect = rng.randi_range(80, 100)
+			DB.create_relationship(grandparent.id, child.id, "grandparent", aff, trust, 0, respect)
+			DB.create_relationship(child.id, grandparent.id, "grandchild", rng.randi_range(75, 95), rng.randi_range(80, 100), 0, rng.randi_range(85, 100))
+	
+	# Aunt/Uncle relationships: randomly assign to one parent (sibling), other gets in-law
+	for aunt in aunts:
+		# Randomly choose which parent gets the blood relationship
+		var blood_parent_id = parent1_id if (parent2_id == null or rng.randf() < 0.5) else parent2_id
+		var in_law_parent_id = parent2_id if blood_parent_id == parent1_id else parent1_id
+		
+		# Blood relationship: aunt → parent (sibling)
+		if blood_parent_id:
+			var aff = rng.randi_range(40, 80)
+			var trust = rng.randi_range(50, 85)
+			var respect = rng.randi_range(40, 75)
+			DB.create_relationship(aunt.id, blood_parent_id, "sibling", aff, trust, 0, respect)
+			DB.create_relationship(blood_parent_id, aunt.id, "sibling", aff, trust, 0, respect)
+		
+		# In-law relationship: aunt → spouse (sister_in_law)
+		# Both directions are "sister_in_law" (sister of spouse)
+		if in_law_parent_id:
+			var aff = rng.randi_range(30, 65)  # Lower than blood relationship
+			var trust = rng.randi_range(40, 70)
+			var respect = rng.randi_range(30, 60)
+			DB.create_relationship(aunt.id, in_law_parent_id, "sister_in_law", aff, trust, 0, respect)
+			DB.create_relationship(in_law_parent_id, aunt.id, "sister_in_law", rng.randi_range(30, 65), rng.randi_range(40, 70), 0, rng.randi_range(30, 60))
+		
+		# Aunt → nieces/nephews (aunt-niece/nephew relationship)
+		# All children are blood relatives regardless of which parent
+		for child in children:
+			var aff = rng.randi_range(50, 85)
+			var trust = rng.randi_range(60, 90)
+			var respect = rng.randi_range(50, 80)
+			DB.create_relationship(aunt.id, child.id, "aunt", aff, trust, 0, respect)
+			# Child is niece or nephew depending on gender
+			var rel_type = "niece" if child.gender == "female" else "nephew"
+			DB.create_relationship(child.id, aunt.id, rel_type, rng.randi_range(60, 85), rng.randi_range(70, 95), 0, rng.randi_range(60, 85))
+	
+	for uncle in uncles:
+		# Randomly choose which parent gets the blood relationship
+		var blood_parent_id = parent1_id if (parent2_id == null or rng.randf() < 0.5) else parent2_id
+		var in_law_parent_id = parent2_id if blood_parent_id == parent1_id else parent1_id
+		
+		# Blood relationship: uncle → parent (sibling)
+		if blood_parent_id:
+			var aff = rng.randi_range(40, 80)
+			var trust = rng.randi_range(50, 85)
+			var respect = rng.randi_range(40, 75)
+			DB.create_relationship(uncle.id, blood_parent_id, "sibling", aff, trust, 0, respect)
+			DB.create_relationship(blood_parent_id, uncle.id, "sibling", aff, trust, 0, respect)
+		
+		# In-law relationship: uncle → spouse (brother_in_law)
+		# Both directions are "brother_in_law" (brother of spouse)
+		if in_law_parent_id:
+			var aff = rng.randi_range(30, 65)  # Lower than blood relationship
+			var trust = rng.randi_range(40, 70)
+			var respect = rng.randi_range(30, 60)
+			DB.create_relationship(uncle.id, in_law_parent_id, "brother_in_law", aff, trust, 0, respect)
+			DB.create_relationship(in_law_parent_id, uncle.id, "brother_in_law", rng.randi_range(30, 65), rng.randi_range(40, 70), 0, rng.randi_range(30, 60))
+		
+		# Uncle → nieces/nephews (uncle-niece/nephew relationship)
+		# All children are blood relatives regardless of which parent
+		for child in children:
+			var aff = rng.randi_range(50, 85)
+			var trust = rng.randi_range(60, 90)
+			var respect = rng.randi_range(50, 80)
+			DB.create_relationship(uncle.id, child.id, "uncle", aff, trust, 0, respect)
+			# Child is niece or nephew depending on gender
+			var rel_type = "niece" if child.gender == "female" else "nephew"
+			DB.create_relationship(child.id, uncle.id, rel_type, rng.randi_range(60, 85), rng.randi_range(70, 95), 0, rng.randi_range(60, 85))
+	
+	# Cousin relationships: cousin ↔ children (cousin relationship - symmetric)
+	for cousin in cousins:
+		for child in children:
+			var aff = rng.randi_range(30, 70)
+			var trust = rng.randi_range(40, 75)
+			var respect = rng.randi_range(30, 65)
+			DB.create_relationship(cousin.id, child.id, "cousin", aff, trust, 0, respect)
+			# "cousin" is symmetric, so DB.create_relationship will create both directions
+		
+		# Cousin → parents (aunt/uncle relationship, as cousins are children of parent's siblings)
+		if parent1_id:
+			var aff = rng.randi_range(50, 80)
+			var trust = rng.randi_range(60, 85)
+			var respect = rng.randi_range(50, 75)
+			# Determine if parent is aunt or uncle based on gender
+			var parent_data = DB.get_npc(parent1_id)
+			var parent_gender = parent_data.get("definite", {}).get("gender", "male") if parent_data else "male"
+			var rel_type = "aunt" if parent_gender == "female" else "uncle"
+			DB.create_relationship(cousin.id, parent1_id, rel_type, aff, trust, 0, respect)
+			DB.create_relationship(parent1_id, cousin.id, "nephew", rng.randi_range(60, 85), rng.randi_range(70, 90), 0, rng.randi_range(60, 80))
+	
+	# Nephew/Niece relationships: nephew/niece → parent's sibling (aunt/uncle)
+	# These are children of the parent's siblings (aunts/uncles)
+	for nephew in nephews:
+		# Nephew is child of aunt/uncle, so relationship to parents is aunt/uncle
+		if parent1_id:
+			var aff = rng.randi_range(50, 80)
+			var trust = rng.randi_range(60, 85)
+			var respect = rng.randi_range(50, 75)
+			var parent_data = DB.get_npc(parent1_id)
+			var parent_gender = parent_data.get("definite", {}).get("gender", "male") if parent_data else "male"
+			var rel_type = "aunt" if parent_gender == "female" else "uncle"
+			DB.create_relationship(nephew.id, parent1_id, rel_type, aff, trust, 0, respect)
+			DB.create_relationship(parent1_id, nephew.id, "nephew", rng.randi_range(60, 85), rng.randi_range(70, 90), 0, rng.randi_range(60, 80))
+		
+		# Nephew → children (cousin relationship - symmetric)
+		for child in children:
+			var aff = rng.randi_range(30, 70)
+			var trust = rng.randi_range(40, 75)
+			var respect = rng.randi_range(30, 65)
+			DB.create_relationship(nephew.id, child.id, "cousin", aff, trust, 0, respect)
+			# "cousin" is symmetric, so DB.create_relationship will create both directions
+	
+	for niece in nieces:
+		if parent1_id:
+			var aff = rng.randi_range(50, 80)
+			var trust = rng.randi_range(60, 85)
+			var respect = rng.randi_range(50, 75)
+			var parent_data = DB.get_npc(parent1_id)
+			var parent_gender = parent_data.get("definite", {}).get("gender", "male") if parent_data else "male"
+			var rel_type = "aunt" if parent_gender == "female" else "uncle"
+			DB.create_relationship(niece.id, parent1_id, rel_type, aff, trust, 0, respect)
+			DB.create_relationship(parent1_id, niece.id, "niece", rng.randi_range(60, 85), rng.randi_range(70, 90), 0, rng.randi_range(60, 80))
+		
+		# Niece → children (cousin relationship - symmetric)
+		for child in children:
+			var aff = rng.randi_range(30, 70)
+			var trust = rng.randi_range(40, 75)
+			var respect = rng.randi_range(30, 65)
+			DB.create_relationship(niece.id, child.id, "cousin", aff, trust, 0, respect)
+			# "cousin" is symmetric, so DB.create_relationship will create both directions
 
 func pass5_generate_singles(target_count: int):
 	"""Pass 5: Generate single NPCs"""
@@ -374,7 +609,7 @@ func pass5_generate_singles(target_count: int):
 		var last_name = _random_last_name(tribe)
 		var district = districts[rng.randi() % districts.size()]
 		
-		var npc_id = "npc_%d" % (stats.npcs + 1)
+		var npc_id = "npc_%s" % Utils.generate_uuid()
 		var single_family_id = 999000 + i
 		
 		_create_npc(npc_id, first_name, last_name, age, gender, tribe, single_family_id, district)
@@ -419,7 +654,8 @@ func _create_npc(id: String, first_name: String, last_name: String, age: int, ge
 			"religious_path": _random_religion(tribe),
 			"occupation": "",
 			"family_id": "family_%d" % family_id,
-			"district": district
+			"district": district,  # Keep for backward compatibility
+			"district_id": district  # Standardized field - always stores district UUID
 		},
 		"personality": _generate_personality(tribe),
 		"political_ideology": _generate_political_ideology(),
@@ -497,7 +733,8 @@ func _create_child_npc(id: String, first_name: String, last_name: String, age: i
 			"religious_path": _random_religion(tribe),
 			"occupation": "",
 			"family_id": "family_%d" % family_id,
-			"district": district
+			"district": district,  # Keep for backward compatibility
+			"district_id": district  # Standardized field - always stores district UUID
 		},
 		"personality": child_personality,
 		"political_ideology": child_political,
@@ -809,6 +1046,81 @@ func _generate_salary_for_occupation(occupation: String, age: int) -> int:
 		exp_factor = 0.5 + float(age - 18) * 0.016
 	
 	return int(min_sal + (max_sal - min_sal) * exp_factor)
+
+# =============================================================================
+# PUBLIC API: LANDLORD CREATION
+# =============================================================================
+
+func create_landlord_npc(district_id: String, age: int = -1) -> String:
+	"""Create a landlord NPC with Property Investor occupation."""
+	# Generate age if not provided
+	if age == -1:
+		age = rng.randi_range(45, 70)
+	
+	# Generate gender (60% male, 40% female)
+	var gender = "male" if rng.randf() < 0.6 else "female"
+	
+	# Generate tribe, names, religion using existing functions
+	var tribe = _random_tribe()
+	var first_name = _random_first_name(tribe, gender)
+	var last_name = _random_last_name(tribe)
+	
+	# Generate NPC ID
+	var landlord_id = "npc_%s" % Utils.generate_uuid()
+	
+	# Force education to undergraduate or postgraduate (70% postgraduate, 30% undergraduate)
+	var education_level = "postgraduate" if rng.randf() < 0.7 else "undergraduate"
+	
+	# Create NPC data structure similar to _create_npc but with landlord-specific values
+	var npc_data = {
+		"id": landlord_id,
+		"name": "%s %s" % [first_name, last_name],
+		"definite": {
+			"gender": gender,
+			"age": age,
+			"alive": true,
+			"orientation": _generate_orientation()
+		},
+		"attributes": _generate_attributes(age),
+		"appearance": _generate_appearance(gender, age, tribe),
+		"identity": {
+			"tribe": tribe,
+			"spoken_languages": ["english", "pidgin"],
+			"education": {"level": education_level, "institution": null},
+			"religious_path": _random_religion(tribe),
+			"occupation": "Property Investor",
+			"family_id": null,  # Landlords are singles
+			"district": district_id,  # Keep for backward compatibility
+			"district_id": district_id  # Standardized field
+		},
+		"personality": _generate_personality(tribe),
+		"political_ideology": _generate_political_ideology(),
+		"skills": {},
+		"resources": {
+			"liquid_assets": [{"type": "bank_account", "amount": rng.randi_range(50000000, 200000000)}],
+			"property": [],
+			"access": [],
+			"annual_income": rng.randi_range(20000000, 80000000)
+		},
+		"status": {"health": rng.randi_range(70, 100), "stress": rng.randi_range(10, 50), "reputation": rng.randi_range(30, 70)},
+		"demographic_affinities": {"capitalist_class": 80}
+	}
+	
+	# Generate skills for Property Investor occupation
+	npc_data.skills = _generate_skills("Property Investor", age)
+	
+	# Override annual income with Property Investor salary if available
+	var property_investor_salary = _generate_salary_for_occupation("Property Investor", age)
+	if property_investor_salary > 0:
+		npc_data.resources.annual_income = property_investor_salary
+	
+	# Create NPC in database
+	DB.create_npc(npc_data)
+	
+	# Update stats
+	stats.npcs = stats.get("npcs", 0) + 1
+	
+	return landlord_id
 
 # Getters
 func get_family_frames() -> Array:

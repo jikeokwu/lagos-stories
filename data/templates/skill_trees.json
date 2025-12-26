@@ -1813,6 +1813,45 @@
         12000000
       ]
     },
+    "property_investor": {
+      "display_name": "Property Investor",
+      "required_education": [
+        "undergraduate",
+        "postgraduate"
+      ],
+      "primary_skills": {
+        "financial_planning": [
+          7,
+          10
+        ],
+        "negotiation": [
+          7,
+          10
+        ],
+        "entrepreneurship": [
+          6,
+          9
+        ]
+      },
+      "secondary_skills": {
+        "social_networking": [
+          5,
+          9
+        ],
+        "operations": [
+          4,
+          8
+        ],
+        "accounting": [
+          3,
+          7
+        ]
+      },
+      "typical_salary_range": [
+        15000000,
+        80000000
+      ]
+    },
     "fashion_designer": {
       "display_name": "Fashion Designer",
       "required_education": [

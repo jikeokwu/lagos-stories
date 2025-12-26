@@ -216,8 +216,8 @@ func _generate_social_criminal_orgs(districts: Array, demand: Dictionary):
 # --- TRACKING & CREATION ---
 
 func _create_org_tracked(category: String, subcategory: String, district: String):
-	_org_id_counter += 1
-	_create_organization_from_template(category, _org_id_counter, district, subcategory)
+	var org_uuid = Utils.generate_uuid()
+	_create_organization_from_template(category, org_uuid, district, subcategory)
 	
 	if not _created_org_types.has(district):
 		_created_org_types[district] = {}
@@ -228,7 +228,7 @@ func _get_org_count(district: String, subcategory: String) -> int:
 		return 0
 	return _created_org_types[district].get(subcategory, 0)
 
-func _create_organization_from_template(category: String, id_num: int, district: String, forced_subcategory: String = ""):
+func _create_organization_from_template(category: String, org_uuid: String, district: String, forced_subcategory: String = ""):
 	if not org_templates.categories.has(category):
 		push_error("❌ Category '%s' not found!" % category)
 		return
@@ -274,7 +274,7 @@ func _create_organization_from_template(category: String, id_num: int, district:
 			elif entry is Array and entry.size() >= 2 and entry[1] is Array:
 				member_range = entry[1]
 	
-	var org_name = _generate_org_name_from_template(template_data, category, id_num)
+	var org_name = _generate_org_name_from_template(template_data, category, org_uuid)
 	
 	var positions = []
 	if template_data.has("positions"):
@@ -291,7 +291,7 @@ func _create_organization_from_template(category: String, id_num: int, district:
 	var pillars = template_data.get("typical_pillars", ["service", "community"]).duplicate()
 	
 	var org_frame = {
-		"id": "org_%d" % id_num,
+		"id": "org_%s" % org_uuid,
 		"name": org_name,
 		"category": category,
 		"subcategory": subcategory_key,
@@ -341,27 +341,27 @@ func _create_organization_from_template(category: String, id_num: int, district:
 	DB.create_organization(org_data)
 	stats.organizations += 1
 
-func _generate_org_name_from_template(template_data: Dictionary, category: String, org_id: int) -> String:
+func _generate_org_name_from_template(template_data: Dictionary, category: String, org_uuid: String) -> String:
 	if template_data.has("name_template"):
 		var tpl = template_data.name_template
-		var name = tpl
+		var name_str = tpl
 		
 		if tpl.find("{denomination}") != -1 and template_data.has("denominations"):
 			var denoms = template_data.denominations
-			name = name.replace("{denomination}", denoms[rng.randi() % denoms.size()])
+			name_str = name_str.replace("{denomination}", denoms[rng.randi() % denoms.size()])
 		
 		if tpl.find("{location_suffix}") != -1 and template_data.has("location_suffixes"):
 			var suffixes = template_data.location_suffixes
-			name = name.replace("{location_suffix}", suffixes[rng.randi() % suffixes.size()])
+			name_str = name_str.replace("{location_suffix}", suffixes[rng.randi() % suffixes.size()])
 		
 		if tpl.find("{type}") != -1:
-			name = name.replace("{type}", category.capitalize())
+			name_str = name_str.replace("{type}", category.capitalize())
 		if tpl.find("{number}") != -1:
-			name = name.replace("{number}", str(org_id))
+			name_str = name_str.replace("{number}", org_uuid.substr(0, 8))
 		
-		return name
+		return name_str
 	else:
-		return "%s Organization %d" % [category.capitalize(), org_id]
+		return "%s Organization %s" % [category.capitalize(), org_uuid.substr(0, 8)]
 
 func _get_reputation_for_category(category: String) -> int:
 	match category:
